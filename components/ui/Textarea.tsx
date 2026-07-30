@@ -1,6 +1,6 @@
 "use client";
 
-import { TextareaHTMLAttributes, forwardRef } from "react";
+import { TextareaHTMLAttributes, forwardRef, useId } from "react";
 import styles from "./Textarea.module.css";
 
 interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
@@ -11,7 +11,8 @@ interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ label, error, hint, className = "", id, ...props }, ref) => {
-    const taId = id || `ta-${Math.random().toString(36).slice(2)}`;
+    const reactId = useId();
+    const taId = id || `ta-${reactId}`;
 
     return (
       <div className={styles.wrapper}>

@@ -1,6 +1,6 @@
 "use client";
 
-import { SelectHTMLAttributes, forwardRef } from "react";
+import { SelectHTMLAttributes, forwardRef, useId } from "react";
 import styles from "./Select.module.css";
 
 interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
@@ -13,7 +13,8 @@ interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
   ({ label, error, hint, options, placeholder, className = "", id, ...props }, ref) => {
-    const selectId = id || `select-${Math.random().toString(36).slice(2)}`;
+    const reactId = useId();
+    const selectId = id || `select-${reactId}`;
 
     return (
       <div className={styles.wrapper}>

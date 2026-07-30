@@ -1,6 +1,6 @@
 "use client";
 
-import { InputHTMLAttributes, forwardRef } from "react";
+import { InputHTMLAttributes, forwardRef, useId } from "react";
 import styles from "./Input.module.css";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -12,7 +12,8 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ label, error, hint, icon, className = "", id, ...props }, ref) => {
-    const inputId = id || `input-${Math.random().toString(36).slice(2)}`;
+    const reactId = useId();
+    const inputId = id || `input-${reactId}`;
 
     return (
       <div className={styles.wrapper}>
