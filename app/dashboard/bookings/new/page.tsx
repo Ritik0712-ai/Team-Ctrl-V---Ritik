@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-import { CalendarPlus, Search, Users, MapPin, Plus, X, ChevronRight, AlertCircle } from "lucide-react";
+import { CalendarPlus, Search, Users, MapPin, Plus, X, ChevronRight, AlertCircle, Ban } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/Card";
 import { Input } from "@/components/ui/Input";
 import { Select } from "@/components/ui/Select";
@@ -15,7 +15,7 @@ import { PageSpinner } from "@/components/ui/Spinner";
 import type { Venue, EquipmentType } from "@/lib/types";
 import styles from "./page.module.css";
 
-type Step = 1 | 2 | 3 | 4;
+type Step = 1 | 2 | 3;
 
 const EQUIPMENT_OPTIONS: Array<{ value: EquipmentType; label: string }> = [
   { value: "LAPTOP", label: "Laptop" },
@@ -48,7 +48,8 @@ export default function NewBookingPage() {
   const [step, setStep] = useState<Step>(1);
   const [loading, setLoading] = useState(false);
   const [submitting, setSubmitting] = useState(false);
-  const [venues, setVenues] = useState<Venue[]>([]);
+  
+  const [venues, setVenues] = useState<(Venue & { is_available?: boolean })[]>([]);
   const [selectedVenue, setSelectedVenue] = useState<Venue | null>(null);
   const [query, setQuery] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -61,34 +62,6 @@ export default function NewBookingPage() {
     expected_attendees: "",
     equipment_requests: [],
   });
-
-  // Step 1: Fetch venues
-  useEffect(() => {
-    const fetchVenues = async () => {
-      setLoading(true);
-      const res = await fetch("/api/venues");
-      const data = await res.json();
-      if (data.success) {
-        setVenues(data.data);
-      }
-      setLoading(false);
-    };
-    fetchVenues();
-  }, []);
-
-  const filteredVenues = venues.filter((v) => {
-    if (!query) return true;
-    return (
-      v.name.toLowerCase().includes(query.toLowerCase()) ||
-      v.building.toLowerCase().includes(query.toLowerCase())
-    );
-  });
-
-  const handleVenueSelect = (venue: Venue) => {
-    setSelectedVenue(venue);
-    setFormData((f) => ({ ...f, venue_id: venue.id }));
-    setStep(2);
-  };
 
   const addSegment = () => {
     setFormData((f) => ({
@@ -125,7 +98,7 @@ export default function NewBookingPage() {
     }));
   };
 
-  const validateStep2 = () => {
+  const validateStep1 = () => {
     const newErrors: Record<string, string> = {};
 
     for (const seg of formData.segments) {
@@ -147,12 +120,64 @@ export default function NewBookingPage() {
       newErrors.expected_attendees = "Please enter expected attendees";
     }
 
-    if (selectedVenue && parseInt(formData.expected_attendees) > selectedVenue.capacity) {
-      newErrors.expected_attendees = `Venue capacity is ${selectedVenue.capacity}`;
-    }
-
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
+  };
+
+  const fetchAvailableVenues = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch("/api/venues/availability", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ segments: formData.segments }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setVenues(data.data);
+        if (selectedVenue) {
+          const v = data.data.find((v: any) => v.id === selectedVenue.id);
+          if (!v || !v.is_available) {
+            setSelectedVenue(null);
+            setFormData((f) => ({ ...f, venue_id: "" }));
+          }
+        }
+      } else {
+        toast.error("Failed to load venues");
+      }
+    } catch {
+      toast.error("Network error while checking venues");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleStep1Submit = async () => {
+    if (validateStep1()) {
+      await fetchAvailableVenues();
+      setStep(2);
+    }
+  };
+
+  const filteredVenues = venues.filter((v) => {
+    if (!query) return true;
+    return (
+      v.name.toLowerCase().includes(query.toLowerCase()) ||
+      v.building.toLowerCase().includes(query.toLowerCase())
+    );
+  });
+
+  const handleVenueSelect = (venue: Venue & { is_available?: boolean }) => {
+    if (venue.is_available === false) return;
+    
+    if (parseInt(formData.expected_attendees) > venue.capacity) {
+       toast.error(`Venue capacity is ${venue.capacity}. You have ${formData.expected_attendees} attendees.`);
+       return;
+    }
+
+    setSelectedVenue(venue);
+    setFormData((f) => ({ ...f, venue_id: venue.id }));
+    setStep(3);
   };
 
   const validateStep3 = () => {
@@ -170,10 +195,7 @@ export default function NewBookingPage() {
   };
 
   const handleSubmit = async () => {
-    if (!validateStep3()) {
-      setStep(3);
-      return;
-    }
+    if (!validateStep3()) return;
 
     setSubmitting(true);
 
@@ -219,103 +241,24 @@ export default function NewBookingPage() {
     }
   };
 
-  if (loading) return <PageSpinner />;
-
   return (
     <div className={styles.page}>
-      {/* Progress indicator */}
       <div className={styles.progress}>
-        {[1, 2, 3, 4].map((s) => (
+        {[1, 2, 3].map((s) => (
           <div key={s} className={`${styles.progressStep} ${step >= s ? styles.active : ""} ${step === s ? styles.current : ""}`}>
             <div className={styles.progressDot}>{step > s ? "✓" : s}</div>
-            <span>{["Select Venue", "Event Details", "Review & Submit", "Done"][s - 1]}</span>
+            <span>{["Schedule", "Select Venue", "Details"][s - 1]}</span>
           </div>
         ))}
       </div>
 
-      {/* STEP 1: Venue Selection */}
       {step === 1 && (
         <div className={styles.step}>
           <div className={styles.stepHeader}>
-            <h2 className={styles.stepTitle}>Select a Venue</h2>
-            <p className={styles.stepSubtitle}>Search and choose from available venues</p>
-          </div>
-
-          <div className={styles.searchBar}>
-            <Input
-              placeholder="Search by name, building..."
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              icon={<Search size={16} />}
-            />
-          </div>
-
-          {filteredVenues.length === 0 ? (
-            <EmptyState
-              icon={<MapPin size={40} />}
-              title="No venues found"
-              description="Try adjusting your search query"
-            />
-          ) : (
-            <div className={styles.venueGrid}>
-              {filteredVenues.map((venue) => (
-                <Card
-                  key={venue.id}
-                  hover
-                  className={`${styles.venueOption} ${selectedVenue?.id === venue.id ? styles.selected : ""}`}
-                  onClick={() => handleVenueSelect(venue)}
-                >
-                  <CardContent>
-                    <div className={styles.venueOptionHeader}>
-                      <h3 className={styles.venueOptionName}>{venue.name}</h3>
-                      <Badge>{venue.venue_type.replace("_", " ")}</Badge>
-                    </div>
-                    <p className={styles.venueOptionBuilding}>
-                      <MapPin size={12} /> {venue.building} · Floor {venue.floor}
-                    </p>
-                    <div className={styles.venueOptionCapacity}>
-                      <Users size={13} />
-                      <span>Capacity: <strong>{venue.capacity}</strong></span>
-                    </div>
-                    {venue.amenities && venue.amenities.length > 0 && (
-                      <div className={styles.amenities}>
-                        {venue.amenities.slice(0, 4).map((a) => (
-                          <span key={a} className={styles.amenityTag}>{a}</span>
-                        ))}
-                      </div>
-                    )}
-                    <button className={styles.selectBtn}>
-                      Select Venue <ChevronRight size={14} />
-                    </button>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          )}
-        </div>
-      )}
-
-      {/* STEP 2: Event Details */}
-      {step === 2 && (
-        <div className={styles.step}>
-          <div className={styles.stepHeader}>
-            <h2 className={styles.stepTitle}>Event Details</h2>
+            <h2 className={styles.stepTitle}>Event Schedule</h2>
             <p className={styles.stepSubtitle}>Configure time slots and requirements</p>
           </div>
 
-          {selectedVenue && (
-            <div className={styles.selectedVenueBanner}>
-              <div>
-                <strong>{selectedVenue.name}</strong>
-                <span> · {selectedVenue.building} · Capacity {selectedVenue.capacity}</span>
-              </div>
-              <button className={styles.changeBtn} onClick={() => setStep(1)}>
-                Change
-              </button>
-            </div>
-          )}
-
-          {/* Time Segments */}
           <Card className={styles.section}>
             <CardContent>
               <h3 className={styles.sectionTitle}>
@@ -373,7 +316,6 @@ export default function NewBookingPage() {
             </CardContent>
           </Card>
 
-          {/* Attendees */}
           <Card className={styles.section}>
             <CardContent>
               <h3 className={styles.sectionTitle}>
@@ -385,14 +327,11 @@ export default function NewBookingPage() {
                 value={formData.expected_attendees}
                 onChange={(e) => setFormData((f) => ({ ...f, expected_attendees: e.target.value }))}
                 error={errors.expected_attendees}
-                hint={selectedVenue ? `Venue capacity: ${selectedVenue.capacity}` : undefined}
                 min={1}
-                max={selectedVenue?.capacity}
               />
             </CardContent>
           </Card>
 
-          {/* Equipment */}
           <Card className={styles.section}>
             <CardContent>
               <h3 className={styles.sectionTitle}>Equipment Requests (Optional)</h3>
@@ -413,24 +352,108 @@ export default function NewBookingPage() {
           </Card>
 
           <div className={styles.stepActions}>
-            <Button variant="outline" onClick={() => setStep(1)}>Back</Button>
-            <Button onClick={() => { if (validateStep2()) setStep(3); }}>
-              Continue <ChevronRight size={14} />
+            <Button onClick={handleStep1Submit} loading={loading}>
+              Find Available Venues <ChevronRight size={14} />
             </Button>
           </div>
         </div>
       )}
 
-      {/* STEP 3: Review */}
+      {step === 2 && (
+        <div className={styles.step}>
+          <div className={styles.stepHeader}>
+            <h2 className={styles.stepTitle}>Select a Venue</h2>
+            <p className={styles.stepSubtitle}>Showing venues based on your schedule</p>
+          </div>
+
+          <div className={styles.searchBar}>
+            <Input
+              placeholder="Search by name, building..."
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              icon={<Search size={16} />}
+            />
+          </div>
+
+          {loading ? (
+             <PageSpinner />
+          ) : filteredVenues.length === 0 ? (
+            <EmptyState
+              icon={<MapPin size={40} />}
+              title="No venues found"
+              description="Try adjusting your search query"
+            />
+          ) : (
+            <div className={styles.venueGrid}>
+              {filteredVenues.map((venue) => {
+                const isOccupied = venue.is_available === false;
+                const tooSmall = parseInt(formData.expected_attendees) > venue.capacity;
+                const disabled = isOccupied || tooSmall;
+
+                return (
+                  <Card
+                    key={venue.id}
+                    hover={!disabled}
+                    className={`${styles.venueOption} ${selectedVenue?.id === venue.id ? styles.selected : ""} ${disabled ? styles.disabledVenue : ""}`}
+                    onClick={() => handleVenueSelect(venue)}
+                  >
+                    <CardContent>
+                      <div className={styles.venueOptionHeader}>
+                        <h3 className={styles.venueOptionName}>{venue.name}</h3>
+                        {isOccupied ? (
+                          <Badge variant="danger" className={styles.occupiedBadge}><Ban size={12}/> Occupied</Badge>
+                        ) : (
+                          <Badge>{venue.venue_type.replace("_", " ")}</Badge>
+                        )}
+                      </div>
+                      <p className={styles.venueOptionBuilding}>
+                        <MapPin size={12} /> {venue.building} · Floor {venue.floor}
+                      </p>
+                      <div className={styles.venueOptionCapacity}>
+                        <Users size={13} />
+                        <span className={tooSmall ? styles.capacityWarning : ""}>
+                          Capacity: <strong>{venue.capacity}</strong>
+                        </span>
+                      </div>
+                      {venue.amenities && venue.amenities.length > 0 && (
+                        <div className={styles.amenities}>
+                          {venue.amenities.slice(0, 4).map((a) => (
+                            <span key={a} className={styles.amenityTag}>{a}</span>
+                          ))}
+                        </div>
+                      )}
+                      
+                      {!isOccupied && !tooSmall && (
+                        <button className={styles.selectBtn}>
+                          Select Venue <ChevronRight size={14} />
+                        </button>
+                      )}
+                      {tooSmall && !isOccupied && (
+                        <button className={styles.selectBtnDisabled} disabled>
+                          Too Small
+                        </button>
+                      )}
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </div>
+          )}
+
+          <div className={styles.stepActions}>
+             <Button variant="outline" onClick={() => setStep(1)}>Back</Button>
+          </div>
+        </div>
+      )}
+
       {step === 3 && (
         <div className={styles.step}>
           <div className={styles.stepHeader}>
-            <h2 className={styles.stepTitle}>Review & Submit</h2>
-            <p className={styles.stepSubtitle}>Confirm your booking details before submitting</p>
+            <h2 className={styles.stepTitle}>Event Details</h2>
+            <p className={styles.stepSubtitle}>Provide event info and confirm booking</p>
           </div>
 
           <div className={styles.reviewGrid}>
-            {/* Event Info */}
             <Card className={styles.reviewCard}>
               <CardContent>
                 <h3 className={styles.reviewTitle}>Event Information</h3>
@@ -470,7 +493,6 @@ export default function NewBookingPage() {
               </CardContent>
             </Card>
 
-            {/* Schedule */}
             <Card className={styles.reviewCard}>
               <CardContent>
                 <h3 className={styles.reviewTitle}>Schedule</h3>

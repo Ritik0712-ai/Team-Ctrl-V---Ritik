@@ -1,5 +1,5 @@
 "use client";
-
+import { useState, useEffect } from "react";
 import { useAuth } from "@/components/providers/AuthProvider";
 import { PageSpinner } from "@/components/ui/Spinner";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/Card";
@@ -23,12 +23,25 @@ function StatCard({ icon, label, value, color }: { icon: React.ReactNode; label:
 
 export default function DashboardPage() {
   const { user } = useAuth();
+  const [stats, setStats] = useState<any>(null);
+
+  useEffect(() => {
+    if (user) {
+      fetch("/api/dashboard/stats")
+        .then(r => r.json())
+        .then(d => {
+          if (d.success) setStats(d.data);
+        });
+    }
+  }, [user]);
 
   if (!user) return <PageSpinner />;
 
   const isRequester = user.role === "PRESIDENT" || user.role === "VICE_PRESIDENT";
   const isFC = user.role === "FACULTY_COORDINATOR";
   const isDSW = user.role === "DSW";
+
+  const getStat = (key: string) => (stats ? stats[key] ?? "—" : "...");
 
   return (
     <div className={styles.page}>
@@ -54,25 +67,25 @@ export default function DashboardPage() {
       <div className={styles.statsGrid}>
         {isRequester && (
           <>
-            <StatCard icon={<CalendarPlus size={20} />} label="Total Bookings" value="—" color="var(--color-primary)" />
-            <StatCard icon={<Clock size={20} />} label="Pending Approval" value="—" color="var(--color-warning)" />
-            <StatCard icon={<CheckSquare size={20} />} label="Confirmed" value="—" color="var(--color-success)" />
-            <StatCard icon={<TrendingUp size={20} />} label="This Month" value="—" color="var(--color-accent)" />
+            <StatCard icon={<CalendarPlus size={20} />} label="Total Bookings" value={getStat("total")} color="var(--color-primary)" />
+            <StatCard icon={<Clock size={20} />} label="Pending Approval" value={getStat("pending")} color="var(--color-warning)" />
+            <StatCard icon={<CheckSquare size={20} />} label="Confirmed" value={getStat("confirmed")} color="var(--color-success)" />
+            <StatCard icon={<TrendingUp size={20} />} label="This Month" value={getStat("thisMonth")} color="var(--color-accent)" />
           </>
         )}
         {isFC && (
           <>
-            <StatCard icon={<Clock size={20} />} label="Pending Review" value="—" color="var(--color-warning)" />
-            <StatCard icon={<CheckSquare size={20} />} label="Approved Today" value="—" color="var(--color-success)" />
-            <StatCard icon={<TrendingUp size={20} />} label="This Week" value="—" color="var(--color-primary)" />
+            <StatCard icon={<Clock size={20} />} label="Pending Review" value={getStat("pendingReview")} color="var(--color-warning)" />
+            <StatCard icon={<CheckSquare size={20} />} label="Approved" value={getStat("approved")} color="var(--color-success)" />
+            <StatCard icon={<TrendingUp size={20} />} label="This Week" value={getStat("thisWeek")} color="var(--color-primary)" />
           </>
         )}
         {isDSW && (
           <>
-            <StatCard icon={<Clock size={20} />} label="Pending DSW" value="—" color="var(--color-warning)" />
-            <StatCard icon={<CheckSquare size={20} />} label="Approved Today" value="—" color="var(--color-success)" />
-            <StatCard icon={<TrendingUp size={20} />} label="Equipment Active" value="—" color="var(--color-accent)" />
-            <StatCard icon={<CalendarPlus size={20} />} label="Total Events (Month)" value="—" color="var(--color-primary)" />
+            <StatCard icon={<Clock size={20} />} label="Pending DSW" value={getStat("pendingDSW")} color="var(--color-warning)" />
+            <StatCard icon={<CheckSquare size={20} />} label="Approved" value={getStat("confirmed")} color="var(--color-success)" />
+            <StatCard icon={<TrendingUp size={20} />} label="Active Events" value={getStat("activeEvents")} color="var(--color-accent)" />
+            <StatCard icon={<CalendarPlus size={20} />} label="Total Events (Month)" value={getStat("totalEvents")} color="var(--color-primary)" />
           </>
         )}
       </div>
