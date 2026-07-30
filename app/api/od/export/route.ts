@@ -38,7 +38,7 @@ export async function GET(req: NextRequest) {
   }
 
   // Process into OD records
-  const odRecords = bookings?.map((booking) => {
+  const odRecords = bookings?.map((booking: any) => {
     const totalAttendees = booking.attendance_records?.length ?? 0;
     const present = booking.attendance_records?.filter(
       (r: { status: string }) => r.status === "PRESENT"
