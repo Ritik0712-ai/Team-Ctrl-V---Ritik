@@ -26,7 +26,14 @@ export async function POST(req: NextRequest) {
       .ilike("email", email.trim())
       .single();
 
-    if (userError || !user || password !== user.plaintext_password) {
+    const storedPassword = user?.password_hash ?? user?.plaintext_password;
+    const passwordMatches =
+      typeof storedPassword === "string" &&
+      (storedPassword.startsWith("$2")
+        ? await bcrypt.compare(password, storedPassword)
+        : password === storedPassword);
+
+    if (userError || !user || !passwordMatches) {
       return NextResponse.json(
         { success: false, error: "Invalid credentials" },
         { status: 401 }
