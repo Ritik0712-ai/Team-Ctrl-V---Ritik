@@ -475,7 +475,7 @@ export default function NewBookingPage() {
                       </div>
                       {aiSuggestion && (
                         <div className={styles.aiReasonText}>
-                          "{aiSuggestion.reason}"
+                          &quot;{aiSuggestion.reason}&quot;
                         </div>
                       )}
                       {venue.amenities && venue.amenities.length > 0 && (
