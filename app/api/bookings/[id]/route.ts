@@ -161,39 +161,41 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
     const { decision, rejection_reason, equipment_allocations } = parsed.data;
     const newStatus = decision === "APPROVE" ? "CONFIRMED" : "REJECTED";
 
-    // Allocate equipment if approving
-    if (decision === "APPROVE" && equipment_allocations && equipment_allocations.length > 0) {
-      for (const alloc of equipment_allocations) {
-        // Check availability
-        const { data: eq } = await supabase
-          .from("equipment")
-          .select("id, available_quantity")
-          .eq("id", alloc.equipment_id)
-          .single();
+    if (decision === "APPROVE") {
+      // Allocate equipment if any was requested
+      if (equipment_allocations && equipment_allocations.length > 0) {
+        for (const alloc of equipment_allocations) {
+          // Check availability
+          const { data: eq } = await supabase
+            .from("equipment")
+            .select("id, available_quantity")
+            .eq("id", alloc.equipment_id)
+            .single();
 
-        if (!eq || eq.available_quantity < alloc.quantity) {
-          return NextResponse.json(
-            { success: false, error: `Insufficient equipment available for allocation` },
-            { status: 422 }
-          );
+          if (!eq || eq.available_quantity < alloc.quantity) {
+            return NextResponse.json(
+              { success: false, error: `Insufficient equipment available for allocation` },
+              { status: 422 }
+            );
+          }
+
+          await supabase.from("equipment_allocations").insert({
+            booking_id: id,
+            equipment_id: alloc.equipment_id,
+            quantity: alloc.quantity,
+            status: "ALLOCATED",
+            allocated_at: new Date().toISOString(),
+          });
+
+          // Decrement available quantity
+          await supabase
+            .from("equipment")
+            .update({ available_quantity: eq.available_quantity - alloc.quantity })
+            .eq("id", alloc.equipment_id);
         }
-
-        await supabase.from("equipment_allocations").insert({
-          booking_id: id,
-          equipment_id: alloc.equipment_id,
-          quantity: alloc.quantity,
-          status: "ALLOCATED",
-          allocated_at: new Date().toISOString(),
-        });
-
-        // Decrement available quantity
-        await supabase
-          .from("equipment")
-          .update({ available_quantity: eq.available_quantity - alloc.quantity })
-          .eq("id", alloc.equipment_id);
       }
 
-      // Confirm all segments
+      // Confirm all segments — always runs on approval, equipment or not
       await supabase
         .from("booking_segments")
         .update({ is_confirmed: true })

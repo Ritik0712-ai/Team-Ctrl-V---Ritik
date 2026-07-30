@@ -73,7 +73,7 @@ SELECT cron.schedule(
   'cleanup-old-audit-logs',
   '0 0 * * *',
   $$
-  DELETE FROM audit_logs
+  DELETE FROM audit_log
   WHERE created_at < NOW() - INTERVAL '90 days'
   $$
 );
