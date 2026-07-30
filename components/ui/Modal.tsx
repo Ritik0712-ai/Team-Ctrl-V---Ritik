@@ -37,7 +37,7 @@ export function Modal({ open, onClose, title, description, children, footer, siz
   if (!open) return null;
 
   return (
-    <div className={styles.overlay} role="dialog" aria-modal="true" onClick={onClose} role="dialog" aria-modal="true">
+    <div className={styles.overlay} role="dialog" aria-modal="true" onClick={onClose}>
       <div
         ref={dialogRef}
         className={`${styles.modal} ${styles[size]}`}

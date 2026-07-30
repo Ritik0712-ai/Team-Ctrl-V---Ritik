@@ -26,7 +26,7 @@ export async function GET(req: NextRequest) {
   let query = supabase
     .from("bookings")
     .select(
-      `*, venue:venues(*), user:users(id, name, role, club_name)`,
+      `*, venue:venues(*), user:users!bookings_user_id_fkey(id, name, role, club_name)`,
       { count: "exact" }
     )
     .order("created_at", { ascending: false })
@@ -56,195 +56,85 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  // Only Presidents and VPs can create bookings
-  const authResult = await requireRole(req, ["PRESIDENT", "VICE_PRESIDENT"]);
-  if (authResult.response) return authResult.response;
-
-  const { user } = authResult;
-
-  let body: unknown;
   try {
-    body = await req.json();
-  } catch {
-    return NextResponse.json(
-      { success: false, error: "Invalid JSON body" },
-      { status: 400 }
-    );
-  }
+    const authResult = await requireRole(req, ["PRESIDENT", "VICE_PRESIDENT"]);
+    if (authResult.response) return authResult.response;
+    console.log("DEBUG: auth passed, user:", authResult.user.id);
 
-  const parsed = CreateBookingSchema.safeParse(body);
-  if (!parsed.success) {
-    return NextResponse.json(
-      {
-        success: false,
-        error: "Validation failed",
-        details: parsed.error.flatten().fieldErrors,
-      },
-      { status: 422 }
-    );
-  }
+    const { user } = authResult;
 
-  const data = parsed.data;
-  const supabase = createServerClient();
-
-  // Validate venue exists and is active
-  const { data: venue, error: venueError } = await supabase
-    .from("venues")
-    .select("id, name, capacity")
-    .eq("id", data.venue_id)
-    .eq("is_active", true)
-    .single();
-
-  if (venueError || !venue) {
-    return NextResponse.json(
-      { success: false, error: "Venue not found or inactive" },
-      { status: 404 }
-    );
-  }
-
-  // Validate capacity
-  if (data.expected_attendees > venue.capacity) {
-    return NextResponse.json(
-      {
-        success: false,
-        error: `Venue capacity (${venue.capacity}) is less than expected attendees (${data.expected_attendees})`,
-      },
-      { status: 422 }
-    );
-  }
-
-  // Check for conflicts in each segment (UX-only, PostgreSQL is authoritative)
-  const conflictSegments = [];
-  for (const segment of data.segments) {
-    const { data: conflicts } = await supabase
-      .from("booking_segments")
-      .select(`*, booking:bookings(id, venue_id, event_title, status)`)
-      .eq("segment_date", segment.date)
-      .eq("is_confirmed", true)
-      .or(
-        `and(start_time.lt.${segment.end_time},end_time.gt.${segment.start_time})`
-      );
-
-    const venueConflicts = (conflicts ?? []).filter(
-      (c: { booking?: { venue_id?: string } }) => c.booking?.venue_id === data.venue_id
-    );
-
-    if (venueConflicts.length > 0) {
-      conflictSegments.push({
-        date: segment.date,
-        conflicts: venueConflicts,
-      });
+    let body: unknown;
+    try {
+      body = await req.json();
+    } catch {
+      return NextResponse.json({ success: false, error: "Invalid JSON body" }, { status: 400 });
     }
-  }
+    console.log("DEBUG: body parsed:", JSON.stringify(body));
 
-  if (conflictSegments.length > 0) {
-    return NextResponse.json(
-      {
-        success: false,
-        error: "Booking conflict detected",
-        conflicts: conflictSegments,
-      },
-      { status: 409 }
-    );
-  }
-
-  // Calculate the overall start/end from segments
-  const sortedSegments = [...data.segments].sort(
-    (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
-  );
-  const overallStart = `${sortedSegments[0].date}T${sortedSegments[0].start_time}:00`;
-  const lastSegment = sortedSegments[sortedSegments.length - 1];
-  const overallEnd = `${lastSegment.date}T${lastSegment.end_time}:00`;
-
-  // Create booking + segments in a transaction
-  const { data: booking, error: bookingError } = await supabase
-    .from("bookings")
-    .insert({
-      user_id: user.id,
-      venue_id: data.venue_id,
-      event_title: data.event_title,
-      event_description: data.event_description,
-      expected_attendees: data.expected_attendees,
-      equipment_requests: data.equipment_requests,
-      status: "PENDING_FC",
-      // computed fields
-    })
-    .select()
-    .single();
-
-  if (bookingError) {
-    // If it's a constraint error, it's a race condition — report conflict
-    if (bookingError.code === "23P01") {
-      return NextResponse.json(
-        { success: false, error: "Booking conflict: venue is already reserved for this time slot" },
-        { status: 409 }
-      );
+    const parsed = CreateBookingSchema.safeParse(body);
+    if (!parsed.success) {
+      return NextResponse.json({ success: false, error: "Validation failed", details: parsed.error.flatten().fieldErrors }, { status: 422 });
     }
-    console.error("Booking creation error:", bookingError);
-    return NextResponse.json(
-      { success: false, error: "Failed to create booking" },
-      { status: 500 }
-    );
-  }
+    console.log("DEBUG: schema parsed OK");
 
-  // Insert segments
-  const segmentInserts = data.segments.map((seg) => ({
-    booking_id: booking.id,
-    segment_date: seg.date,
-    start_time: seg.start_time,
-    end_time: seg.end_time,
-    is_confirmed: false,
-  }));
+    const data = parsed.data;
+    const supabase = createServerClient();
 
-  const { error: segmentsError } = await supabase
-    .from("booking_segments")
-    .insert(segmentInserts);
+    const { data: venue, error: venueError } = await supabase
+      .from("venues").select("id, name, capacity").eq("id", data.venue_id).single();
 
-  if (segmentsError) {
-    // Rollback booking if segments fail
-    await supabase.from("bookings").delete().eq("id", booking.id);
-    if (segmentsError.code === "23P01") {
-      return NextResponse.json(
-        { success: false, error: "Booking conflict: venue is already reserved for this time slot" },
-        { status: 409 }
-      );
+    console.log("DEBUG: venue query result:", JSON.stringify(venue), "error:", JSON.stringify(venueError));
+    if (venueError || !venue) {
+      return NextResponse.json({ success: false, error: "Venue not found" }, { status: 404 });
     }
-    return NextResponse.json(
-      { success: false, error: "Failed to create booking segments" },
-      { status: 500 }
-    );
+
+    // Compute overall start/end from segments
+    const sorted = [...data.segments].sort((a, b) => a.date.localeCompare(b.date));
+    const overallStart = `${sorted[0].date}T${sorted[0].start_time}:00`;
+    const lastSeg = sorted[sorted.length - 1];
+    const overallEnd = `${lastSeg.date}T${lastSeg.end_time}:00`;
+
+    console.log("DEBUG: creating booking...");
+    const { data: booking, error: bookingError } = await supabase
+      .from("bookings").insert({
+        user_id: user.id,
+        club_id: user.club_id ?? null,
+        venue_id: data.venue_id,
+        event_title: data.event_title,
+        event_description: data.event_description,
+        expected_attendees: data.expected_attendees,
+        equipment_requests: data.equipment_requests,
+        status: "PENDING_FC",
+        start_time: overallStart,
+        end_time: overallEnd,
+      }).select().single();
+
+    console.log("DEBUG: booking result:", JSON.stringify(booking), "error:", JSON.stringify(bookingError));
+    if (bookingError) {
+      console.error("Booking creation error:", bookingError);
+      return NextResponse.json({ success: false, error: "Failed to create booking: " + bookingError.message }, { status: 500 });
+    }
+
+    console.log("DEBUG: inserting segments...");
+    const segmentInserts = data.segments.map((seg) => ({
+      booking_id: booking.id,
+      segment_date: seg.date,
+      start_time: seg.start_time,
+      end_time: seg.end_time,
+      is_confirmed: false,
+    }));
+    console.log("DEBUG: segments:", JSON.stringify(segmentInserts));
+
+    const { error: segmentsError } = await supabase.from("booking_segments").insert(segmentInserts);
+    console.log("DEBUG: segments result, error:", JSON.stringify(segmentsError));
+    if (segmentsError) {
+      await supabase.from("bookings").delete().eq("id", booking.id);
+      return NextResponse.json({ success: false, error: "Failed to create booking segments: " + segmentsError.message }, { status: 500 });
+    }
+
+    return NextResponse.json({ success: true, data: booking, message: "Booking request submitted for approval" }, { status: 201 });
+  } catch (err) {
+    console.error("POST /api/bookings unhandled error:", err);
+    return NextResponse.json({ success: false, error: "Internal server error" }, { status: 500 });
   }
-
-  // Audit log
-  await supabase.from("audit_log").insert({
-    booking_id: booking.id,
-    user_id: user.id,
-    action: "BOOKING_CREATED",
-    details: { event_title: data.event_title, venue_id: data.venue_id },
-  });
-
-  // Notification to FC (find first FC)
-  const { data: fcs } = await supabase
-    .from("users")
-    .select("id")
-    .eq("role", "FACULTY_COORDINATOR")
-    .limit(1);
-
-  if (fcs && fcs.length > 0) {
-    await supabase.from("notifications").insert({
-      user_id: fcs[0].id,
-      title: "New Booking Request",
-      message: `${user.name} submitted a venue booking request: "${data.event_title}"`,
-      link: `/dashboard/approvals`,
-    });
-  }
-
-  return NextResponse.json(
-    {
-      success: true,
-      data: booking,
-      message: "Booking request submitted for approval",
-    },
-    { status: 201 }
-  );
 }

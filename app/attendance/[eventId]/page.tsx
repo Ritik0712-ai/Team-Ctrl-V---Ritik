@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { QrCode, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/Card";
 import { Input } from "@/components/ui/Input";
@@ -8,18 +9,14 @@ import { Button } from "@/components/ui/Button";
 import { PageSpinner } from "@/components/ui/Spinner";
 import styles from "./page.module.css";
 
-interface AttendanceData {
-  id: string;
-  event_title: string;
-  venue?: { name: string; building: string };
-  segment_date: string;
-  registration_number?: string;
-  status: string;
-  student_name?: string;
-}
-
-export default function AttendancePage() {
-  const [data, setData] = useState<AttendanceData | null>(null);
+function CheckInContent() {
+  const searchParams = useSearchParams();
+  const segmentDate = searchParams.get("date") ?? "";
+  const [bookingId, setBookingId] = useState("");
+  const [data, setData] = useState<{
+    event_title: string;
+    venue?: { name: string; building: string };
+  } | null>(null);
   const [loading, setLoading] = useState(true);
   const [regNumber, setRegNumber] = useState("");
   const [name, setName] = useState("");
@@ -29,40 +26,37 @@ export default function AttendancePage() {
 
   useEffect(() => {
     const pathParts = window.location.pathname.split("/");
-    const eventId = pathParts[pathParts.length - 1];
-
-    if (eventId && eventId !== "[eventId]") {
-      fetchAttendance(eventId);
+    const id = pathParts[pathParts.length - 1];
+    if (id && id !== "[eventId]") {
+      setBookingId(id);
+      fetch(`/api/attendance/${id}`)
+        .then(r => r.json())
+        .then(json => {
+          if (json.success) setData(json.data);
+        })
+        .catch(() => setError("Failed to load event"))
+        .finally(() => setLoading(false));
     } else {
       setLoading(false);
     }
   }, []);
 
-  const fetchAttendance = async (eventId: string) => {
-    setLoading(true);
-    try {
-      const res = await fetch(`/api/attendance/event/${eventId}`);
-      const json = await res.json();
-      if (json.success) {
-        setData(json.data);
-      }
-    } catch {
-      setError("Failed to load event");
-    }
-    setLoading(false);
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!data || !regNumber.trim()) return;
+    if (!bookingId || !regNumber.trim()) return;
     setSubmitting(true);
     setError("");
 
     try {
-      const res = await fetch(`/api/attendance/${data.id}/record`, {
+      const res = await fetch(`/api/attendance/${bookingId}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ registration_number: regNumber.trim(), student_name: name.trim() }),
+        body: JSON.stringify({
+          booking_id: bookingId,
+          segment_date: segmentDate,
+          registration_number: regNumber.trim(),
+          student_name: name.trim() || undefined,
+        }),
       });
 
       const json = await res.json();
@@ -112,14 +106,16 @@ export default function AttendancePage() {
                     {data.venue && (
                       <p className={styles.eventVenue}>{data.venue.name} · {data.venue.building}</p>
                     )}
-                    <p className={styles.eventDate}>
-                      {new Date(data.segment_date).toLocaleDateString("en-IN", {
-                        weekday: "long",
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric",
-                      })}
-                    </p>
+                    {segmentDate && (
+                      <p className={styles.eventDate}>
+                        {new Date(segmentDate).toLocaleDateString("en-IN", {
+                          weekday: "long",
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        })}
+                      </p>
+                    )}
                   </div>
                 ) : (
                   <div className={styles.noEvent}>
@@ -171,5 +167,13 @@ export default function AttendancePage() {
         </p>
       </div>
     </div>
+  );
+}
+
+export default function AttendancePage() {
+  return (
+    <Suspense fallback={<PageSpinner />}>
+      <CheckInContent />
+    </Suspense>
   );
 }

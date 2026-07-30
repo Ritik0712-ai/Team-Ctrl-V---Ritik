@@ -23,7 +23,7 @@ function CheckInContent() {
 
   useEffect(() => {
     if (!bookingId) { setLoading(false); return; }
-    fetch(`/api/attendance/event/${bookingId}`)
+    fetch(`/api/attendance/${bookingId}`)
       .then(r => r.json())
       .then(d => { if (d.success) setEventInfo(d.data); })
       .catch(() => setError("Failed to load event"))
@@ -37,13 +37,14 @@ function CheckInContent() {
     setError("");
 
     try {
-      const res = await fetch(`/api/attendance/${bookingId}/record`, {
+      const res = await fetch(`/api/attendance/${bookingId}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          booking_id: bookingId,
+          segment_date: dateParam,
           registration_number: regNumber.trim(),
           student_name: studentName.trim(),
-          date: dateParam,
         }),
       });
 

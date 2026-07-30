@@ -1,17 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@/lib/db";
-import { z } from "zod";
-
-const QRCheckinSchema = z.object({
-  token: z.string().min(1, "Token is required"),
-  registration_number: z.string().min(1, "Registration number is required"),
-  student_name: z.string().optional(),
-});
+import { RecordAttendanceSchema } from "@/lib/schemas";
 
 export async function GET(req: NextRequest, { params }: { params: Promise<{ param: string }> }) {
   const { param } = await params;
   const supabase = createServerClient();
 
+  // Token-based: lookup by qr_token query param
   if (req.nextUrl.searchParams.get("token")) {
     const token = req.nextUrl.searchParams.get("token")!;
     const { data: record, error } = await supabase
@@ -35,6 +30,7 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ para
     return NextResponse.json({ success: true, data: record });
   }
 
+  // BookingId-based: fetch booking info for public check-in page
   const { data: booking, error } = await supabase
     .from("bookings")
     .select(`
@@ -59,54 +55,144 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ par
   const supabase = createServerClient();
 
   const body = await req.json();
-  const parsed = QRCheckinSchema.safeParse(body);
 
-  if (!parsed.success) {
+  // Support both token-based (QR scan) and bookingId+segment_date based check-in
+  if (body.token) {
+    // Token-based: QR scan flow
+    const parsed = RecordAttendanceSchema.safeParse(body);
+    if (!parsed.success) {
+      return NextResponse.json(
+        { success: false, error: parsed.error.issues[0].message },
+        { status: 400 }
+      );
+    }
+
+    const { data: record, error: fetchError } = await supabase
+      .from("attendance_records")
+      .select(`*, booking:bookings(id, status)`)
+      .eq("qr_token", body.token)
+      .single();
+
+    if (fetchError || !record) {
+      return NextResponse.json(
+        { success: false, error: "Invalid QR code" },
+        { status: 404 }
+      );
+    }
+
+    if (record.booking?.status !== "CONFIRMED") {
+      return NextResponse.json(
+        { success: false, error: "Event is not currently active" },
+        { status: 400 }
+      );
+    }
+
+    const { data, error } = await supabase
+      .from("attendance_records")
+      .update({
+        status: "PRESENT",
+        registration_number: parsed.data.registration_number,
+        student_name: parsed.data.student_name ?? record.student_name,
+        scanned_at: new Date().toISOString(),
+      })
+      .eq("id", record.id)
+      .select()
+      .single();
+
+    if (error) {
+      return NextResponse.json(
+        { success: false, error: "Failed to record attendance" },
+        { status: 500 }
+      );
+    }
+
+    return NextResponse.json({ success: true, message: "Attendance recorded successfully", data });
+  }
+
+  // BookingId-based: check in by booking_id + segment_date + registration_number
+  const { booking_id, segment_date, registration_number, student_name } = body;
+
+  if (!booking_id || !segment_date || !registration_number) {
     return NextResponse.json(
-      { success: false, error: parsed.error.issues[0].message },
+      { success: false, error: "booking_id, segment_date, and registration_number are required" },
       { status: 400 }
     );
   }
 
-  const { token, registration_number, student_name } = parsed.data;
-
-  const { data: record, error: fetchError } = await supabase
-    .from("attendance_records")
-    .select(`*, booking:bookings(id, status)`)
-    .eq("qr_token", token)
+  // Verify booking is CONFIRMED
+  const { data: booking, error: bookingError } = await supabase
+    .from("bookings")
+    .select("id, status, event_title")
+    .eq("id", booking_id)
     .single();
 
-  if (fetchError || !record) {
+  if (bookingError || !booking) {
     return NextResponse.json(
-      { success: false, error: "Invalid QR code" },
+      { success: false, error: "Event not found" },
       { status: 404 }
     );
   }
 
-  if (record.booking?.status !== "CONFIRMED") {
+  if (booking.status !== "CONFIRMED") {
     return NextResponse.json(
       { success: false, error: "Event is not currently active" },
       { status: 400 }
     );
   }
 
-  const today = new Date().toISOString().split("T")[0];
-  if (record.segment_date !== today) {
+  // Check if segment exists for this booking/date
+  const { data: segment, error: segmentError } = await supabase
+    .from("booking_segments")
+    .select("id")
+    .eq("booking_id", booking_id)
+    .eq("segment_date", segment_date)
+    .single();
+
+  if (segmentError || !segment) {
     return NextResponse.json(
-      { success: false, error: "Attendance can only be recorded on the event date" },
+      { success: false, error: "No event scheduled for this date" },
       { status: 400 }
     );
   }
 
+  // Upsert attendance record (idempotent)
+  const { data: existing } = await supabase
+    .from("attendance_records")
+    .select("id")
+    .eq("booking_id", booking_id)
+    .eq("segment_date", segment_date)
+    .eq("registration_number", registration_number)
+    .single();
+
+  if (existing) {
+    const { data, error } = await supabase
+      .from("attendance_records")
+      .update({
+        status: "PRESENT",
+        student_name: student_name ?? "Unknown",
+        scanned_at: new Date().toISOString(),
+      })
+      .eq("id", existing.id)
+      .select()
+      .single();
+
+    if (error) {
+      return NextResponse.json({ success: false, error: "Failed to update attendance" }, { status: 500 });
+    }
+    return NextResponse.json({ success: true, message: "Attendance recorded successfully", data });
+  }
+
+  // Create new record
   const { data, error } = await supabase
     .from("attendance_records")
-    .update({
-      status: "PRESENT",
+    .insert({
+      booking_id,
+      segment_date,
       registration_number,
-      student_name: student_name ?? record.student_name,
+      student_name: student_name ?? "Unknown",
+      status: "PRESENT",
       scanned_at: new Date().toISOString(),
     })
-    .eq("id", record.id)
     .select()
     .single();
 

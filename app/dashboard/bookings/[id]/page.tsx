@@ -252,20 +252,32 @@ export default function BookingDetailPage() {
         </Card>
 
         {/* Actions */}
-        {canCancel && isOwner && (
+        {(canCancel && isOwner) || booking.status === "CONFIRMED" ? (
           <Card className={styles.actionsCard}>
             <CardContent>
               <h3 className={styles.sectionTitle}>Actions</h3>
-              <Button
-                variant="danger"
-                onClick={handleCancel}
-                loading={cancelling}
-              >
-                Cancel This Booking
-              </Button>
+              <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+                {booking.status === "CONFIRMED" && (
+                  <Button
+                    variant="outline"
+                    onClick={() => window.open(`/api/bookings/${bookingId}/od-export`, "_blank")}
+                  >
+                    Export OD List
+                  </Button>
+                )}
+                {canCancel && isOwner && (
+                  <Button
+                    variant="danger"
+                    onClick={handleCancel}
+                    loading={cancelling}
+                  >
+                    Cancel This Booking
+                  </Button>
+                )}
+              </div>
             </CardContent>
           </Card>
-        )}
+        ) : null}
       </div>
     </div>
   );
