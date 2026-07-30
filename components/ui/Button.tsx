@@ -44,7 +44,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       .join(" ");
 
     return (
-      <button
+      <button aria-label="Button action"
         ref={ref}
         className={classes}
         disabled={disabled || loading}
