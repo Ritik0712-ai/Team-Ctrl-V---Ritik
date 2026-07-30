@@ -154,6 +154,7 @@ CREATE TABLE bookings (
   dsw_approved_at TIMESTAMPTZ,
   dsw_approved_by UUID REFERENCES users(id) ON DELETE SET NULL,
   dsw_decision_by TIMESTAMPTZ,
+  completed_at TIMESTAMPTZ,
   created_at TIMESTAMPTZ DEFAULT NOW(),
   updated_at TIMESTAMPTZ DEFAULT NOW()
 );
@@ -189,27 +190,6 @@ CREATE INDEX idx_segments_date ON booking_segments(segment_date);
 -- Prevents overlapping bookings for the same venue
 -- Uses tstzrange for the full datetime window
 -- ============================================================
-ALTER TABLE booking_segments
-ADD CONSTRAINT no_overlapping_bookings
-EXCLUDE USING GIST (
-  (
-    booking_id,
-    venue_id
-  ) WITH =,
-  daterange(segment_date, segment_date, '[]') *
-  tstzrange(
-    (SELECT start_time::time FROM booking_segments bs2 WHERE booking_segments.id = bs2.id) +
-    (SELECT segment_date FROM booking_segments bs3 WHERE booking_segments.id = bs3.id)::timestamptz,
-    (SELECT end_time::time FROM booking_segments bs4 WHERE booking_segments.id = bs4.id) +
-    (SELECT segment_date FROM booking_segments bs5 WHERE booking_segments.id = bs5.id)::timestamptz,
-    '[)'
-  ) WITH &&
-) WHERE (is_confirmed = true);
-
--- Better approach: use a trigger-based exclusion
--- The above won't work because it references other rows. Let's use a proper approach.
-
-DROP CONSTRAINT IF EXISTS no_overlapping_bookings;
 
 -- Create a function to enforce exclusion at the booking level
 CREATE OR REPLACE FUNCTION check_booking_no_overlap()
@@ -443,14 +423,14 @@ INSERT INTO users (id, email, password_hash, name, role, club_id, club_name) VAL
 -- Seed Data: Venues
 -- ============================================================
 INSERT INTO venues (id, name, building, floor, capacity, venue_type, amenities, description) VALUES
-  ('v1111111-1111-1111-1111-111111111111', 'Seminar Hall A', 'Main Building', '2nd Floor', 100, 'SEMINAR_HALL', ARRAY['Projector', 'Whiteboard', 'Microphone', 'AC'], 'Air-conditioned seminar hall with modern audio-visual equipment'),
-  ('v2222222-2222-2222-2222-222222222222', 'Seminar Hall B', 'Main Building', '2nd Floor', 80, 'SEMINAR_HALL', ARRAY['Projector', 'Whiteboard', 'AC'], 'Compact seminar hall ideal for workshops'),
-  ('v3333333-3333-3333-3333-333333333333', 'Conference Room 1', 'Admin Block', '1st Floor', 30, 'CONFERENCE_ROOM', ARRAY['Projector', 'Whiteboard', 'Video Conferencing'], 'Executive conference room with video conferencing'),
-  ('v4444444-4444-4444-4444-444444444444', 'Auditorium', 'Cultural Block', 'Ground Floor', 500, 'AUDITORIUM', ARRAY['Projector', 'Stage Lighting', 'Sound System', 'Green Room', 'AC'], 'Main auditorium for large events and cultural programs'),
-  ('v5555555-5555-5555-5555-555555555555', 'Lecture Hall 101', 'Academic Block A', '1st Floor', 150, 'LECTURE_HALL', ARRAY['Projector', 'AC', 'Recording Equipment'], 'Lecture hall with recording capabilities'),
-  ('v6666666-6666-6666-6666-666666666666', 'Open Air Theatre', 'Campus Green', 'Ground Level', 300, 'OPEN_AREA', ARRAY['Stage', 'Sound System', 'Lighting'], 'Open air theatre for outdoor cultural events'),
-  ('v7777777-7777-7777-7777-777777777777', 'Computer Lab 1', 'IT Building', '3rd Floor', 60, 'LAB', ARRAY['Computers', 'Projector', 'AC', 'Printer'], 'Computer lab with 60 workstations'),
-  ('v8888888-8888-8888-8888-888888888888', 'Meeting Room Alpha', 'Admin Block', '2nd Floor', 15, 'CONFERENCE_ROOM', ARRAY['Whiteboard', 'Video Conferencing', 'TV Display'], 'Small meeting room for team discussions');
+  ('c1111111-1111-1111-1111-111111111111', 'Seminar Hall A', 'Main Building', '2nd Floor', 100, 'SEMINAR_HALL', ARRAY['Projector', 'Whiteboard', 'Microphone', 'AC'], 'Air-conditioned seminar hall with modern audio-visual equipment'),
+  ('c2222222-2222-2222-2222-222222222222', 'Seminar Hall B', 'Main Building', '2nd Floor', 80, 'SEMINAR_HALL', ARRAY['Projector', 'Whiteboard', 'AC'], 'Compact seminar hall ideal for workshops'),
+  ('c3333333-3333-3333-3333-333333333333', 'Conference Room 1', 'Admin Block', '1st Floor', 30, 'CONFERENCE_ROOM', ARRAY['Projector', 'Whiteboard', 'Video Conferencing'], 'Executive conference room with video conferencing'),
+  ('c4444444-4444-4444-4444-444444444444', 'Auditorium', 'Cultural Block', 'Ground Floor', 500, 'AUDITORIUM', ARRAY['Projector', 'Stage Lighting', 'Sound System', 'Green Room', 'AC'], 'Main auditorium for large events and cultural programs'),
+  ('c5555555-5555-5555-5555-555555555555', 'Lecture Hall 101', 'Academic Block A', '1st Floor', 150, 'LECTURE_HALL', ARRAY['Projector', 'AC', 'Recording Equipment'], 'Lecture hall with recording capabilities'),
+  ('c6666666-6666-6666-6666-666666666666', 'Open Air Theatre', 'Campus Green', 'Ground Level', 300, 'OPEN_AREA', ARRAY['Stage', 'Sound System', 'Lighting'], 'Open air theatre for outdoor cultural events'),
+  ('c7777777-7777-7777-7777-777777777777', 'Computer Lab 1', 'IT Building', '3rd Floor', 60, 'LAB', ARRAY['Computers', 'Projector', 'AC', 'Printer'], 'Computer lab with 60 workstations'),
+  ('c8888888-8888-8888-8888-888888888888', 'Meeting Room Alpha', 'Admin Block', '2nd Floor', 15, 'CONFERENCE_ROOM', ARRAY['Whiteboard', 'Video Conferencing', 'TV Display'], 'Small meeting room for team discussions');
 
 -- ============================================================
 -- Seed Data: Equipment
@@ -479,7 +459,7 @@ INSERT INTO bookings (id, user_id, venue_id, event_title, event_description, exp
    'CONFIRMED');
 
 INSERT INTO booking_segments (id, booking_id, segment_date, start_time, end_time, is_confirmed) VALUES
-  ('s1111111-1111-1111-1111-111111111111',
+  ('f1111111-1111-1111-1111-111111111111',
    'b1111111-1111-1111-1111-111111111111',
    CURRENT_DATE + 3,
    '09:00',
