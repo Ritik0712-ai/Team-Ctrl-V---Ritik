@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-import { CalendarPlus, Search, Users, MapPin, Plus, X, ChevronRight, AlertCircle, Ban } from "lucide-react";
+import { CalendarPlus, Search, Users, MapPin, Plus, X, ChevronRight, AlertCircle, Ban, Sparkles } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/Card";
 import { Input } from "@/components/ui/Input";
 import { Select } from "@/components/ui/Select";
@@ -62,6 +62,44 @@ export default function NewBookingPage() {
     expected_attendees: "",
     equipment_requests: [],
   });
+
+  // AI Assistant State
+  const [aiPrompt, setAiPrompt] = useState("");
+  const [aiLoading, setAiLoading] = useState(false);
+  const [aiSuggestions, setAiSuggestions] = useState<{ venue_id: string; reason: string }[]>([]);
+
+  const handleAISuggest = async () => {
+    if (!aiPrompt.trim()) return;
+    setAiLoading(true);
+    
+    try {
+      const res = await fetch("/api/ai/suggest", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt: aiPrompt }),
+      });
+      const data = await res.json();
+      
+      if (data.success) {
+        // Auto-fill form
+        const aiData = data.data;
+        setFormData(f => ({
+          ...f,
+          expected_attendees: aiData.attendees?.toString() || "",
+          equipment_requests: aiData.equipment || [],
+          segments: [{ id: crypto.randomUUID(), date: aiData.date || "", start_time: "09:00", end_time: "17:00" }]
+        }));
+        setAiSuggestions(aiData.suggestions || []);
+        toast.success("AI analyzed your request!");
+      } else {
+        toast.error(data.error || "AI failed to process request");
+      }
+    } catch {
+      toast.error("Network error. Could not reach AI.");
+    } finally {
+      setAiLoading(false);
+    }
+  };
 
   const addSegment = () => {
     setFormData((f) => ({
@@ -259,6 +297,23 @@ export default function NewBookingPage() {
             <p className={styles.stepSubtitle}>Configure time slots and requirements</p>
           </div>
 
+          <div className={styles.aiBox}>
+            <div className={styles.aiHeader}>
+              <Sparkles size={16} /> AI Venue Assistant
+            </div>
+            <div className={styles.aiInputGroup}>
+              <Textarea 
+                placeholder="E.g., I want a room for 60 people on 5th August with a mic and speaker..." 
+                value={aiPrompt}
+                onChange={(e) => setAiPrompt(e.target.value)}
+                rows={2}
+              />
+              <Button onClick={handleAISuggest} loading={aiLoading} type="button">
+                Ask AI
+              </Button>
+            </div>
+          </div>
+
           <Card className={styles.section}>
             <CardContent>
               <h3 className={styles.sectionTitle}>
@@ -389,17 +444,21 @@ export default function NewBookingPage() {
                 const isOccupied = venue.is_available === false;
                 const tooSmall = parseInt(formData.expected_attendees) > venue.capacity;
                 const disabled = isOccupied || tooSmall;
+                const aiSuggestion = aiSuggestions.find(s => s.venue_id === venue.id);
 
                 return (
-                  <Card
-                    key={venue.id}
+                  <Card 
+                    key={venue.id} 
                     hover={!disabled}
-                    className={`${styles.venueOption} ${selectedVenue?.id === venue.id ? styles.selected : ""} ${disabled ? styles.disabledVenue : ""}`}
+                    className={`${styles.venueOption} ${selectedVenue?.id === venue.id ? styles.selected : ""} ${disabled ? styles.disabledVenue : ""} ${aiSuggestion ? styles.aiSuggestedCard : ""}`}
                     onClick={() => handleVenueSelect(venue)}
                   >
                     <CardContent>
                       <div className={styles.venueOptionHeader}>
-                        <h3 className={styles.venueOptionName}>{venue.name}</h3>
+                        <h3 className={styles.venueOptionName}>
+                          {venue.name} 
+                          {aiSuggestion && <span className={styles.aiBadge}><Sparkles size={10}/> Suggested</span>}
+                        </h3>
                         {isOccupied ? (
                           <Badge variant="error" className={styles.occupiedBadge}><Ban size={12}/> Occupied</Badge>
                         ) : (
@@ -409,12 +468,16 @@ export default function NewBookingPage() {
                       <p className={styles.venueOptionBuilding}>
                         <MapPin size={12} /> {venue.building} · Floor {venue.floor}
                       </p>
-                      <div className={styles.venueOptionCapacity}>
-                        <Users size={13} />
-                        <span className={tooSmall ? styles.capacityWarning : ""}>
-                          Capacity: <strong>{venue.capacity}</strong>
+                      <div className={styles.venueOptionMeta}>
+                        <span className={formData.expected_attendees && venue.capacity < parseInt(formData.expected_attendees) ? styles.capacityWarning : ""}>
+                          <Users size={12} /> Up to {venue.capacity} people
                         </span>
                       </div>
+                      {aiSuggestion && (
+                        <div className={styles.aiReasonText}>
+                          "{aiSuggestion.reason}"
+                        </div>
+                      )}
                       {venue.amenities && venue.amenities.length > 0 && (
                         <div className={styles.amenities}>
                           {venue.amenities.slice(0, 4).map((a) => (
