@@ -181,7 +181,7 @@ export default function BookingDetailPage() {
                 </h4>
                 <div className={styles.tagList}>
                   {booking.equipment_requests.map((eq) => (
-                    <span key={eq} className={styles.tag}>{eq.replace("_", " ")}</span>
+                    <span key={eq.name} className={styles.tag}>{eq.name} x{eq.quantity}</span>
                   ))}
                 </div>
               </div>

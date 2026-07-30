@@ -177,7 +177,7 @@ export default function ApprovalsPage() {
                     <span>Equipment requested:</span>
                     <div className={styles.eqTags}>
                       {booking.equipment_requests.map((eq) => (
-                        <span key={eq} className={styles.eqTag}>{eq.replace("_", " ")}</span>
+                        <span key={eq.name} className={styles.eqTag}>{eq.name} x{eq.quantity}</span>
                       ))}
                     </div>
                   </div>

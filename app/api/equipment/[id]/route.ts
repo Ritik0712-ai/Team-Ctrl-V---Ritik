@@ -2,12 +2,12 @@ import { NextRequest, NextResponse } from "next/server";
 import { requireRole } from "@/lib/auth/middleware";
 import { createServerClient } from "@/lib/db";
 
-export async function PATCH(req: NextRequest, { params }: { params: { id: string } }) {
+export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const authResult = await requireRole(req, ["DSW"]);
   if (authResult.response) return authResult.response;
 
   const supabase = createServerClient();
-  const id = params.id;
+  const id = (await params).id;
 
   try {
     const body = await req.json();
