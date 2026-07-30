@@ -1,0 +1,28 @@
+.page { display: flex; flex-direction: column; gap: var(--space-6); animation: fadeIn 0.3s ease; }
+.pageHeader { display: flex; align-items: flex-start; justify-content: space-between; }
+.pageTitle { font-size: 24px; font-weight: 700; color: var(--color-text-primary); }
+.pageSubtitle { font-size: 14px; color: var(--color-text-muted); margin-top: 4px; }
+
+.list { display: flex; flex-direction: column; gap: var(--space-4); }
+
+.odCard { padding: var(--space-5); }
+
+.cardHeader { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-4); margin-bottom: var(--space-4); }
+.cardLeft { flex: 1; min-width: 0; }
+.eventTitle { font-size: 16px; font-weight: 600; color: var(--color-text-primary); margin-bottom: var(--space-1); }
+.meta { font-size: 13px; color: var(--color-text-muted); margin-top: 2px; }
+
+.stats { display: flex; gap: var(--space-6); margin-bottom: var(--space-4); }
+.stat { display: flex; flex-direction: column; gap: 2px; }
+.stat strong { font-size: 20px; font-weight: 700; color: var(--color-text-primary); }
+.stat span { font-size: 11px; color: var(--color-text-muted); }
+
+.success { color: var(--color-success) !important; }
+.error { color: var(--color-error) !important; }
+
+.actions { display: flex; gap: var(--space-3); }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}

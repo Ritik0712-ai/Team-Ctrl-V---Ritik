@@ -1,0 +1,434 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  animation: fadeIn 0.3s ease;
+  max-width: 900px;
+}
+
+/* Progress */
+.progress {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-6);
+}
+
+.progressStep {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.progressDot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--color-bg-tertiary);
+  border: 2px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+  transition: all var(--transition-base);
+}
+
+.progressStep.active .progressDot {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+}
+
+.progressStep.current .progressDot {
+  box-shadow: 0 0 0 3px rgba(30, 58, 95, 0.2);
+}
+
+.progressStep span {
+  display: none;
+}
+
+.progressStep.active span {
+  display: block;
+}
+
+/* Step */
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.stepHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stepTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.stepSubtitle {
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+/* Search */
+.searchBar {
+  max-width: 400px;
+}
+
+/* Venue Grid */
+.venueGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-4);
+}
+
+.venueOption {
+  padding: var(--space-5);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  border: 2px solid transparent;
+}
+
+.venueOption.selected {
+  border-color: var(--color-accent);
+  background: var(--color-accent-light);
+}
+
+.venueOptionHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.venueOptionName {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.venueOptionBuilding {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.venueOptionCapacity {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-3);
+}
+
+.amenities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin-bottom: var(--space-3);
+}
+
+.amenityTag {
+  padding: 2px 6px;
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-full);
+  font-size: 10px;
+  color: var(--color-text-muted);
+}
+
+.selectBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-accent);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* Selected venue banner */
+.selectedVenueBanner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-accent-light);
+  border: 1px solid rgba(13, 148, 136, 0.2);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  color: var(--color-text-primary);
+}
+
+.changeBtn {
+  font-size: 13px;
+  color: var(--color-accent);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  padding: 0;
+}
+
+/* Sections */
+.section { padding: var(--space-5); }
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-3);
+}
+
+.sectionHint {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-4);
+  line-height: 1.5;
+}
+
+/* Segments */
+.segments {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.segmentRow {
+  display: grid;
+  grid-template-columns: 60px 1fr 100px 100px 32px;
+  gap: var(--space-3);
+  align-items: end;
+}
+
+.segmentLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  padding-bottom: 10px;
+}
+
+.removeSegBtn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  background: none;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  margin-bottom: 4px;
+}
+
+.removeSegBtn:hover {
+  background: var(--color-error-light);
+  border-color: var(--color-error);
+  color: var(--color-error);
+}
+
+.addSegBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-accent);
+  background: none;
+  border: 1px dashed var(--color-accent);
+  border-radius: var(--radius-md);
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.addSegBtn:hover {
+  background: var(--color-accent-light);
+}
+
+/* Equipment */
+.equipmentGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.equipmentBtn {
+  padding: 6px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  background: var(--color-bg);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.equipmentBtn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.equipmentBtn.selected {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+}
+
+/* Error */
+.errorBanner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-error-light);
+  border: 1px solid rgba(220, 38, 38, 0.2);
+  border-radius: var(--radius-md);
+  color: var(--color-error);
+  font-size: 13px;
+  margin-bottom: var(--space-4);
+}
+
+/* Step actions */
+.stepActions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-3);
+}
+
+/* Review */
+.reviewGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.reviewCard { padding: var(--space-5); }
+
+.reviewTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.reviewField {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: var(--space-3);
+}
+
+.reviewField label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.reviewField span {
+  font-size: 14px;
+  color: var(--color-text-primary);
+}
+
+.reviewTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.scheduleList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.scheduleItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+}
+
+.scheduleDay {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-accent);
+  min-width: 48px;
+}
+
+.scheduleTimes {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 13px;
+  color: var(--color-text-primary);
+}
+
+.submitNote {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  text-align: center;
+  padding: var(--space-3);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .reviewGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .segmentRow {
+    grid-template-columns: 60px 1fr;
+    grid-template-rows: auto auto auto;
+  }
+
+  .segmentRow > *:nth-child(3),
+  .segmentRow > *:nth-child(4) {
+    grid-column: 2;
+  }
+
+  .segmentRow > *:nth-child(5) {
+    grid-row: 1;
+    grid-column: 1;
+    margin-bottom: 0;
+  }
+}
