@@ -117,6 +117,8 @@ Requester (President/VP)
 
 ## Project Structure
 
+``` 
+
 Team-Ctrl-V---Ritik/
 ├── app/
 │   ├── api/                          # Route handlers (backend logic)
@@ -169,6 +171,8 @@ Team-Ctrl-V---Ritik/
 │
 ├── __tests__/                        # Jest tests
 └── .github/workflows/                # CI
+
+```
 
 ## Database Conflict Prevention
 
