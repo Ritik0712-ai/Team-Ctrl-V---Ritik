@@ -16,7 +16,7 @@ export async function GET(req: NextRequest) {
     .select(`
       id, event_title, event_description,
       created_at, completed_at,
-      user:users(name, club_name),
+      user:users!bookings_user_id_fkey(name, club_name),
       booking_segments(segment_date),
       attendance_records(registration_number, student_name, status)
     `)

@@ -16,7 +16,7 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ id: 
     .select(`
       *,
       venue:venues(*),
-      user:users(id, name, role, club_name),
+      user:users!bookings_user_id_fkey(id, name, role, club_name),
       booking_segments(*),
       equipment_allocations(*, equipment:equipment(*))
     `)
@@ -39,6 +39,11 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
 
   const { id } = await params;
   const { user } = authResult;
+  console.log("DEBUG PATCH /bookings/[id]:", { id, userRole: user.role });
+
+  const body = await req.json();
+  console.log("DEBUG PATCH body:", JSON.stringify(body));
+
   const supabase = createServerClient();
 
   // Fetch current booking
@@ -48,6 +53,8 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
     .eq("id", id)
     .single();
 
+  console.log("DEBUG booking fetch:", { bookingId: current?.id, status: current?.status, error: fetchError });
+
   if (fetchError || !current) {
     return NextResponse.json(
       { success: false, error: "Booking not found" },
@@ -55,16 +62,20 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
     );
   }
 
-  const body = await req.json();
   const action = body.action;
 
   // === FACULTY COORDINATOR APPROVAL ===
   if (action === "FC_APPROVE" || action === "FC_REJECT") {
+    console.log("DEBUG: entering FC approval block");
     const fcAuth = await requireRole(req, ["FACULTY_COORDINATOR"]);
-    if (fcAuth.response) return fcAuth.response;
+    if (fcAuth.response) {
+      console.log("DEBUG: FC auth failed", fcAuth.response);
+      return fcAuth.response;
+    }
 
     const parsed = FCApprovalSchema.safeParse(body);
     if (!parsed.success) {
+      console.log("DEBUG: FC schema parse failed", parsed.error.flatten());
       return NextResponse.json(
         { success: false, error: "Invalid approval data" },
         { status: 422 }
@@ -72,6 +83,7 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
     }
 
     if (current.status !== "PENDING_FC") {
+      console.log("DEBUG: wrong status, current:", current.status);
       return NextResponse.json(
         { success: false, error: `Booking is not pending FC approval (current: ${current.status})` },
         { status: 409 }
@@ -80,6 +92,7 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
 
     const { decision, rejection_reason } = parsed.data;
     const newStatus = decision === "APPROVE" ? "PENDING_DSW" : "REJECTED";
+    console.log("DEBUG: FC updating status to", newStatus);
 
     const { error: updateError } = await supabase
       .from("bookings")
@@ -91,6 +104,8 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
       })
       .eq("id", id);
 
+    console.log("DEBUG: FC update result, error:", updateError);
+
     if (updateError) {
       return NextResponse.json(
         { success: false, error: "Failed to update booking" },
@@ -98,24 +113,25 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
       );
     }
 
-    // Notify requester
-    await supabase.from("notifications").insert({
+    // Notify requester (non-blocking)
+    supabase.from("notifications").insert({
       user_id: current.user_id,
       title: decision === "APPROVE" ? "FC Approved — Pending DSW" : "Booking Rejected",
       message: decision === "APPROVE"
         ? `Your booking "${current.event_title}" has been approved by the Faculty Coordinator and is now pending DSW approval.`
         : `Your booking "${current.event_title}" has been rejected. Reason: ${rejection_reason ?? "Not provided"}`,
       link: `/dashboard/bookings/${id}`,
-    });
+    }).then(() => {}).catch(() => {});
 
-    // Audit
-    await supabase.from("audit_log").insert({
+    // Audit (non-blocking)
+    supabase.from("audit_log").insert({
       booking_id: id,
       user_id: user.id,
       action: decision === "APPROVE" ? "FC_APPROVED" : "FC_REJECTED",
       details: { rejection_reason },
-    });
+    }).then(() => {}).catch(() => {});
 
+    console.log("DEBUG: FC approval done, returning success");
     return NextResponse.json({
       success: true,
       message: decision === "APPROVE" ? "Booking approved, forwarded to DSW" : "Booking rejected",
@@ -251,10 +267,18 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
 
     if (allocations) {
       for (const alloc of allocations) {
-        await supabase
+        const { data: eq } = await supabase
           .from("equipment")
-          .update({ available_quantity: supabase.rpc("increment_equipment_quantity", { eq_id: alloc.equipment_id, qty: alloc.quantity }) })
-          .eq("id", alloc.equipment_id);
+          .select("available_quantity")
+          .eq("id", alloc.equipment_id)
+          .single();
+
+        if (eq) {
+          await supabase
+            .from("equipment")
+            .update({ available_quantity: eq.available_quantity + alloc.quantity })
+            .eq("id", alloc.equipment_id);
+        }
 
         await supabase
           .from("equipment_allocations")

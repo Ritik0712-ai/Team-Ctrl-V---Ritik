@@ -91,6 +91,7 @@ export interface Venue {
 export interface Booking {
   id: string;
   user_id: string;
+  club_id?: string;
   venue_id: string;
   event_title: string;
   event_description: string;

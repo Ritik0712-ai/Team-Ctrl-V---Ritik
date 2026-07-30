@@ -16,14 +16,22 @@ export async function GET(req: NextRequest) {
   let query = supabase
     .from("bookings")
     .select(
-      `*, venue:venues(*), user:users(id, name, role, club_name, club_id), booking_segments(*)`,
+      `*, venue:venues(*), user:users!bookings_user_id_fkey(id, name, role, club_name, club_id), booking_segments(*)`,
       { count: "exact" }
     )
     .order("created_at", { ascending: false });
 
   if (user.role === "FACULTY_COORDINATOR") {
+    // FC only sees bookings from their own club
     query = query.eq("status", "PENDING_FC");
+    if (user.club_id) {
+      query = query.eq("club_id", user.club_id);
+    } else {
+      // FC with no club_id assigned — show nothing (they have no club to manage)
+      return NextResponse.json({ success: true, data: [], total: 0 });
+    }
   } else if (user.role === "DSW") {
+    // DSW sees ALL PENDING_DSW bookings — no club filter
     query = query.eq("status", "PENDING_DSW");
   }
 
