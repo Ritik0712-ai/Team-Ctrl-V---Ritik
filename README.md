@@ -117,31 +117,58 @@ Requester (President/VP)
 
 ## Project Structure
 
-```
-app/
-  api/              # Route handlers
-    auth/           # Login, logout, session
-    bookings/       # CRUD, approvals
-    venues/         # Venue listing and search
-    equipment/      # Equipment management
-    attendance/     # QR check-in
-  dashboard/        # Authenticated portal pages
-  login/           # Login page
-  attendance/       # Public QR attendance page
-components/
-  ui/              # Reusable UI components (Button, Card, Badge, Modal, etc.)
-  layout/          # Sidebar, dashboard layout
-  providers/       # Auth context
-lib/
-  auth/            # JWT utilities, middleware, route guards
-  db/              # Supabase server client
-  schemas.ts       # Zod validation schemas
-  types.ts         # TypeScript types
-supabase/
-  migrations/      # Database schema SQL (with triggers)
-scripts/
-  seed.js          # Demo data seeder
-```
+Team-Ctrl-V---Ritik/
+├── app/
+│   ├── api/                          # Route handlers (backend logic)
+│   │   ├── auth/                     #   login, logout, session (/me)
+│   │   ├── bookings/                 #   CRUD, approvals, [id]/qr
+│   │   ├── venues/                   #   listing, search, [id]
+│   │   ├── equipment/                #   inventory management
+│   │   ├── attendance/               #   record + QR check-in ([param])
+│   │   ├── notifications/            #   list, mark-read
+│   │   └── od/                       #   OD eligibility export
+│   ├── dashboard/                    # Authenticated portal (role-aware)
+│   │   ├── bookings/                 #   list, [id] detail, new (4-step wizard)
+│   │   ├── approvals/                #   FC/DSW approval queue
+│   │   ├── venues/                   #   browse + search
+│   │   ├── equipment/                #   inventory view (DSW)
+│   │   ├── attendance/               #   attendance tracking
+│   │   ├── od/                       #   OD export view
+│   │   ├── notifications/            #   notification center
+│   │   └── layout.tsx                #   session guard + shell
+│   ├── login/                        # Public login page
+│   ├── attendance/                   # Public QR flows (no auth)
+│   │   ├── [eventId]/                #   scan-in landing page
+│   │   └── checkin/[bookingId]/      #   manual check-in fallback
+│   ├── layout.tsx
+│   ├── page.tsx
+│   └── globals.css
+│
+├── components/
+│   ├── ui/                           # Button, Card, Badge, Modal, Input,
+│   │                                 #   Select, Textarea, EmptyState, Spinner
+│   ├── layout/                       # Sidebar, DashboardLayout
+│   ├── providers/                    # AuthProvider (session context)
+│   └── client/                       # SupabaseProvider
+│
+├── lib/
+│   ├── auth/                         # jwt.ts, middleware.ts (requireAuth/requireRole)
+│   ├── db/                           # Supabase server client
+│   ├── email/                        # Resend integration
+│   ├── realtime/                     # Supabase Realtime subscriptions
+│   ├── utils/                        # qr.ts (QR generation)
+│   ├── schemas.ts                    # Zod validation schemas
+│   └── types.ts                      # Shared TypeScript types
+│
+├── supabase/
+│   ├── migrations/                   # 001_initial_schema.sql, 002_cron_cleanup.sql
+│   └── config.toml
+│
+├── scripts/
+│   └── seed.js                       # Demo data seeder
+│
+├── __tests__/                        # Jest tests
+└── .github/workflows/                # CI
 
 ## Database Conflict Prevention
 
