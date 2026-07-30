@@ -6,9 +6,9 @@ const MOCK_DB = {
   bookings: [] as any[],
   booking_segments: [] as any[],
   venues: [
-    { id: "v1", name: "Main Auditorium", capacity: 1000, is_active: true, type: "Auditorium" },
-    { id: "v2", name: "Anna Auditorium", capacity: 400, is_active: true, type: "Auditorium" },
-    { id: "v3", name: "CS Lab 1", capacity: 60, is_active: true, type: "Lab" }
+    { id: "v1", name: "Main Auditorium", capacity: 1000, is_active: true, building: "Main Block", floor: "Ground", venue_type: "AUDITORIUM", amenities: ["Projector", "AC", "WiFi"] },
+    { id: "v2", name: "Anna Auditorium", capacity: 400, is_active: true, building: "TT", floor: "1st", venue_type: "AUDITORIUM", amenities: ["AC", "Audio System"] },
+    { id: "v3", name: "CS Lab 1", capacity: 60, is_active: true, building: "SJT", floor: "3rd", venue_type: "LAB", amenities: ["Computers", "AC"] }
   ],
   users: [
     { id: "10000000-0000-0000-0000-000000000001", email: "president@vit.ac.in", name: "Demo President", role: "PRESIDENT", club_name: "Tech Club" },
