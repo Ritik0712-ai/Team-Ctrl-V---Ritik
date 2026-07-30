@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { requireRole } from "@/lib/auth/middleware";
 import { createServerClient } from "@/lib/db";
 import { CreateBookingSchema } from "@/lib/schemas";
+import { sendBookingNotificationEmail } from "@/lib/email";
 import type { Booking, BookingSegment } from "@/lib/types";
 
 export async function GET(req: NextRequest) {
@@ -131,6 +132,15 @@ export async function POST(req: NextRequest) {
       await supabase.from("bookings").delete().eq("id", booking.id);
       return NextResponse.json({ success: false, error: "Failed to create booking segments: " + segmentsError.message }, { status: 500 });
     }
+
+    // Send email notification asynchronously (don't await it to avoid blocking the user)
+    sendBookingNotificationEmail({
+      eventTitle: data.event_title,
+      clubName: user.club_name ?? "A Club",
+      venueName: venue.name,
+      date: sorted.map(s => s.date).join(", "),
+      timeRange: `${sorted[0].start_time} - ${sorted[0].end_time}`
+    }).catch(console.error);
 
     return NextResponse.json({ success: true, data: booking, message: "Booking request submitted for approval" }, { status: 201 });
   } catch (err) {

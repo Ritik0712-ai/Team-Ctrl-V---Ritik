@@ -432,3 +432,37 @@
     margin-bottom: 0;
   }
 }
+
+/* Disabled Venue States */
+.disabledVenue {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.disabledVenue:hover {
+  transform: none !important;
+  border-color: transparent !important;
+}
+
+.occupiedBadge {
+  background: rgba(220, 38, 38, 0.1) !important;
+  color: rgb(220, 38, 38) !important;
+  border: 1px solid rgba(220, 38, 38, 0.2) !important;
+}
+
+.capacityWarning {
+  color: rgb(220, 38, 38);
+}
+
+.selectBtnDisabled {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  background: none;
+  border: none;
+  cursor: not-allowed;
+  padding: 0;
+}

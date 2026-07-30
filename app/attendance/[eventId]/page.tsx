@@ -11,11 +11,12 @@ import styles from "./page.module.css";
 
 function CheckInContent() {
   const searchParams = useSearchParams();
-  const segmentDate = searchParams.get("date") ?? "";
+  const [segmentDate, setSegmentDate] = useState(searchParams.get("date") ?? "");
   const [bookingId, setBookingId] = useState("");
   const [data, setData] = useState<{
     event_title: string;
     venue?: { name: string; building: string };
+    booking_segments?: { segment_date: string; start_time: string; end_time: string }[];
   } | null>(null);
   const [loading, setLoading] = useState(true);
   const [regNumber, setRegNumber] = useState("");
@@ -32,7 +33,23 @@ function CheckInContent() {
       fetch(`/api/attendance/${id}`)
         .then(r => r.json())
         .then(json => {
-          if (json.success) setData(json.data);
+          if (json.success) {
+            setData(json.data);
+            
+            // Auto-select date if not provided in URL
+            if (!segmentDate && json.data.booking_segments && json.data.booking_segments.length > 0) {
+              // Try to find today's segment
+              const today = new Date().toISOString().split("T")[0];
+              const todaySeg = json.data.booking_segments.find((s: any) => s.segment_date === today);
+              
+              if (todaySeg) {
+                setSegmentDate(todaySeg.segment_date);
+              } else if (json.data.booking_segments.length === 1) {
+                // If only one segment, auto-select it
+                setSegmentDate(json.data.booking_segments[0].segment_date);
+              }
+            }
+          }
         })
         .catch(() => setError("Failed to load event"))
         .finally(() => setLoading(false));
@@ -44,6 +61,12 @@ function CheckInContent() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!bookingId || !regNumber.trim()) return;
+    
+    if (!segmentDate) {
+      setError("Please select a date for attendance.");
+      return;
+    }
+
     setSubmitting(true);
     setError("");
 
@@ -131,6 +154,27 @@ function CheckInContent() {
                       <div className={styles.errorBanner} role="alert">
                         <AlertCircle size={14} />
                         {error}
+                      </div>
+                    )}
+
+                    {!segmentDate && data?.booking_segments && data.booking_segments.length > 1 && (
+                      <div className={styles.inputGroup} style={{ marginBottom: "1rem" }}>
+                        <label style={{ display: "block", fontSize: "14px", fontWeight: 500, marginBottom: "0.5rem" }}>
+                          Select Event Date
+                        </label>
+                        <select 
+                          value={segmentDate} 
+                          onChange={(e) => setSegmentDate(e.target.value)}
+                          style={{ width: "100%", padding: "10px", borderRadius: "6px", border: "1px solid #cbd5e1" }}
+                          required
+                        >
+                          <option value="">-- Choose a Date --</option>
+                          {data.booking_segments.map(seg => (
+                            <option key={seg.segment_date} value={seg.segment_date}>
+                              {new Date(seg.segment_date).toLocaleDateString("en-IN", { weekday: "short", month: "short", day: "numeric" })}
+                            </option>
+                          ))}
+                        </select>
                       </div>
                     )}
 
