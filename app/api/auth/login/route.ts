@@ -19,52 +19,19 @@ export async function POST(req: NextRequest) {
 
     const { email, password } = parsed.data;
 
-    // --- MOCK DATABASE BYPASS ---
-    const MOCK_USERS = {
-      "president@vit.ac.in": {
-        id: "10000000-0000-0000-0000-000000000001",
-        email: "president@vit.ac.in",
-        name: "Demo President",
-        role: "PRESIDENT",
-        club_id: "20000000-0000-0000-0000-000000000001",
-        club_name: "Tech Club",
-        is_active: true
-      },
-      "vp@vit.ac.in": {
-        id: "10000000-0000-0000-0000-000000000002",
-        email: "vp@vit.ac.in",
-        name: "Demo VP",
-        role: "VICE_PRESIDENT",
-        club_id: "20000000-0000-0000-0000-000000000001",
-        club_name: "Tech Club",
-        is_active: true
-      },
-      "fc@vit.ac.in": {
-        id: "10000000-0000-0000-0000-000000000003",
-        email: "fc@vit.ac.in",
-        name: "Demo FC",
-        role: "FACULTY_COORDINATOR",
-        is_active: true
-      },
-      "dsw@vit.ac.in": {
-        id: "10000000-0000-0000-0000-000000000004",
-        email: "dsw@vit.ac.in",
-        name: "Demo DSW",
-        role: "DSW",
-        is_active: true
-      }
-    };
+    const supabase = createServerClient();
+    const { data: user, error: userError } = await supabase
+      .from("users")
+      .select("*")
+      .ilike("email", email.trim())
+      .single();
 
-    const userEmail = email.toLowerCase().trim();
-    const user = MOCK_USERS[userEmail as keyof typeof MOCK_USERS];
-
-    if (!user || password !== "reservex123") {
+    if (userError || !user || password !== user.plaintext_password) {
       return NextResponse.json(
         { success: false, error: "Invalid credentials" },
         { status: 401 }
       );
     }
-    // --- END MOCK ---
 
     const sessionUser = {
       id: user.id,
