@@ -121,7 +121,7 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
         ? `Your booking "${current.event_title}" has been approved by the Faculty Coordinator and is now pending DSW approval.`
         : `Your booking "${current.event_title}" has been rejected. Reason: ${rejection_reason ?? "Not provided"}`,
       link: `/dashboard/bookings/${id}`,
-    }).then(() => {}).catch(() => {});
+    }).then(() => {});
 
     // Audit (non-blocking)
     supabase.from("audit_log").insert({
@@ -129,7 +129,7 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
       user_id: user.id,
       action: decision === "APPROVE" ? "FC_APPROVED" : "FC_REJECTED",
       details: { rejection_reason },
-    }).then(() => {}).catch(() => {});
+    }).then(() => {});
 
     console.log("DEBUG: FC approval done, returning success");
     return NextResponse.json({
