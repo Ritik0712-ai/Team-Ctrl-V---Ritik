@@ -5,10 +5,12 @@ import { useRouter } from "next/navigation";
 import { Mail, Lock, Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
+import { useAuth } from "@/components/providers/AuthProvider";
 import styles from "./page.module.css";
 
 export default function LoginPage() {
   const router = useRouter();
+  const { refresh } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -33,6 +35,8 @@ export default function LoginPage() {
         setError(data.error ?? "Login failed. Please try again.");
         return;
       }
+
+      await refresh();
 
       router.push(data.redirect ?? "/dashboard");
       router.refresh();
