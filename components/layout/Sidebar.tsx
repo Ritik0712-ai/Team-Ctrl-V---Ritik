@@ -10,6 +10,7 @@ import {
   Monitor,
   ClipboardCheck,
   FileText,
+  Bell,
   LogOut,
   Menu,
   X,
@@ -76,6 +77,12 @@ const NAV_ITEMS: NavItem[] = [
     href: "/dashboard/od",
     icon: <FileText size={18} />,
     roles: ["DSW"],
+  },
+  {
+    label: "Notifications",
+    href: "/dashboard/notifications",
+    icon: <Bell size={18} />,
+    roles: ["PRESIDENT", "VICE_PRESIDENT", "FACULTY_COORDINATOR", "DSW"],
   },
 ];
 
