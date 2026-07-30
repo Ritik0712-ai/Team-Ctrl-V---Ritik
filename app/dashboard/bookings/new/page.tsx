@@ -401,7 +401,7 @@ export default function NewBookingPage() {
                       <div className={styles.venueOptionHeader}>
                         <h3 className={styles.venueOptionName}>{venue.name}</h3>
                         {isOccupied ? (
-                          <Badge variant="danger" className={styles.occupiedBadge}><Ban size={12}/> Occupied</Badge>
+                          <Badge variant="error" className={styles.occupiedBadge}><Ban size={12}/> Occupied</Badge>
                         ) : (
                           <Badge>{venue.venue_type.replace("_", " ")}</Badge>
                         )}
