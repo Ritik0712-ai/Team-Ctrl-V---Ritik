@@ -70,9 +70,9 @@ export async function POST(req: NextRequest) {
       id: user.id,
       email: user.email,
       name: user.name,
-      role: user.role,
-      club_id: user.club_id ?? undefined,
-      club_name: user.club_name ?? undefined,
+      role: user.role as "PRESIDENT" | "VICE_PRESIDENT" | "FACULTY_COORDINATOR" | "DSW",
+      club_id: "club_id" in user ? user.club_id : undefined,
+      club_name: "club_name" in user ? user.club_name : undefined,
     };
 
     const token = await signSession(sessionUser);

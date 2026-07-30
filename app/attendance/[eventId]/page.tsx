@@ -27,17 +27,6 @@ export default function AttendancePage() {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    const pathParts = window.location.pathname.split("/");
-    const eventId = pathParts[pathParts.length - 1];
-
-    if (eventId && eventId !== "[eventId]") {
-      fetchAttendance(eventId);
-    } else {
-      setLoading(false);
-    }
-  }, []);
-
   const fetchAttendance = async (eventId: string) => {
     setLoading(true);
     try {
@@ -51,6 +40,19 @@ export default function AttendancePage() {
     }
     setLoading(false);
   };
+
+  useEffect(() => {
+    const pathParts = window.location.pathname.split("/");
+    const eventId = pathParts[pathParts.length - 1];
+
+    if (eventId && eventId !== "[eventId]") {
+      fetchAttendance(eventId);
+    } else {
+      setLoading(false);
+    }
+  }, []);
+
+  
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
