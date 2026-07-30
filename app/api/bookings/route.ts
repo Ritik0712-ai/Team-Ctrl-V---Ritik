@@ -104,11 +104,25 @@ export async function POST(req: NextRequest) {
         event_title: data.event_title,
         event_description: data.event_description,
         expected_attendees: data.expected_attendees,
-        equipment_requests: data.equipment_requests,
+        equipment_requests: [], // Kept for DB legacy constraint
+        equipment_requests_json: data.equipment_requests, // New JSONB column
         status: "PENDING_FC",
         start_time: overallStart,
         end_time: overallEnd,
       }).select().single();
+
+    if (!bookingError && data.equipment_requests.length > 0) {
+      // Deduct available quantity for known equipment
+      for (const eq of data.equipment_requests) {
+        if (eq.id) {
+          const { data: eqData } = await supabase.from("equipment").select("available_quantity").eq("id", eq.id).single();
+          if (eqData) {
+            const newQty = Math.max(0, eqData.available_quantity - eq.quantity);
+            await supabase.from("equipment").update({ available_quantity: newQty }).eq("id", eq.id);
+          }
+        }
+      }
+    }
 
     console.log("DEBUG: booking result:", JSON.stringify(booking), "error:", JSON.stringify(bookingError));
     if (bookingError) {

@@ -98,7 +98,8 @@ export interface Booking {
   start_time: string; // ISO datetime
   end_time: string;   // ISO datetime
   expected_attendees: number;
-  equipment_requests: EquipmentType[];
+  equipment_requests: Array<{ id?: string; name: string; quantity: number }>;
+  equipment_requests_json?: Array<{ id?: string; name: string; quantity: number }>;
   status: BookingStatus;
   rejection_reason?: string;
   fc_approved_at?: string;
@@ -290,5 +291,5 @@ export interface BookingFormData {
     end_time: string;
   }>;
   expected_attendees: number;
-  equipment_requests: EquipmentType[];
+  equipment_requests: Array<{ id?: string; name: string; quantity: number }>;
 }

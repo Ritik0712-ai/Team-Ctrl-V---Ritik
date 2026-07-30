@@ -3,14 +3,18 @@ import { requireRole } from "@/lib/auth/middleware";
 import { createServerClient } from "@/lib/db";
 
 export async function GET(req: NextRequest) {
-  const authResult = await requireRole(req, ["DSW"]);
+  const authResult = await requireRole(req, [
+    "PRESIDENT",
+    "VICE_PRESIDENT",
+    "FACULTY_COORDINATOR",
+    "DSW",
+  ]);
   if (authResult.response) return authResult.response;
 
   const supabase = createServerClient();
   const { data, error } = await supabase
     .from("equipment")
     .select("*")
-    .eq("is_active", true)
     .order("name");
 
   if (error) {

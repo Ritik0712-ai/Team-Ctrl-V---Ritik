@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { CalendarPlus, Search, Users, MapPin, Plus, X, ChevronRight, AlertCircle, Ban, Sparkles } from "lucide-react";
@@ -17,15 +17,7 @@ import styles from "./page.module.css";
 
 type Step = 1 | 2 | 3;
 
-const EQUIPMENT_OPTIONS: Array<{ value: EquipmentType; label: string }> = [
-  { value: "LAPTOP", label: "Laptop" },
-  { value: "PROJECTOR", label: "Projector" },
-  { value: "MICROPHONE", label: "Microphone" },
-  { value: "SPEAKER", label: "Speaker" },
-  { value: "STANDING_BOARD", label: "Standing Board" },
-  { value: "WHITEBOARD", label: "Whiteboard" },
-  { value: "EXTENSION_CORD", label: "Extension Cord" },
-];
+type InventoryItem = { id: string; name: string; available_quantity: number; equipment_type?: string };
 
 interface Segment {
   id: string;
@@ -40,7 +32,7 @@ interface FormData {
   event_description: string;
   segments: Segment[];
   expected_attendees: string;
-  equipment_requests: EquipmentType[];
+  equipment_requests: Array<{ id?: string; name: string; quantity: number }>;
 }
 
 export default function NewBookingPage() {
@@ -63,6 +55,30 @@ export default function NewBookingPage() {
     equipment_requests: [],
   });
 
+  // Equipment Combobox State
+  const [eqInput, setEqInput] = useState("");
+  const [isEqDropdownOpen, setIsEqDropdownOpen] = useState(false);
+  const eqInputRef = useRef<HTMLInputElement>(null);
+
+  const [inventory, setInventory] = useState<InventoryItem[]>([]);
+
+  useEffect(() => {
+    fetch("/api/equipment")
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          setInventory(data.data);
+        }
+      })
+      .catch(console.error);
+  }, []);
+
+  const filteredEqOptions = inventory.filter(
+    (eq) =>
+      !formData.equipment_requests.some(req => req.id === eq.id) &&
+      eq.name.toLowerCase().includes(eqInput.toLowerCase())
+  );
+
   // AI Assistant State
   const [aiPrompt, setAiPrompt] = useState("");
   const [aiLoading, setAiLoading] = useState(false);
@@ -83,12 +99,18 @@ export default function NewBookingPage() {
       if (data.success) {
         // Auto-fill form
         const aiData = data.data;
-        setFormData(f => ({
-          ...f,
-          expected_attendees: aiData.attendees?.toString() || "",
-          equipment_requests: aiData.equipment || [],
-          segments: [{ id: crypto.randomUUID(), date: aiData.date || "", start_time: "09:00", end_time: "17:00" }]
-        }));
+        setFormData(f => {
+          const newEq = (aiData.equipment || []).map((e: string) => {
+            const found = inventory.find(inv => inv.name.toUpperCase().replace(/\s+/g,'_') === e || inv.equipment_type === e);
+            return found ? { id: found.id, name: found.name, quantity: 1 } : { name: e.replace(/_/g, ' '), quantity: 1 };
+          });
+          return {
+            ...f,
+            expected_attendees: aiData.attendees?.toString() || "",
+            equipment_requests: newEq,
+            segments: [{ id: crypto.randomUUID(), date: aiData.date || "", start_time: "09:00", end_time: "17:00" }]
+          };
+        });
         setAiSuggestions(aiData.suggestions || []);
         toast.success("AI analyzed your request!");
       } else {
@@ -127,14 +149,51 @@ export default function NewBookingPage() {
     setErrors((e) => ({ ...e, [field]: "" }));
   };
 
-  const toggleEquipment = (eq: EquipmentType) => {
-    setFormData((f) => ({
+  
+  const addEquipment = (item: InventoryItem) => {
+    if (!formData.equipment_requests.some(e => e.id === item.id)) {
+      setFormData(f => ({
+        ...f,
+        equipment_requests: [...f.equipment_requests, { id: item.id, name: item.name, quantity: 1 }]
+      }));
+    }
+  };
+
+  const removeEquipment = (name: string) => {
+    setFormData(f => ({
       ...f,
-      equipment_requests: f.equipment_requests.includes(eq)
-        ? f.equipment_requests.filter((e) => e !== eq)
-        : [...f.equipment_requests, eq],
+      equipment_requests: f.equipment_requests.filter(e => e.name !== name)
     }));
   };
+
+  const updateEqQuantity = (name: string, delta: number, maxQty?: number) => {
+    setFormData(f => ({
+      ...f,
+      equipment_requests: f.equipment_requests.map(e => {
+        if (e.name === name) {
+          let newQty = e.quantity + delta;
+          if (newQty < 1) newQty = 1;
+          if (maxQty !== undefined && newQty > maxQty) newQty = maxQty;
+          return { ...e, quantity: newQty };
+        }
+        return e;
+      })
+    }));
+  };
+
+  const addCustomEquipment = (value: string) => {
+    const trimmed = value.trim();
+    if (!trimmed) return;
+    if (!formData.equipment_requests.some(e => e.name.toLowerCase() === trimmed.toLowerCase())) {
+      setFormData((f) => ({
+        ...f,
+        equipment_requests: [...f.equipment_requests, { name: trimmed, quantity: 1 }],
+      }));
+    }
+    setEqInput("");
+    setIsEqDropdownOpen(false);
+  };
+
 
   const validateStep1 = () => {
     const newErrors: Record<string, string> = {};
@@ -390,18 +449,97 @@ export default function NewBookingPage() {
           <Card className={styles.section}>
             <CardContent>
               <h3 className={styles.sectionTitle}>Equipment Requests (Optional)</h3>
-              <p className={styles.sectionHint}>Select any equipment you need</p>
-              <div className={styles.equipmentGrid}>
-                {EQUIPMENT_OPTIONS.map((eq) => (
-                  <button
-                    key={eq.value}
-                    type="button"
-                    className={`${styles.equipmentBtn} ${formData.equipment_requests.includes(eq.value) ? styles.selected : ""}`}
-                    onClick={() => toggleEquipment(eq.value)}
-                  >
-                    {eq.label}
-                  </button>
-                ))}
+              <p className={styles.sectionHint}>Select any equipment you need, or type your own</p>
+              
+              <div className={styles.multiSelectContainer}>
+                <div 
+                  className={styles.tagsWrapper} 
+                  onClick={() => {
+                    eqInputRef.current?.focus();
+                    setIsEqDropdownOpen(true);
+                  }}
+                >
+                  
+                  {formData.equipment_requests.map((eq) => {
+                    const invItem = eq.id ? inventory.find(i => i.id === eq.id) : null;
+                    return (
+                      <span key={eq.name} className={styles.tag}>
+                        {eq.name}
+                        <div className={styles.qtyControls} onClick={e => e.stopPropagation()}>
+                          <button type="button" onClick={() => updateEqQuantity(eq.name, -1)}>-</button>
+                          <span>{eq.quantity}</span>
+                          <button type="button" onClick={() => updateEqQuantity(eq.name, 1, invItem?.available_quantity)}>+</button>
+                        </div>
+                        <button 
+                          type="button" 
+                          className={styles.tagRemoveBtn} 
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            removeEquipment(eq.name);
+                          }}
+                        >
+                          <X size={12} />
+                        </button>
+                      </span>
+                    );
+                  })}
+
+                  <input
+                    ref={eqInputRef}
+                    type="text"
+                    className={styles.comboboxInput}
+                    placeholder={formData.equipment_requests.length === 0 ? "Search or type custom equipment..." : ""}
+                    value={eqInput}
+                    onChange={(e) => {
+                      setEqInput(e.target.value);
+                      setIsEqDropdownOpen(true);
+                    }}
+                    onFocus={() => setIsEqDropdownOpen(true)}
+                    onBlur={() => setTimeout(() => setIsEqDropdownOpen(false), 200)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') {
+                        e.preventDefault();
+                        addCustomEquipment(eqInput);
+                      }
+                    }}
+                  />
+                </div>
+
+                {isEqDropdownOpen && (
+                  <div className={styles.dropdownList}>
+                    
+                    {filteredEqOptions.map((eq) => (
+                      <button
+                        key={eq.id}
+                        type="button"
+                        className={styles.dropdownItem}
+                        onClick={() => {
+                          addEquipment(eq);
+                          setEqInput("");
+                          eqInputRef.current?.focus();
+                        }}
+                      >
+                        {eq.name} <span className={styles.qtyBadge}>({eq.available_quantity} left)</span>
+                      </button>
+                    ))}
+
+                    {filteredEqOptions.length === 0 && eqInput.trim() !== "" && (
+                      <button
+                        type="button"
+                        className={styles.dropdownItem}
+                        onClick={() => {
+                          addCustomEquipment(eqInput);
+                          eqInputRef.current?.focus();
+                        }}
+                      >
+                        Add &quot;{eqInput}&quot;...
+                      </button>
+                    )}
+                    {filteredEqOptions.length === 0 && eqInput.trim() === "" && (
+                      <div className={styles.dropdownItemEmpty}>No more options</div>
+                    )}
+                  </div>
+                )}
               </div>
             </CardContent>
           </Card>
@@ -548,7 +686,7 @@ export default function NewBookingPage() {
                     <label>Equipment</label>
                     <div className={styles.reviewTags}>
                       {formData.equipment_requests.map((eq) => (
-                        <Badge key={eq}>{eq.replace("_", " ")}</Badge>
+                        <Badge key={eq.name}>{eq.name} x{eq.quantity}</Badge>
                       ))}
                     </div>
                   </div>

@@ -433,6 +433,103 @@
   }
 }
 
+.multiSelectContainer {
+  position: relative;
+  width: 100%;
+}
+
+.tagsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-primary);
+  min-height: 44px;
+  align-items: center;
+}
+
+.tagsWrapper:focus-within {
+  border-color: var(--color-brand-primary);
+  box-shadow: 0 0 0 2px rgba(var(--color-brand-primary-rgb), 0.1);
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 4px 8px;
+  background: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.tagRemoveBtn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+}
+
+.tagRemoveBtn:hover {
+  color: var(--color-danger);
+}
+
+.comboboxInput {
+  flex: 1;
+  min-width: 120px;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 14px;
+  color: var(--color-text-primary);
+  padding: 4px;
+}
+
+.dropdownList {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdownItem {
+  padding: var(--space-2) var(--space-3);
+  font-size: 14px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  text-align: left;
+  color: var(--color-text-primary);
+}
+
+.dropdownItem:hover, .dropdownItem:focus {
+  background: var(--color-bg-secondary);
+  outline: none;
+}
+
+.dropdownItemEmpty {
+  padding: var(--space-2) var(--space-3);
+  font-size: 14px;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
 /* Disabled Venue States */
 .disabledVenue {
   opacity: 0.6;
@@ -532,4 +629,47 @@
   border-radius: var(--radius-md);
   border-left: 3px solid #a855f7;
   font-style: italic;
+}
+
+.qtyControls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: white;
+  border-radius: 4px;
+  padding: 0 4px;
+  margin: 0 6px;
+  border: 1px solid var(--border);
+}
+
+.qtyControls button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+}
+
+.qtyControls button:hover {
+  color: var(--primary);
+}
+
+.qtyControls span {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+  min-width: 12px;
+  text-align: center;
+}
+
+.qtyBadge {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-left: auto;
 }

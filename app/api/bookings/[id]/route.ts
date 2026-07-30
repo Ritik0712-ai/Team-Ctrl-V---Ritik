@@ -4,6 +4,21 @@ import { createServerClient } from "@/lib/db";
 import { UpdateBookingSchema, FCApprovalSchema, DSWApprovalSchema } from "@/lib/schemas";
 import type { Booking } from "@/lib/types";
 
+async function restoreRequestedEquipment(supabase: any, current: any) {
+  const reqs = current.equipment_requests_json;
+  if (reqs && Array.isArray(reqs)) {
+    for (const eq of reqs) {
+      if (eq.id) {
+        const { data: eqData } = await supabase.from("equipment").select("available_quantity").eq("id", eq.id).single();
+        if (eqData) {
+          await supabase.from("equipment").update({ available_quantity: eqData.available_quantity + eq.quantity }).eq("id", eq.id);
+        }
+      }
+    }
+  }
+}
+
+
 export async function GET(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const authResult = await requireAuth(req);
   if (authResult.response) return authResult.response;
@@ -113,6 +128,10 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
       );
     }
 
+    if (decision === "REJECT") {
+      await restoreRequestedEquipment(supabase, current);
+    }
+
     // Notify requester (non-blocking)
     supabase.from("notifications").insert({
       user_id: current.user_id,
@@ -160,11 +179,25 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
 
     const { decision, rejection_reason, equipment_allocations } = parsed.data;
     const newStatus = decision === "APPROVE" ? "CONFIRMED" : "REJECTED";
+    
+    // Always restore the initially requested quantities first, because they were deducted at booking creation.
+    // If approving, the new final allocations will be deducted right after.
+    await restoreRequestedEquipment(supabase, current);
+
+    // If DSW approves but didn't pass explicit allocations (e.g. from the simple approve button UI),
+    // we default to allocating exactly what was requested.
+    let finalAllocations = equipment_allocations;
+    if (decision === "APPROVE" && (!finalAllocations || finalAllocations.length === 0)) {
+       const reqs = current.equipment_requests_json;
+       if (reqs && Array.isArray(reqs)) {
+         finalAllocations = reqs.filter(r => r.id).map(r => ({ equipment_id: r.id, quantity: r.quantity }));
+       }
+    }
 
     if (decision === "APPROVE") {
-      // Allocate equipment if any was requested
-      if (equipment_allocations && equipment_allocations.length > 0) {
-        for (const alloc of equipment_allocations) {
+      // Allocate equipment if approving
+      if (finalAllocations && finalAllocations.length > 0) {
+        for (const alloc of finalAllocations) {
           // Check availability
           const { data: eq } = await supabase
             .from("equipment")
@@ -258,6 +291,10 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
         { success: false, error: "This booking cannot be cancelled" },
         { status: 409 }
       );
+    }
+
+    if (current.status === "PENDING_FC" || current.status === "PENDING_DSW") {
+      await restoreRequestedEquipment(supabase, current);
     }
 
     // Release equipment allocations if any

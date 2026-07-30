@@ -105,45 +105,6 @@ export default function LoginPage() {
           </Button>
         </form>
 
-        {/* Demo accounts */}
-        <div className={styles.demoSection}>
-          <p className={styles.demoTitle}>Demo Accounts</p>
-          <div className={styles.demoAccounts}>
-            <button
-              type="button"
-              className={styles.demoAccount}
-              onClick={() => { setEmail("president@vit.ac.in"); setPassword("reservex123"); }}
-            >
-              <span className={styles.demoRole}>President</span>
-              <span className={styles.demoEmail}>president@vit.ac.in</span>
-            </button>
-            <button
-              type="button"
-              className={styles.demoAccount}
-              onClick={() => { setEmail("vp@vit.ac.in"); setPassword("reservex123"); }}
-            >
-              <span className={styles.demoRole}>Vice President</span>
-              <span className={styles.demoEmail}>vp@vit.ac.in</span>
-            </button>
-            <button
-              type="button"
-              className={styles.demoAccount}
-              onClick={() => { setEmail("fc@vit.ac.in"); setPassword("reservex123"); }}
-            >
-              <span className={styles.demoRole}>Faculty Coordinator</span>
-              <span className={styles.demoEmail}>fc@vit.ac.in</span>
-            </button>
-            <button
-              type="button"
-              className={styles.demoAccount}
-              onClick={() => { setEmail("dsw@vit.ac.in"); setPassword("reservex123"); }}
-            >
-              <span className={styles.demoRole}>DSW</span>
-              <span className={styles.demoEmail}>dsw@vit.ac.in</span>
-            </button>
-          </div>
-          <p className={styles.demoHint}>Password for all: <code>reservex123</code></p>
-        </div>
       </div>
 
       <p className={styles.footer}>

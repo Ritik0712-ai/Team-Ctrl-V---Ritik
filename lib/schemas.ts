@@ -136,7 +136,13 @@ export const CreateBookingSchema = z.object({
   event_description: z.string().min(10, "Description must be at least 10 characters").max(2000),
   segments: z.array(BookingSegmentSchema).min(1, "At least one time slot is required"),
   expected_attendees: z.number().int().positive("Expected attendees must be positive"),
-  equipment_requests: z.array(EquipmentTypeSchema).default([]),
+  equipment_requests: z.array(
+    z.object({
+      id: z.string().optional(),
+      name: z.string(),
+      quantity: z.number().int().positive().default(1),
+    })
+  ).default([]),
 });
 
 export const UpdateBookingSchema = z.object({
@@ -144,7 +150,13 @@ export const UpdateBookingSchema = z.object({
   event_description: z.string().min(10).max(2000).optional(),
   segments: z.array(BookingSegmentSchema).min(1).optional(),
   expected_attendees: z.number().int().positive().optional(),
-  equipment_requests: z.array(EquipmentTypeSchema).optional(),
+  equipment_requests: z.array(
+    z.object({
+      id: z.string().optional(),
+      name: z.string(),
+      quantity: z.number().int().positive().default(1),
+    })
+  ).optional(),
 }).refine(
   (data) => {
     if (data.segments && data.segments.length > 0) {
