@@ -160,12 +160,13 @@ export function Sidebar() {
 
         {/* Footer */}
         <div className={styles.footer}>
-          <form action="/api/auth/logout" method="POST">
-            <button type="submit" className={styles.logoutBtn}>
-              <LogOut size={16} />
-              <span>Sign Out</span>
-            </button>
-          </form>
+          <button onClick={async () => {
+            await fetch("/api/auth/logout", { method: "POST" });
+            window.location.href = "/login";
+          }} className={styles.logoutBtn}>
+            <LogOut size={16} />
+            <span>Sign Out</span>
+          </button>
         </div>
       </aside>
     </>

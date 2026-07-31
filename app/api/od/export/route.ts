@@ -22,9 +22,8 @@ export async function GET(req: NextRequest) {
       booking_segments(segment_date),
       attendance_records(registration_number, student_name, status)
     `)
-    .eq("status", "COMPLETED")
-    .not("completed_at", "is", null)
-    .order("completed_at", { ascending: false });
+    .in("status", ["CONFIRMED", "COMPLETED"])
+    .order("created_at", { ascending: false });
 
   if (bookingId) {
     query = query.eq("id", bookingId);
@@ -70,6 +69,7 @@ export async function GET(req: NextRequest) {
       od_eligible: totalAttendees > 0 && present / totalAttendees >= 0.75 ? "ELIGIBLE" : "NOT_ELIGIBLE",
       attendance_rate: totalAttendees > 0 ? Math.round((present / totalAttendees) * 100) : 0,
       completed_at: booking.completed_at,
+      created_at: booking.created_at,
       attendance_records: booking.attendance_records || [],
     };
   }) ?? [];

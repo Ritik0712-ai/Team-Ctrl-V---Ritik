@@ -25,6 +25,7 @@ interface ODRecord {
   od_eligible: string;
   attendance_rate: number;
   completed_at: string;
+  created_at: string;
   attendance_records: any[];
 }
 
@@ -84,7 +85,7 @@ export default function ODPage() {
                   <div className={styles.cardLeft}>
                     <h3 className={styles.eventTitle}>{rec.event_title}</h3>
                     <p className={styles.meta}>{rec.organizer} · {rec.club}</p>
-                    <p className={styles.meta}>{rec.segment_dates.length} day(s) · Completed {format(new Date(rec.completed_at), "MMM d, yyyy")}</p>
+                    <p className={styles.meta}>{rec.segment_dates.length} day(s) · {rec.completed_at ? `Completed ${format(new Date(rec.completed_at), "MMM d, yyyy")}` : `Created ${format(new Date(rec.created_at || new Date()), "MMM d, yyyy")}`}</p>
                   </div>
                   <Badge
                     variant={rec.od_eligible === "ELIGIBLE" ? "success" : "error"}
