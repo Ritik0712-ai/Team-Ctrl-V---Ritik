@@ -116,6 +116,63 @@ Requester (President/VP)
 - [ ] Realtime WebSocket updates (Supabase Realtime)
 - [ ] pg_cron auto-expiry jobs for stagnant bookings
 
+## Project Structure
+
+```text
+Team-Ctrl-V---Ritik/
+├── app/
+│   ├── api/                          # Route handlers (backend logic)
+│   │   ├── auth/                     #   login, logout, session (/me)
+│   │   ├── bookings/                 #   CRUD, approvals, [id]/qr
+│   │   ├── venues/                   #   listing, search, [id]
+│   │   ├── equipment/                #   inventory management
+│   │   ├── attendance/               #   record + QR check-in ([param])
+│   │   ├── notifications/            #   list, mark-read
+│   │   └── od/                       #   OD eligibility export
+│   ├── dashboard/                    # Authenticated portal (role-aware)
+│   │   ├── bookings/                 #   list, [id] detail, new (4-step wizard)
+│   │   ├── approvals/                #   FC/DSW approval queue
+│   │   ├── venues/                   #   browse + search
+│   │   ├── equipment/                #   inventory view (DSW)
+│   │   ├── attendance/               #   attendance tracking
+│   │   ├── od/                       #   OD export view
+│   │   ├── notifications/            #   notification center
+│   │   └── layout.tsx                #   session guard + shell
+│   ├── login/                        # Public login page
+│   ├── attendance/                   # Public QR flows (no auth)
+│   │   ├── [eventId]/                #   scan-in landing page
+│   │   └── checkin/[bookingId]/      #   manual check-in fallback
+│   ├── layout.tsx
+│   ├── page.tsx
+│   └── globals.css
+│
+├── components/
+│   ├── ui/                           # Button, Card, Badge, Modal, Input,
+│   │                                 #   Select, Textarea, EmptyState, Spinner
+│   ├── layout/                       # Sidebar, DashboardLayout
+│   ├── providers/                    # AuthProvider (session context)
+│   └── client/                       # SupabaseProvider
+│
+├── lib/
+│   ├── auth/                         # jwt.ts, middleware.ts (requireAuth/requireRole)
+│   ├── db/                           # Supabase server client
+│   ├── email/                        # NodeMailer/SMTP integration
+│   ├── realtime/                     # Supabase Realtime subscriptions
+│   ├── utils/                        # qr.ts (QR generation)
+│   ├── schemas.ts                    # Zod validation schemas
+│   └── types.ts                      # Shared TypeScript types
+│
+├── supabase/
+│   ├── migrations/                   # 001_initial_schema.sql, 002_cron_cleanup.sql
+│   └── config.toml
+│
+├── scripts/
+│   └── seed.js                       # Demo data seeder
+│
+├── __tests__/                        # Jest tests
+└── .github/workflows/                # CI
+```
+
 ## Database Conflict Prevention
 
 The core booking conflict prevention is enforced by a PostgreSQL trigger:
