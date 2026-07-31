@@ -24,7 +24,6 @@ interface ODRecord {
   excused: number;
   od_eligible: string;
   attendance_rate: number;
-  completed_at: string;
   created_at: string;
   attendance_records: any[];
 }

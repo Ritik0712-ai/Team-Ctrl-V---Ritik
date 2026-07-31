@@ -17,7 +17,7 @@ export async function GET(req: NextRequest) {
     .from("bookings")
     .select(`
       id, event_title, event_description,
-      created_at, completed_at,
+      created_at,
       user:users!bookings_user_id_fkey(name, club_name),
       booking_segments(segment_date),
       attendance_records(registration_number, student_name, status)
@@ -73,7 +73,6 @@ export async function GET(req: NextRequest) {
       excused,
       od_eligible: totalAttendees > 0 && present / totalAttendees >= 0.75 ? "ELIGIBLE" : "NOT_ELIGIBLE",
       attendance_rate: totalAttendees > 0 ? Math.round((present / totalAttendees) * 100) : 0,
-      completed_at: booking.completed_at,
       created_at: booking.created_at,
       attendance_records: booking.attendance_records || [],
     };
