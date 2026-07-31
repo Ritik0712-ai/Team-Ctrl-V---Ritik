@@ -260,7 +260,37 @@ export default function BookingDetailPage() {
                 {booking.status === "CONFIRMED" && (
                   <Button
                     variant="outline"
-                    onClick={() => window.open(`/api/bookings/${bookingId}/od-export`, "_blank")}
+                    onClick={async () => {
+                      try {
+                        const res = await fetch(`/api/od/export?booking_id=${bookingId}`, { cache: "no-store", next: { revalidate: 0 } });
+                        const d = await res.json();
+                        if (d.success && d.data.length > 0) {
+                          const record = d.data[0];
+                          const header = "Registration Number,Student Name,Status,Event,Date\n";
+                          const rows = (record.attendance_records || [])
+                            .filter((r: any) => r.status === "PRESENT")
+                            .map((r: any) => `${r.registration_number},${r.student_name},${r.status},${record.event_title},${record.segment_dates.join(" | ")}`)
+                            .join("\n");
+                          if (rows.length === 0) {
+                            alert("No students have been marked PRESENT for this event yet.");
+                            return;
+                          }
+                          const csv = header + rows;
+                          const blob = new Blob([csv], { type: "text/csv" });
+                          const url = URL.createObjectURL(blob);
+                          const a = document.createElement("a");
+                          a.href = url;
+                          a.download = `od-${record.booking_id}.csv`;
+                          a.click();
+                          URL.revokeObjectURL(url);
+                        } else {
+                          alert("No OD records found for this booking.");
+                        }
+                      } catch (err) {
+                        console.error(err);
+                        alert("Failed to export OD list.");
+                      }
+                    }}
                   >
                     Export OD List
                   </Button>
