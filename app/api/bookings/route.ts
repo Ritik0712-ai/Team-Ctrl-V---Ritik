@@ -112,20 +112,6 @@ export async function POST(req: NextRequest) {
         end_time: overallEnd,
       }).select().single();
 
-    if (!bookingError && data.equipment_requests.length > 0) {
-      // Deduct available quantity for known equipment
-      for (const eq of data.equipment_requests) {
-        if (eq.id) {
-          const { data: eqData } = await supabase.from("equipment").select("available_quantity").eq("id", eq.id).single();
-          if (eqData) {
-            const newQty = Math.max(0, eqData.available_quantity - eq.quantity);
-            await supabase.from("equipment").update({ available_quantity: newQty }).eq("id", eq.id);
-          }
-        }
-      }
-    }
-
-    console.log("DEBUG: booking result:", JSON.stringify(booking), "error:", JSON.stringify(bookingError));
     if (bookingError) {
       console.error("Booking creation error:", bookingError);
       return NextResponse.json({ success: false, error: "Failed to create booking: " + bookingError.message }, { status: 500 });
@@ -145,7 +131,25 @@ export async function POST(req: NextRequest) {
     console.log("DEBUG: segments result, error:", JSON.stringify(segmentsError));
     if (segmentsError) {
       await supabase.from("bookings").delete().eq("id", booking.id);
+      
+      // If segments fail (e.g., due to the conflict trigger), return a 409 Conflict error
+      if (segmentsError.message.includes("conflict")) {
+        return NextResponse.json({ success: false, error: "Venue is already booked or requested for this time slot. Please choose another time." }, { status: 409 });
+      }
       return NextResponse.json({ success: false, error: "Failed to create booking segments: " + segmentsError.message }, { status: 500 });
+    }
+
+    // Only deduct equipment AFTER segments are successfully confirmed to prevent permanent loss on trigger exceptions
+    if (data.equipment_requests.length > 0) {
+      for (const eq of data.equipment_requests) {
+        if (eq.id) {
+          const { data: eqData } = await supabase.from("equipment").select("available_quantity").eq("id", eq.id).single();
+          if (eqData) {
+            const newQty = Math.max(0, eqData.available_quantity - eq.quantity);
+            await supabase.from("equipment").update({ available_quantity: newQty }).eq("id", eq.id);
+          }
+        }
+      }
     }
 
     // Send email notification asynchronously (don't await it to avoid blocking the user)
