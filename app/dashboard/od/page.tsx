@@ -34,7 +34,7 @@ export default function ODPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/api/od/export")
+    fetch("/api/od/export", { cache: "no-store", next: { revalidate: 0 } })
       .then((r) => r.json())
       .then((d) => { if (d.success) setRecords(d.data); })
       .finally(() => setLoading(false));
@@ -42,7 +42,7 @@ export default function ODPage() {
 
   const exportCSV = (record: ODRecord) => {
     const header = "Registration Number,Student Name,Status,Event,Date\n";
-    const rows = record.attendance_records
+    const rows = (record.attendance_records || [])
       .filter((r: any) => r.status === "PRESENT")
       .map((r: any) => `${r.registration_number},${r.student_name},${r.status},${record.event_title},${record.segment_dates.join(" | ")}`)
       .join("\n");

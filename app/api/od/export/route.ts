@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { requireRole } from "@/lib/auth/middleware";
 import { createServerClient } from "@/lib/db";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(req: NextRequest) {
   const authResult = await requireRole(req, ["DSW"]);
   if (authResult.response) return authResult.response;
