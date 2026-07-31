@@ -172,11 +172,11 @@ export default function ApprovalsPage() {
                   )}
                 </div>
 
-                {booking.equipment_requests && booking.equipment_requests.length > 0 && (
+                {((booking.equipment_requests_json || booking.equipment_requests)?.length ?? 0) > 0 && (
                   <div className={styles.equipmentReq}>
                     <span>Equipment requested:</span>
                     <div className={styles.eqTags}>
-                      {booking.equipment_requests.map((eq) => (
+                      {(booking.equipment_requests_json || booking.equipment_requests)?.map((eq) => (
                         <span key={eq.name} className={styles.eqTag}>{eq.name} x{eq.quantity}</span>
                       ))}
                     </div>
@@ -246,7 +246,7 @@ export default function ApprovalsPage() {
             </div>
             <div className={styles.summaryRow}>
               <span>Equipment</span>
-              <span>{selected.equipment_requests?.join(", ") || "None"}</span>
+              <span>{(selected.equipment_requests_json || selected.equipment_requests)?.map((eq) => `${eq.name} x${eq.quantity}`).join(", ") || "None"}</span>
             </div>
           </div>
         )}

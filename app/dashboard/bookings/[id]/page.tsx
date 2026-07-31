@@ -174,13 +174,13 @@ export default function BookingDetailPage() {
               </div>
             </div>
 
-            {booking.equipment_requests && booking.equipment_requests.length > 0 && (
+            {((booking.equipment_requests_json || booking.equipment_requests)?.length ?? 0) > 0 && (
               <div className={styles.section}>
                 <h4 className={styles.subTitle}>
                   <Monitor size={14} /> Equipment Requested
                 </h4>
                 <div className={styles.tagList}>
-                  {booking.equipment_requests.map((eq) => (
+                  {(booking.equipment_requests_json || booking.equipment_requests)?.map((eq: any) => (
                     <span key={eq.name} className={styles.tag}>{eq.name} x{eq.quantity}</span>
                   ))}
                 </div>
