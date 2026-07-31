@@ -25,6 +25,7 @@ interface ODRecord {
   od_eligible: string;
   attendance_rate: number;
   completed_at: string;
+  attendance_records: any[];
 }
 
 export default function ODPage() {
@@ -41,8 +42,9 @@ export default function ODPage() {
 
   const exportCSV = (record: ODRecord) => {
     const header = "Registration Number,Student Name,Status,Event,Date\n";
-    const rows = record.segment_dates
-      .map((date) => `${record.booking_id},${date},OD Eligible Event - ${record.event_title},${record.attendance_rate}% attendance`)
+    const rows = record.attendance_records
+      .filter((r: any) => r.status === "PRESENT")
+      .map((r: any) => `${r.registration_number},${r.student_name},${r.status},${record.event_title},${record.segment_dates.join(" | ")}`)
       .join("\n");
     const csv = header + rows;
     const blob = new Blob([csv], { type: "text/csv" });

@@ -68,6 +68,7 @@ export async function GET(req: NextRequest) {
       od_eligible: totalAttendees > 0 && present / totalAttendees >= 0.75 ? "ELIGIBLE" : "NOT_ELIGIBLE",
       attendance_rate: totalAttendees > 0 ? Math.round((present / totalAttendees) * 100) : 0,
       completed_at: booking.completed_at,
+      attendance_records: booking.attendance_records || [],
     };
   }) ?? [];
 

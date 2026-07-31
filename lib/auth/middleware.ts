@@ -76,9 +76,9 @@ export function createAuthResponse(
   return response;
 }
 
-export function clearAuthResponse(redirectTo = "/login"): NextResponse {
+export function clearAuthResponse(redirectTo = "/login", baseUrl?: string): NextResponse {
   const response = NextResponse.redirect(
-    new URL(redirectTo, process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000")
+    new URL(redirectTo, baseUrl ?? process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000")
   );
   response.cookies.delete(AUTH_COOKIE);
   return response;
