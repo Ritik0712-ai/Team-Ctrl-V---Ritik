@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
-import { requireRole } from "@/lib/auth/middleware";
+import { requireAuth } from "@/lib/auth/middleware";
 import { createServerClient } from "@/lib/db";
 
 export const dynamic = "force-dynamic";
 
 export async function GET(req: NextRequest) {
-  const authResult = await requireRole(req, ["DSW"]);
+  const authResult = await requireAuth(req);
   if (authResult.response) return authResult.response;
 
   const supabase = createServerClient();
@@ -27,6 +27,11 @@ export async function GET(req: NextRequest) {
 
   if (bookingId) {
     query = query.eq("id", bookingId);
+  }
+
+  // If not DSW, only show their own bookings
+  if (authResult.user.role !== "DSW") {
+    query = query.eq("user_id", authResult.user.id);
   }
 
   const { data: bookings, error } = await query;
