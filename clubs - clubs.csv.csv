@@ -1,0 +1,101 @@
+club_id,club_name,category,president_name,president_email,vp_name,vp_email,faculty_name,faculty_email
+CLB001,Artificial Intelligence Club,Tech,Rohit Reddy,rohit.reddyCLB001@college.edu,Vivaan Joshi,vivaan.joshiCLB001@college.edu,Prof. Kiara Rao,kiara.raoCLB001.fac@college.edu
+CLB002,Machine Learning Society,Tech,Geeta Chatterjee,geeta.chatterjeeCLB002@college.edu,Anjali Nair,anjali.nairCLB002@college.edu,Prof. Ira Saxena,ira.saxenaCLB002.fac@college.edu
+CLB003,Robotics Club,Tech,Anjali Reddy,anjali.reddyCLB003@college.edu,Rohan Kapoor,rohan.kapoorCLB003@college.edu,Prof. Shreya Patel,shreya.patelCLB003.fac@college.edu
+CLB004,Cybersecurity Club,Tech,Isha Kapoor,isha.kapoorCLB004@college.edu,Anika Bhatt,anika.bhattCLB004@college.edu,Prof. Saanvi Chandra,saanvi.chandraCLB004.fac@college.edu
+CLB005,Web Development Club,Tech,Manoj Nair,manoj.nairCLB005@college.edu,Vihaan Kaur,vihaan.kaurCLB005@college.edu,Dr. Swati Nair,swati.nairCLB005.fac@college.edu
+CLB006,App Development Club,Tech,Pooja Bhatt,pooja.bhattCLB006@college.edu,Ananya Mehta,ananya.mehtaCLB006@college.edu,Dr. Geeta Malhotra,geeta.malhotraCLB006.fac@college.edu
+CLB007,Game Development Club,Tech,Alisha Nair,alisha.nairCLB007@college.edu,Preeti Rao,preeti.raoCLB007@college.edu,Dr. Krishna Nair,krishna.nairCLB007.fac@college.edu
+CLB008,Data Science Club,Tech,Alisha Mukherjee,alisha.mukherjeeCLB008@college.edu,Anjali Kapoor,anjali.kapoorCLB008@college.edu,Prof. Preeti Khan,preeti.khanCLB008.fac@college.edu
+CLB009,Cloud Computing Club,Tech,Aarav Bhatt,aarav.bhattCLB009@college.edu,Alisha Chandra,alisha.chandraCLB009@college.edu,Prof. Karan Mishra,karan.mishraCLB009.fac@college.edu
+CLB010,Blockchain & Web3 Club,Tech,Manoj Pillai,manoj.pillaiCLB010@college.edu,Kiara Chopra,kiara.chopraCLB010@college.edu,Prof. Vivaan Gupta,vivaan.guptaCLB010.fac@college.edu
+CLB011,IoT Innovators Club,Tech,Myra Joshi,myra.joshiCLB011@college.edu,Kabir Agarwal,kabir.agarwalCLB011@college.edu,Dr. Ishaan Menon,ishaan.menonCLB011.fac@college.edu
+CLB012,Competitive Programming Club,Tech,Vihaan Desai,vihaan.desaiCLB012@college.edu,Rahul Agarwal,rahul.agarwalCLB012@college.edu,Prof. Yash Agarwal,yash.agarwalCLB012.fac@college.edu
+CLB013,Open Source Club,Tech,Arjun Kumar,arjun.kumarCLB013@college.edu,Deepak Mukherjee,deepak.mukherjeeCLB013@college.edu,Dr. Deepak Pillai,deepak.pillaiCLB013.fac@college.edu
+CLB014,Electronics & Embedded Systems Club,Tech,Swati Desai,swati.desaiCLB014@college.edu,Kabir Joshi,kabir.joshiCLB014@college.edu,Dr. Isha Sharma,isha.sharmaCLB014.fac@college.edu
+CLB015,VR/AR Club,Tech,Riya Chatterjee,riya.chatterjeeCLB015@college.edu,Karan Malhotra,karan.malhotraCLB015@college.edu,Dr. Aarav Chandra,aarav.chandraCLB015.fac@college.edu
+CLB016,Cloud Native Club,Tech,Nandini Nair,nandini.nairCLB016@college.edu,Rakesh Bose,rakesh.boseCLB016@college.edu,Prof. Anika Iyer,anika.iyerCLB016.fac@college.edu
+CLB017,DevOps Club,Tech,Shreya Gupta,shreya.guptaCLB017@college.edu,Preeti Mishra,preeti.mishraCLB017@college.edu,Dr. Shreya Desai,shreya.desaiCLB017.fac@college.edu
+CLB018,Networking & Systems Club,Tech,Rohit Pandey,rohit.pandeyCLB018@college.edu,Rakesh Mehta,rakesh.mehtaCLB018@college.edu,Prof. Ira Das,ira.dasCLB018.fac@college.edu
+CLB019,Ethical Hacking Club,Tech,Sneha Singh,sneha.singhCLB019@college.edu,Dhruv Bansal,dhruv.bansalCLB019@college.edu,Prof. Anjali Chopra,anjali.chopraCLB019.fac@college.edu
+CLB020,UI/UX Design Club,Tech,Kiara Iyer,kiara.iyerCLB020@college.edu,Siddharth Nair,siddharth.nairCLB020@college.edu,Dr. Varun Kapoor,varun.kapoorCLB020.fac@college.edu
+CLB021,Quantum Computing Club,Tech,Tanvi Kulkarni,tanvi.kulkarniCLB021@college.edu,Deepak Kulkarni,deepak.kulkarniCLB021@college.edu,Dr. Sunita Kaur,sunita.kaurCLB021.fac@college.edu
+CLB022,AR/VR Innovation Club,Tech,Anjali Kaur,anjali.kaurCLB022@college.edu,Geeta Das,geeta.dasCLB022@college.edu,Dr. Sai Kaur,sai.kaurCLB022.fac@college.edu
+CLB023,Full Stack Developers Club,Tech,Saanvi Pandey,saanvi.pandeyCLB023@college.edu,Varun Mukherjee,varun.mukherjeeCLB023@college.edu,Dr. Reyansh Dutta,reyansh.duttaCLB023.fac@college.edu
+CLB024,Big Data Analytics Club,Tech,Kavya Reddy,kavya.reddyCLB024@college.edu,Sandeep Patel,sandeep.patelCLB024@college.edu,Prof. Varun Dutta,varun.duttaCLB024.fac@college.edu
+CLB025,Automation & Drone Club,Tech,Nikhil Nair,nikhil.nairCLB025@college.edu,Aryan Mishra,aryan.mishraCLB025@college.edu,Dr. Suresh Desai,suresh.desaiCLB025.fac@college.edu
+CLB026,3D Printing & Fabrication Club,Tech,Simran Bansal,simran.bansalCLB026@college.edu,Dhruv Sharma,dhruv.sharmaCLB026@college.edu,Prof. Anjali Menon,anjali.menonCLB026.fac@college.edu
+CLB027,Software Engineering Club,Tech,Meera Bose,meera.boseCLB027@college.edu,Vishal Rao,vishal.raoCLB027@college.edu,Dr. Riya Agarwal,riya.agarwalCLB027.fac@college.edu
+CLB028,Computer Vision Club,Tech,Ritu Chawla,ritu.chawlaCLB028@college.edu,Dhruv Menon,dhruv.menonCLB028@college.edu,Prof. Reyansh Menon,reyansh.menonCLB028.fac@college.edu
+CLB029,Natural Language Processing Club,Tech,Reyansh Bansal,reyansh.bansalCLB029@college.edu,Vikram Iyer,vikram.iyerCLB029@college.edu,Prof. Aditya Mukherjee,aditya.mukherjeeCLB029.fac@college.edu
+CLB030,FinTech Club,Tech,Meera Malhotra,meera.malhotraCLB030@college.edu,Saanvi Bansal,saanvi.bansalCLB030@college.edu,Prof. Aadhya Chatterjee,aadhya.chatterjeeCLB030.fac@college.edu
+CLB031,Bioinformatics Club,Tech,Amit Singh,amit.singhCLB031@college.edu,Anjali Dutta,anjali.duttaCLB031@college.edu,Dr. Vikram Bhatt,vikram.bhattCLB031.fac@college.edu
+CLB032,Green Tech & Sustainability Tech Club,Tech,Myra Khan,myra.khanCLB032@college.edu,Rohit Sinha,rohit.sinhaCLB032@college.edu,Prof. Arjun Reddy,arjun.reddyCLB032.fac@college.edu
+CLB033,Mobile Computing Club,Tech,Sunita Saxena,sunita.saxenaCLB033@college.edu,Deepak Singh,deepak.singhCLB033@college.edu,Prof. Swati Rao,swati.raoCLB033.fac@college.edu
+CLB034,AI for Social Good Club,Tech,Aryan Nair,aryan.nairCLB034@college.edu,Sai Agarwal,sai.agarwalCLB034@college.edu,Dr. Meera Pandey,meera.pandeyCLB034.fac@college.edu
+CLB035,Digital Forensics Club,Tech,Simran Das,simran.dasCLB035@college.edu,Krishna Desai,krishna.desaiCLB035@college.edu,Dr. Vikram Pandey,vikram.pandeyCLB035.fac@college.edu
+CLB036,Cloud Security Club,Tech,Ishaan Agarwal,ishaan.agarwalCLB036@college.edu,Amit Patel,amit.patelCLB036@college.edu,Prof. Yash Bhatt,yash.bhattCLB036.fac@college.edu
+CLB037,Data Structures & Algorithms Club,Tech,Priya Mukherjee,priya.mukherjeeCLB037@college.edu,Swati Kaur,swati.kaurCLB037@college.edu,Dr. Yash Patel,yash.patelCLB037.fac@college.edu
+CLB038,Product Management Tech Club,Tech,Riya Thakur,riya.thakurCLB038@college.edu,Shreya Singh,shreya.singhCLB038@college.edu,Dr. Sneha Sharma,sneha.sharmaCLB038.fac@college.edu
+CLB039,Space Tech Club,Tech,Aditi Bansal,aditi.bansalCLB039@college.edu,Pooja Yadav,pooja.yadavCLB039@college.edu,Prof. Vikram Jain,vikram.jainCLB039.fac@college.edu
+CLB040,Autonomous Vehicles Club,Tech,Kavya Ghosh,kavya.ghoshCLB040@college.edu,Aryan Malhotra,aryan.malhotraCLB040@college.edu,Prof. Simran Chandra,simran.chandraCLB040.fac@college.edu
+CLB041,Wearable Tech Club,Tech,Suresh Bhatt,suresh.bhattCLB041@college.edu,Kiara Chatterjee,kiara.chatterjeeCLB041@college.edu,Dr. Reyansh Khan,reyansh.khanCLB041.fac@college.edu
+CLB042,Simulation & Modelling Club,Tech,Kabir Kapoor,kabir.kapoorCLB042@college.edu,Arun Saxena,arun.saxenaCLB042@college.edu,Dr. Vikram Malhotra,vikram.malhotraCLB042.fac@college.edu
+CLB043,Tech Entrepreneurship Club,Tech,Rohan Saxena,rohan.saxenaCLB043@college.edu,Sandeep Nayak,sandeep.nayakCLB043@college.edu,Dr. Nikhil Das,nikhil.dasCLB043.fac@college.edu
+CLB044,Linux Users Group,Tech,Aditya Mishra,aditya.mishraCLB044@college.edu,Dhruv Patel,dhruv.patelCLB044@college.edu,Dr. Alisha Patel,alisha.patelCLB044.fac@college.edu
+CLB045,Competitive Cybersecurity (CTF) Club,Tech,Varun Nayak,varun.nayakCLB045@college.edu,Manoj Mehta,manoj.mehtaCLB045@college.edu,Prof. Sandeep Gupta,sandeep.guptaCLB045.fac@college.edu
+CLB046,Edge Computing Club,Tech,Isha Khan,isha.khanCLB046@college.edu,Kavya Rao,kavya.raoCLB046@college.edu,Prof. Myra Desai,myra.desaiCLB046.fac@college.edu
+CLB047,GIS & Geospatial Tech Club,Tech,Rakesh Agarwal,rakesh.agarwalCLB047@college.edu,Simran Bose,simran.boseCLB047@college.edu,Dr. Aryan Khan,aryan.khanCLB047.fac@college.edu
+CLB048,Smart Agriculture Tech Club,Tech,Aarav Bose,aarav.boseCLB048@college.edu,Pooja Saxena,pooja.saxenaCLB048@college.edu,Dr. Vihaan Sinha,vihaan.sinhaCLB048.fac@college.edu
+CLB049,Assistive Technology Club,Tech,Deepak Kapoor,deepak.kapoorCLB049@college.edu,Sai Thakur,sai.thakurCLB049@college.edu,Prof. Amit Bansal,amit.bansalCLB049.fac@college.edu
+CLB050,Digital Twin & Simulation Club,Tech,Rohit Joshi,rohit.joshiCLB050@college.edu,Divya Pandey,divya.pandeyCLB050@college.edu,Prof. Kiara Chawla,kiara.chawlaCLB050.fac@college.edu
+CLB051,Music Club,Non-Tech,Vishal Iyer,vishal.iyerCLB051@college.edu,Arun Das,arun.dasCLB051@college.edu,Prof. Tanvi Bhatt,tanvi.bhattCLB051.fac@college.edu
+CLB052,Dance Club,Non-Tech,Aryan Ghosh,aryan.ghoshCLB052@college.edu,Ira Kaur,ira.kaurCLB052@college.edu,Dr. Krishna Jain,krishna.jainCLB052.fac@college.edu
+CLB053,Drama & Theatre Club,Non-Tech,Reyansh Sharma,reyansh.sharmaCLB053@college.edu,Reyansh Desai,reyansh.desaiCLB053@college.edu,Prof. Isha Kumar,isha.kumarCLB053.fac@college.edu
+CLB054,Literary Society,Non-Tech,Rohit Malhotra,rohit.malhotraCLB054@college.edu,Diya Mishra,diya.mishraCLB054@college.edu,Prof. Vivaan Sinha,vivaan.sinhaCLB054.fac@college.edu
+CLB055,Photography Club,Non-Tech,Neha Kulkarni,neha.kulkarniCLB055@college.edu,Ishaan Malhotra,ishaan.malhotraCLB055@college.edu,Dr. Sunita Pandey,sunita.pandeyCLB055.fac@college.edu
+CLB056,Debate Society,Non-Tech,Anika Chawla,anika.chawlaCLB056@college.edu,Anjali Iyer,anjali.iyerCLB056@college.edu,Prof. Vishal Mukherjee,vishal.mukherjeeCLB056.fac@college.edu
+CLB057,Fine Arts Club,Non-Tech,Arjun Iyer,arjun.iyerCLB057@college.edu,Rajesh Yadav,rajesh.yadavCLB057@college.edu,Dr. Deepak Dutta,deepak.duttaCLB057.fac@college.edu
+CLB058,Culinary Club,Non-Tech,Suresh Kapoor,suresh.kapoorCLB058@college.edu,Rohit Pillai,rohit.pillaiCLB058@college.edu,Prof. Siddharth Iyer,siddharth.iyerCLB058.fac@college.edu
+CLB059,Environmental Club,Non-Tech,Dhruv Mishra,dhruv.mishraCLB059@college.edu,Aryan Rao,aryan.raoCLB059@college.edu,Prof. Ira Iyer,ira.iyerCLB059.fac@college.edu
+CLB060,Yoga & Wellness Club,Non-Tech,Siddharth Kaur,siddharth.kaurCLB060@college.edu,Sai Chandra,sai.chandraCLB060@college.edu,Prof. Meera Iyer,meera.iyerCLB060.fac@college.edu
+CLB061,Film Making Club,Non-Tech,Neha Saxena,neha.saxenaCLB061@college.edu,Pooja Dutta,pooja.duttaCLB061@college.edu,Dr. Neha Jain,neha.jainCLB061.fac@college.edu
+CLB062,Fashion Club,Non-Tech,Aarav Dutta,aarav.duttaCLB062@college.edu,Aadhya Kulkarni,aadhya.kulkarniCLB062@college.edu,Dr. Sandeep Sinha,sandeep.sinhaCLB062.fac@college.edu
+CLB063,Sports Club,Non-Tech,Tanvi Mehta,tanvi.mehtaCLB063@college.edu,Siddharth Rao,siddharth.raoCLB063@college.edu,Prof. Riya Desai,riya.desaiCLB063.fac@college.edu
+CLB064,Cricket Club,Non-Tech,Reyansh Rao,reyansh.raoCLB064@college.edu,Krishna Sharma,krishna.sharmaCLB064@college.edu,Dr. Sunita Chatterjee,sunita.chatterjeeCLB064.fac@college.edu
+CLB065,Football Club,Non-Tech,Rahul Rao,rahul.raoCLB065@college.edu,Nikhil Chopra,nikhil.chopraCLB065@college.edu,Prof. Rohit Chandra,rohit.chandraCLB065.fac@college.edu
+CLB066,Basketball Club,Non-Tech,Sunita Thakur,sunita.thakurCLB066@college.edu,Sneha Pillai,sneha.pillaiCLB066@college.edu,Prof. Neha Gupta,neha.guptaCLB066.fac@college.edu
+CLB067,Chess Club,Non-Tech,Arun Sharma,arun.sharmaCLB067@college.edu,Deepak Jain,deepak.jainCLB067@college.edu,Prof. Geeta Jain,geeta.jainCLB067.fac@college.edu
+CLB068,Quiz Club,Non-Tech,Aryan Desai,aryan.desaiCLB068@college.edu,Reyansh Patel,reyansh.patelCLB068@college.edu,Dr. Ananya Ghosh,ananya.ghoshCLB068.fac@college.edu
+CLB069,Entrepreneurship Cell,Non-Tech,Sai Singh,sai.singhCLB069@college.edu,Geeta Reddy,geeta.reddyCLB069@college.edu,Dr. Divya Kaur,divya.kaurCLB069.fac@college.edu
+CLB070,Marketing & Business Club,Non-Tech,Ishaan Gupta,ishaan.guptaCLB070@college.edu,Manoj Mishra,manoj.mishraCLB070@college.edu,Prof. Rina Menon,rina.menonCLB070.fac@college.edu
+CLB071,Finance & Investment Club,Non-Tech,Simran Joshi,simran.joshiCLB071@college.edu,Ritu Dutta,ritu.duttaCLB071@college.edu,Dr. Kabir Pillai,kabir.pillaiCLB071.fac@college.edu
+CLB072,Public Speaking Club,Non-Tech,Manoj Verma,manoj.vermaCLB072@college.edu,Myra Dutta,myra.duttaCLB072@college.edu,Prof. Shreya Pandey,shreya.pandeyCLB072.fac@college.edu
+CLB073,Journalism & Media Club,Non-Tech,Aarav Yadav,aarav.yadavCLB073@college.edu,Suresh Dutta,suresh.duttaCLB073@college.edu,Dr. Meera Nair,meera.nairCLB073.fac@college.edu
+CLB074,Social Service Club,Non-Tech,Sandeep Pillai,sandeep.pillaiCLB074@college.edu,Nikhil Bansal,nikhil.bansalCLB074@college.edu,Dr. Anika Kumar,anika.kumarCLB074.fac@college.edu
+CLB075,Cultural Committee,Non-Tech,Rajesh Mishra,rajesh.mishraCLB075@college.edu,Priya Ghosh,priya.ghoshCLB075@college.edu,Dr. Aditya Chandra,aditya.chandraCLB075.fac@college.edu
+CLB076,Rotaract Club,Non-Tech,Vishal Chandra,vishal.chandraCLB076@college.edu,Nandini Mehta,nandini.mehtaCLB076@college.edu,Dr. Suresh Nair,suresh.nairCLB076.fac@college.edu
+CLB077,NCC/NSS Club,Non-Tech,Suresh Iyer,suresh.iyerCLB077@college.edu,Simran Reddy,simran.reddyCLB077@college.edu,Prof. Rohan Iyer,rohan.iyerCLB077.fac@college.edu
+CLB078,Book Club,Non-Tech,Geeta Kapoor,geeta.kapoorCLB078@college.edu,Simran Kumar,simran.kumarCLB078@college.edu,Prof. Swati Jain,swati.jainCLB078.fac@college.edu
+CLB079,Poetry Club,Non-Tech,Vihaan Yadav,vihaan.yadavCLB079@college.edu,Kiara Das,kiara.dasCLB079@college.edu,Prof. Rajesh Mukherjee,rajesh.mukherjeeCLB079.fac@college.edu
+CLB080,Painting & Sketching Club,Non-Tech,Neha Rao,neha.raoCLB080@college.edu,Rina Khan,rina.khanCLB080@college.edu,Dr. Anika Sinha,anika.sinhaCLB080.fac@college.edu
+CLB081,Travel & Adventure Club,Non-Tech,Nikhil Nayak,nikhil.nayakCLB081@college.edu,Deepak Yadav,deepak.yadavCLB081@college.edu,Dr. Sunita Das,sunita.dasCLB081.fac@college.edu
+CLB082,Wildlife & Nature Club,Non-Tech,Myra Yadav,myra.yadavCLB082@college.edu,Divya Kulkarni,divya.kulkarniCLB082@college.edu,Dr. Alisha Ghosh,alisha.ghoshCLB082.fac@college.edu
+CLB083,History & Heritage Club,Non-Tech,Kavya Chatterjee,kavya.chatterjeeCLB083@college.edu,Diya Bhatt,diya.bhattCLB083@college.edu,Dr. Divya Yadav,divya.yadavCLB083.fac@college.edu
+CLB084,Psychology Club,Non-Tech,Saanvi Bose,saanvi.boseCLB084@college.edu,Anjali Mishra,anjali.mishraCLB084@college.edu,Dr. Sunita Mishra,sunita.mishraCLB084.fac@college.edu
+CLB085,Philosophy Club,Non-Tech,Meera Dutta,meera.duttaCLB085@college.edu,Aarav Das,aarav.dasCLB085@college.edu,Prof. Krishna Gupta,krishna.guptaCLB085.fac@college.edu
+CLB086,Astronomy Club,Non-Tech,Deepak Kumar,deepak.kumarCLB086@college.edu,Rohan Jain,rohan.jainCLB086@college.edu,Dr. Swati Agarwal,swati.agarwalCLB086.fac@college.edu
+CLB087,Legal Awareness Club,Non-Tech,Karan Yadav,karan.yadavCLB087@college.edu,Aarav Mukherjee,aarav.mukherjeeCLB087@college.edu,Prof. Rakesh Yadav,rakesh.yadavCLB087.fac@college.edu
+CLB088,Human Rights Club,Non-Tech,Neha Singh,neha.singhCLB088@college.edu,Preeti Nayak,preeti.nayakCLB088@college.edu,Dr. Pooja Rao,pooja.raoCLB088.fac@college.edu
+CLB089,Community Outreach Club,Non-Tech,Kiara Khan,kiara.khanCLB089@college.edu,Shreya Menon,shreya.menonCLB089@college.edu,Prof. Nandini Yadav,nandini.yadavCLB089.fac@college.edu
+CLB090,Gender Equality Club,Non-Tech,Anika Singh,anika.singhCLB090@college.edu,Vishal Chatterjee,vishal.chatterjeeCLB090@college.edu,Dr. Riya Nayak,riya.nayakCLB090.fac@college.edu
+CLB091,Vocal Music Club,Non-Tech,Divya Bansal,divya.bansalCLB091@college.edu,Swati Das,swati.dasCLB091@college.edu,Dr. Rohit Sharma,rohit.sharmaCLB091.fac@college.edu
+CLB092,Instrumental Music Club,Non-Tech,Simran Iyer,simran.iyerCLB092@college.edu,Isha Kulkarni,isha.kulkarniCLB092@college.edu,Dr. Dhruv Joshi,dhruv.joshiCLB092.fac@college.edu
+CLB093,Classical Dance Club,Non-Tech,Myra Kulkarni,myra.kulkarniCLB093@college.edu,Manoj Bansal,manoj.bansalCLB093@college.edu,Dr. Isha Malhotra,isha.malhotraCLB093.fac@college.edu
+CLB094,Street Play (Nukkad) Club,Non-Tech,Yash Reddy,yash.reddyCLB094@college.edu,Deepak Bhatt,deepak.bhattCLB094@college.edu,Prof. Aryan Sharma,aryan.sharmaCLB094.fac@college.edu
+CLB095,Adventure Sports Club,Non-Tech,Divya Thakur,divya.thakurCLB095@college.edu,Meera Desai,meera.desaiCLB095@college.edu,Dr. Rajesh Nair,rajesh.nairCLB095.fac@college.edu
+CLB096,Table Tennis Club,Non-Tech,Aryan Agarwal,aryan.agarwalCLB096@college.edu,Amit Kulkarni,amit.kulkarniCLB096@college.edu,Dr. Shreya Kaur,shreya.kaurCLB096.fac@college.edu
+CLB097,Badminton Club,Non-Tech,Isha Pandey,isha.pandeyCLB097@college.edu,Ishaan Chandra,ishaan.chandraCLB097@college.edu,Prof. Aditi Nayak,aditi.nayakCLB097.fac@college.edu
+CLB098,Table Games Club,Non-Tech,Siddharth Mukherjee,siddharth.mukherjeeCLB098@college.edu,Kavya Sinha,kavya.sinhaCLB098@college.edu,Dr. Riya Chandra,riya.chandraCLB098.fac@college.edu
+CLB099,Culinary Arts & Baking Club,Non-Tech,Ritu Desai,ritu.desaiCLB099@college.edu,Rina Ghosh,rina.ghoshCLB099@college.edu,Dr. Krishna Mukherjee,krishna.mukherjeeCLB099.fac@college.edu
+CLB100,Public Relations Club,Non-Tech,Manoj Sinha,manoj.sinhaCLB100@college.edu,Kabir Mehta,kabir.mehtaCLB100@college.edu,Dr. Deepak Chandra,deepak.chandraCLB100.fac@college.edu

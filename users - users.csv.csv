@@ -1,0 +1,301 @@
+club_id,club_name,role,name,username,email,plaintext_password,password_hash
+CLB001,Artificial Intelligence Club,PRESIDENT,Rohit Reddy,rohit.reddyCLB001,rohit.reddyCLB001@college.edu,8BbncdLXf!,$2b$12$2ry08TTwS7d1D4Gk9xwF0u.uc.XlzEuixsPu5bmeI.NlLwjB6R./6
+CLB001,Artificial Intelligence Club,VICE_PRESIDENT,Vivaan Joshi,vivaan.joshiCLB001,vivaan.joshiCLB001@college.edu,nrvS0S@jiB,$2b$12$FV4zg.dX81.T9Ww8GKwvc.HR3KclyeXObQGTUHbjq8fZwMbV3sJRq
+CLB001,Artificial Intelligence Club,FACULTY_COORDINATOR,Prof. Kiara Rao,kiara.raoCLB001.fac,kiara.raoCLB001.fac@college.edu,7hfbyZJ%7s,$2b$12$CTO0yjZyvV69NC4jmpN57u/a2gzEJOo3K1rLEf2looJqPCGzYzusa
+CLB002,Machine Learning Society,PRESIDENT,Geeta Chatterjee,geeta.chatterjeeCLB002,geeta.chatterjeeCLB002@college.edu,QUwSnr7#2l,$2b$12$bd2s08vblZB41cR0QHnfL.VTHiNg2hI1lG0NbAjlHXLQ1Vx3a8MKe
+CLB002,Machine Learning Society,VICE_PRESIDENT,Anjali Nair,anjali.nairCLB002,anjali.nairCLB002@college.edu,VZ00zurc@k,$2b$12$w8HxMHo1NA9O.9UabtVNc.zwB32iTnsv91vMHP7OU5opmIauk0tcy
+CLB002,Machine Learning Society,FACULTY_COORDINATOR,Prof. Ira Saxena,ira.saxenaCLB002.fac,ira.saxenaCLB002.fac@college.edu,q2E@VViJLI,$2b$12$1MukfpPBkuS/36t7TC1pLObMOJV6JTt4vnanb.qFz.Z7hCpjPIMc.
+CLB003,Robotics Club,PRESIDENT,Anjali Reddy,anjali.reddyCLB003,anjali.reddyCLB003@college.edu,$3aM9qJH8m,$2b$12$ernqHPeqfqF0TcbnK2Yeku9i.Kv4yOXCSiKccL3leLyEPhslEDKGu
+CLB003,Robotics Club,VICE_PRESIDENT,Rohan Kapoor,rohan.kapoorCLB003,rohan.kapoorCLB003@college.edu,GgWFl0o#6G,$2b$12$I9AnxfDyxZ5wkJLloVH7xuzP8KQUakYXyAgVLc62jJ1t7H4/GgIgG
+CLB003,Robotics Club,FACULTY_COORDINATOR,Prof. Shreya Patel,shreya.patelCLB003.fac,shreya.patelCLB003.fac@college.edu,1Z4tPd1pa#,$2b$12$Pp6gfpDrFWgK00owIq3Nxe5YRJV5uQ85AhOeW11sXELGqw.dcZPMC
+CLB004,Cybersecurity Club,PRESIDENT,Isha Kapoor,isha.kapoorCLB004,isha.kapoorCLB004@college.edu,Q#z3YP5xxC,$2b$12$Ehp8OYs4uRR2TWbP/StVG.FTSMflUBymIvaBCwgG2XvXVu9kVyXjW
+CLB004,Cybersecurity Club,VICE_PRESIDENT,Anika Bhatt,anika.bhattCLB004,anika.bhattCLB004@college.edu,ed5!0oThOS,$2b$12$Z8TsrGXL1jpy5EWzLyEVJ.IWO1sBvx7LoZFTW0le8sssPSNKnBJ1y
+CLB004,Cybersecurity Club,FACULTY_COORDINATOR,Prof. Saanvi Chandra,saanvi.chandraCLB004.fac,saanvi.chandraCLB004.fac@college.edu,AXZpY$9Ems,$2b$12$Jpq.DnS1d7PNxNGfVHIsYeOrKnXg163GtoSNiR1xACXEM.sugUdC6
+CLB005,Web Development Club,PRESIDENT,Manoj Nair,manoj.nairCLB005,manoj.nairCLB005@college.edu,rD3iHCBlg%,$2b$12$BSJAK60yXHJLzkaHFfoQnOJZRZip0PWjuYIkiWJiUOOQKSBlpP9MC
+CLB005,Web Development Club,VICE_PRESIDENT,Vihaan Kaur,vihaan.kaurCLB005,vihaan.kaurCLB005@college.edu,nAyF3@zE3C,$2b$12$aLLahHx62Jv8cEqqS5e6HOBA9BZGG473X/Gs9dpV.J1fNh4zj9qE2
+CLB005,Web Development Club,FACULTY_COORDINATOR,Dr. Swati Nair,swati.nairCLB005.fac,swati.nairCLB005.fac@college.edu,$xsjn8mW9d,$2b$12$EQLih9QpIYTRohDsLFK2juaIZYEULoD2JOESuUWw/d2g76mmO20oe
+CLB006,App Development Club,PRESIDENT,Pooja Bhatt,pooja.bhattCLB006,pooja.bhattCLB006@college.edu,8K41zh@tCp,$2b$12$FQlRFGpLbVKG9xbJK1qeaewFw4UAk6FbLs4SW.z/7L28CqxVrDZvG
+CLB006,App Development Club,VICE_PRESIDENT,Ananya Mehta,ananya.mehtaCLB006,ananya.mehtaCLB006@college.edu,t5Piq@VwzQ,$2b$12$pDymP8G97SCF7ERShJZ7Y.dGnpBvrKhj8Q/KsAPxmIatdQbof.6fK
+CLB006,App Development Club,FACULTY_COORDINATOR,Dr. Geeta Malhotra,geeta.malhotraCLB006.fac,geeta.malhotraCLB006.fac@college.edu,#isQ4ex4p2,$2b$12$mqrZlYFk0uOvXFGVMLzZIu3yUsJWQGTMsi7f53veyHQETcZcZz1YS
+CLB007,Game Development Club,PRESIDENT,Alisha Nair,alisha.nairCLB007,alisha.nairCLB007@college.edu,nnr#MX2Tvs,$2b$12$JOgMPozlh.kaq6VPOBG9ZOlp2Kc0/EUHJTLNcZ0HFk/GiVBuzISem
+CLB007,Game Development Club,VICE_PRESIDENT,Preeti Rao,preeti.raoCLB007,preeti.raoCLB007@college.edu,2#kCJVBkAT,$2b$12$lfEyT1czj0EvNr2Hp7rBmu2pHZLCSTayM8rU0enX1v2jEEPTLJcky
+CLB007,Game Development Club,FACULTY_COORDINATOR,Dr. Krishna Nair,krishna.nairCLB007.fac,krishna.nairCLB007.fac@college.edu,e7xY0Nc3#5,$2b$12$o0J3ocRQAK8KAGUbCVd3bOSRnNS18C5kAEVxf2fWKNyYbM/ePrvxm
+CLB008,Data Science Club,PRESIDENT,Alisha Mukherjee,alisha.mukherjeeCLB008,alisha.mukherjeeCLB008@college.edu,ZpQV3A$f5Z,$2b$12$0/JFdXRIrYNFrIEzoVi.aeG90/nMQhUAaLqYSZuckY.HWxStAidMy
+CLB008,Data Science Club,VICE_PRESIDENT,Anjali Kapoor,anjali.kapoorCLB008,anjali.kapoorCLB008@college.edu,rmL3@vzQbj,$2b$12$lsNys9Ty/lFJmxqmJVIRHuqPvLDuzIeJ.H1CqI7rj19bhu2T9ZS.G
+CLB008,Data Science Club,FACULTY_COORDINATOR,Prof. Preeti Khan,preeti.khanCLB008.fac,preeti.khanCLB008.fac@college.edu,wUI9Bc#fMg,$2b$12$NCwI/j1SAM9UD30KYgvUjuGgGK/9uJprVjPasls0jL/rnOkK2wmEW
+CLB009,Cloud Computing Club,PRESIDENT,Aarav Bhatt,aarav.bhattCLB009,aarav.bhattCLB009@college.edu,Cvh25%Q5Uu,$2b$12$vPi4NeP0bJ2jXGGYAsD6T.uRNGidEwc3FkahI0PM58joI1t8E6Cne
+CLB009,Cloud Computing Club,VICE_PRESIDENT,Alisha Chandra,alisha.chandraCLB009,alisha.chandraCLB009@college.edu,$e8R5RVyQ3,$2b$12$JdseAC4.lDiPfnKIXeqttepdDh0PlxzLOx.5qq8wjIU5piwyacvJ2
+CLB009,Cloud Computing Club,FACULTY_COORDINATOR,Prof. Karan Mishra,karan.mishraCLB009.fac,karan.mishraCLB009.fac@college.edu,G#ZCCDns9R,$2b$12$.fRAZFp90GYMHH6/zq/RXOt.1ddOjKzYz4q1Drd1svlk6jb5kppp.
+CLB010,Blockchain & Web3 Club,PRESIDENT,Manoj Pillai,manoj.pillaiCLB010,manoj.pillaiCLB010@college.edu,9!ADHKpmO4,$2b$12$BYFxV9Z4Eb4Kg4/eAMtDpuj/1OuL9e/S5iG2VJYI2b6yyZUdOp4F.
+CLB010,Blockchain & Web3 Club,VICE_PRESIDENT,Kiara Chopra,kiara.chopraCLB010,kiara.chopraCLB010@college.edu,F$z2pdJh86,$2b$12$M/XcKMUb.H2Xm5yBpjXn9ut3BIrbbg3Vk.6vWX.KY4qb08Voekjsy
+CLB010,Blockchain & Web3 Club,FACULTY_COORDINATOR,Prof. Vivaan Gupta,vivaan.guptaCLB010.fac,vivaan.guptaCLB010.fac@college.edu,OWR$2oqp1C,$2b$12$bswKpJbe4EYbjpZntTEnQe7IJcwJ4kInqIo6KV02BPHx9AakxIaHq
+CLB011,IoT Innovators Club,PRESIDENT,Myra Joshi,myra.joshiCLB011,myra.joshiCLB011@college.edu,em2IAvD@HA,$2b$12$ecAx.tH4QFwK5uBijzUrq.gmWoaLVwDz6YliHlE.8KYL9Pm3ISSOq
+CLB011,IoT Innovators Club,VICE_PRESIDENT,Kabir Agarwal,kabir.agarwalCLB011,kabir.agarwalCLB011@college.edu,WPy15a5#92,$2b$12$b5W.wpnLTEet0KErN4WFmubFC6EG8YFG9K4uqzcXh3n9OB5ysqFiy
+CLB011,IoT Innovators Club,FACULTY_COORDINATOR,Dr. Ishaan Menon,ishaan.menonCLB011.fac,ishaan.menonCLB011.fac@college.edu,6N1k@DiI6M,$2b$12$cZwqRxD80wvwJEc7gQgWdepvP8hzsochXR2fuaxZ2CvXLlkcDkRZy
+CLB012,Competitive Programming Club,PRESIDENT,Vihaan Desai,vihaan.desaiCLB012,vihaan.desaiCLB012@college.edu,1#16qW8KAy,$2b$12$fEt5pevfkEP2o5egarn3t.5csh8hMeYusi7389gQu9XsDmWxQZPBu
+CLB012,Competitive Programming Club,VICE_PRESIDENT,Rahul Agarwal,rahul.agarwalCLB012,rahul.agarwalCLB012@college.edu,81muYpbN!0,$2b$12$OQb.FvneUK3lSKUXqMdibus1GFuy4hKivwOz7dry6Kt4i.kXY0iIS
+CLB012,Competitive Programming Club,FACULTY_COORDINATOR,Prof. Yash Agarwal,yash.agarwalCLB012.fac,yash.agarwalCLB012.fac@college.edu,V9T%XYhlM2,$2b$12$9AlwrTrT9XOsLrdK2O2o/emCjXkZXMiPj/aZ8iruhg9NTWEMTnOpm
+CLB013,Open Source Club,PRESIDENT,Arjun Kumar,arjun.kumarCLB013,arjun.kumarCLB013@college.edu,Y1BwI%VQtc,$2b$12$VooCg2BUDtAkuYcEGfXXSO8/Ocyi4vEZd4WkSQEPBGkzoAFzMfuuW
+CLB013,Open Source Club,VICE_PRESIDENT,Deepak Mukherjee,deepak.mukherjeeCLB013,deepak.mukherjeeCLB013@college.edu,UUo2lH$9Pr,$2b$12$/N8nSenmm8gE0Y8eTjI01.FsxtkeE4apOK8/KKB8X8SdXrgCPscGm
+CLB013,Open Source Club,FACULTY_COORDINATOR,Dr. Deepak Pillai,deepak.pillaiCLB013.fac,deepak.pillaiCLB013.fac@college.edu,yWQ@i7KNCD,$2b$12$/E6tzMeM1N7AUFK86wWNSOm8Wee.S47eBcGG5ASWRQw3x1FX5cGyy
+CLB014,Electronics & Embedded Systems Club,PRESIDENT,Swati Desai,swati.desaiCLB014,swati.desaiCLB014@college.edu,@gU1AQFWpJ,$2b$12$fv..LUk7uHl8MYNBkMmCAO28qUESPNjLjhY8Vfzh9texGz1vzg7gK
+CLB014,Electronics & Embedded Systems Club,VICE_PRESIDENT,Kabir Joshi,kabir.joshiCLB014,kabir.joshiCLB014@college.edu,JWhx4%HBEw,$2b$12$vK.cj.mFRvPizuw8bxCy7elm9gu1dPm1v/RjCUjaI.smIjF/EJaqW
+CLB014,Electronics & Embedded Systems Club,FACULTY_COORDINATOR,Dr. Isha Sharma,isha.sharmaCLB014.fac,isha.sharmaCLB014.fac@college.edu,xIDhS8VW#3,$2b$12$vN66qXa72DjcvUTBpOtrN.AcSV73aYrEHa7QDFXzfDjZPAJCn5Bz2
+CLB015,VR/AR Club,PRESIDENT,Riya Chatterjee,riya.chatterjeeCLB015,riya.chatterjeeCLB015@college.edu,OsiS!0JEi8,$2b$12$f31AOzinGlGXRhid/ELWb.6tydaC7LHRh/BtquWsSgZfAob6sk1wm
+CLB015,VR/AR Club,VICE_PRESIDENT,Karan Malhotra,karan.malhotraCLB015,karan.malhotraCLB015@college.edu,e0$Fzhb4Fe,$2b$12$KeIvbipEBUdyC2JGPzW5g.EjKSpkbmW0rkzmUUlm6Xal9YM2At/wa
+CLB015,VR/AR Club,FACULTY_COORDINATOR,Dr. Aarav Chandra,aarav.chandraCLB015.fac,aarav.chandraCLB015.fac@college.edu,yRYH%M6XoN,$2b$12$tA/AWyknC75PbB3GoFwmgejTmHs4jBN4hNZPzKT/ntR7G.QrUC4uS
+CLB016,Cloud Native Club,PRESIDENT,Nandini Nair,nandini.nairCLB016,nandini.nairCLB016@college.edu,ak%C2hFeAS,$2b$12$qRguARnUuvzRwTE4IpgVT.AVYy/vsh7AkJuKWXj.BI4/0aE9bd6PG
+CLB016,Cloud Native Club,VICE_PRESIDENT,Rakesh Bose,rakesh.boseCLB016,rakesh.boseCLB016@college.edu,QZC3YLYvO#,$2b$12$mhi3T24s/AROBx3cq.AmnusWFkLsTqTLR7x9pFI92Gc8CKFcC4dy6
+CLB016,Cloud Native Club,FACULTY_COORDINATOR,Prof. Anika Iyer,anika.iyerCLB016.fac,anika.iyerCLB016.fac@college.edu,sBCK4%0V6f,$2b$12$x26M70U96gA/yeAe4Z/n/u18g9HbR36VmyR1x/D7tDC9fYQH7AYMG
+CLB017,DevOps Club,PRESIDENT,Shreya Gupta,shreya.guptaCLB017,shreya.guptaCLB017@college.edu,8cRWb0%3AL,$2b$12$aRBX7Y1S1wq9.OXQdYviLOjqrqTmq0IWB1se4eNDGThaBriw6DlZO
+CLB017,DevOps Club,VICE_PRESIDENT,Preeti Mishra,preeti.mishraCLB017,preeti.mishraCLB017@college.edu,pUwug$QvA1,$2b$12$jAkQxipP5MFDvrzpBH9CZeLlaaal8rCreYh3u7ku685aZcu1RPnmW
+CLB017,DevOps Club,FACULTY_COORDINATOR,Dr. Shreya Desai,shreya.desaiCLB017.fac,shreya.desaiCLB017.fac@college.edu,huX5cG#z3O,$2b$12$jf6o75tjU2YMjd3qH0EcWutbE39DrGbj.v5FpSuON4nzFOFNqfP/6
+CLB018,Networking & Systems Club,PRESIDENT,Rohit Pandey,rohit.pandeyCLB018,rohit.pandeyCLB018@college.edu,pbOjM$ZEh7,$2b$12$M7Rg0Tyb8cUM7bcAJQ8nW.vKJ3YTg1P8a9edgDWInlC.qJbh8coKi
+CLB018,Networking & Systems Club,VICE_PRESIDENT,Rakesh Mehta,rakesh.mehtaCLB018,rakesh.mehtaCLB018@college.edu,2DTr7$uTGs,$2b$12$EjEHLoihttCOJxkrZdcFQOeXaqo/A1J0gopKjPXsL2cke5WSMF5Zi
+CLB018,Networking & Systems Club,FACULTY_COORDINATOR,Prof. Ira Das,ira.dasCLB018.fac,ira.dasCLB018.fac@college.edu,vq2!YX2TrA,$2b$12$hcN9jw4wL3WBy7d0eirEg.nVnFKUGReUhYrS0.vopYOSpwp76yTfy
+CLB019,Ethical Hacking Club,PRESIDENT,Sneha Singh,sneha.singhCLB019,sneha.singhCLB019@college.edu,o9W$hu2cXA,$2b$12$.vRTCwrxEwXzjO7V9Dmn7OiLTkS.pbJeb5cSrJuow5nP8n1oLQefS
+CLB019,Ethical Hacking Club,VICE_PRESIDENT,Dhruv Bansal,dhruv.bansalCLB019,dhruv.bansalCLB019@college.edu,C63Hs2!5Qg,$2b$12$1Tk8wAM2mUCDpd35oj1qbuz3ioNd9N97hG0vQVu/qToYCcX8uLjhW
+CLB019,Ethical Hacking Club,FACULTY_COORDINATOR,Prof. Anjali Chopra,anjali.chopraCLB019.fac,anjali.chopraCLB019.fac@college.edu,6t!2K2IRv2,$2b$12$hiskBLTRNGQus.Ytu6zYgOI7CVbi1EkBmkPfhXogEkhalRKeo8kqe
+CLB020,UI/UX Design Club,PRESIDENT,Kiara Iyer,kiara.iyerCLB020,kiara.iyerCLB020@college.edu,YwWjxsu!0d,$2b$12$8gJFmLfAlesl1TJIK795xO5c/KMhvM6zj5VwwrrCvfoNbGCyGAhVi
+CLB020,UI/UX Design Club,VICE_PRESIDENT,Siddharth Nair,siddharth.nairCLB020,siddharth.nairCLB020@college.edu,pLtFC6jR6%,$2b$12$ZwLwX4.qFurt98hOTD7Ed.H1W/8r7m0UKO/Q8CxFuSPrBVQEjW0ee
+CLB020,UI/UX Design Club,FACULTY_COORDINATOR,Dr. Varun Kapoor,varun.kapoorCLB020.fac,varun.kapoorCLB020.fac@college.edu,S5OoC9q%tB,$2b$12$zflYRtrr4dBbmFlFh/EJ5OWolcx./i3.Ca4YdyqwjnOi4sqILAMne
+CLB021,Quantum Computing Club,PRESIDENT,Tanvi Kulkarni,tanvi.kulkarniCLB021,tanvi.kulkarniCLB021@college.edu,5I19VFaM!6,$2b$12$sds6xgxM9l09w0qO85bXSOAncV/rd6JfXDlPkjMbNSzQKvpA2epqe
+CLB021,Quantum Computing Club,VICE_PRESIDENT,Deepak Kulkarni,deepak.kulkarniCLB021,deepak.kulkarniCLB021@college.edu,LcUx#CUYd0,$2b$12$6OUuUoiH6EJGpSfpif/cF.Wkx.4EIW3vQExujIXQ3MePQthkLUB3a
+CLB021,Quantum Computing Club,FACULTY_COORDINATOR,Dr. Sunita Kaur,sunita.kaurCLB021.fac,sunita.kaurCLB021.fac@college.edu,r5kq%Zr6G1,$2b$12$i68OPndqUC7.r1ujOhb8HuYik0eKqxUHtzAvOzTaneuGTYpwOfBCG
+CLB022,AR/VR Innovation Club,PRESIDENT,Anjali Kaur,anjali.kaurCLB022,anjali.kaurCLB022@college.edu,8DR!iVAxRq,$2b$12$of8juGafVY1f64jEMi.aMecmdUItjAa1Lxaw8Qk1Xl6yjpf1oxFW.
+CLB022,AR/VR Innovation Club,VICE_PRESIDENT,Geeta Das,geeta.dasCLB022,geeta.dasCLB022@college.edu,htS6P$hAT1,$2b$12$qK.yMqLpHshM6hcpYu/NNOgdEsqBGkao3tbBFQx0UuNwuDCRPq6/S
+CLB022,AR/VR Innovation Club,FACULTY_COORDINATOR,Dr. Sai Kaur,sai.kaurCLB022.fac,sai.kaurCLB022.fac@college.edu,Lj4M5%AUoV,$2b$12$AsXjWcNoLnBvbLoh9GQCfubtDF14LN/YML6nXoaeVH4aQflBtSff.
+CLB023,Full Stack Developers Club,PRESIDENT,Saanvi Pandey,saanvi.pandeyCLB023,saanvi.pandeyCLB023@college.edu,5h8Rzmr!u9,$2b$12$mj/RLKGIoB/1cIJlRjOTz.NIkOO2QNV2RTHWbFiCxQMXqOm4da9U6
+CLB023,Full Stack Developers Club,VICE_PRESIDENT,Varun Mukherjee,varun.mukherjeeCLB023,varun.mukherjeeCLB023@college.edu,9nJHeeW1L@,$2b$12$NkUVm5UHfFA/DrTR1xzr2udRlEGfZ472CuYzWP1p17w5T9QMpRT0u
+CLB023,Full Stack Developers Club,FACULTY_COORDINATOR,Dr. Reyansh Dutta,reyansh.duttaCLB023.fac,reyansh.duttaCLB023.fac@college.edu,hbi34rEa@Q,$2b$12$dgq.5PAu6moAeusacTdLGery0ED15XxVmExx1bmNxRzHQuPRKnhha
+CLB024,Big Data Analytics Club,PRESIDENT,Kavya Reddy,kavya.reddyCLB024,kavya.reddyCLB024@college.edu,U1s$8QoNGc,$2b$12$UWHqMbdyH5sIEHUiC.Dd3OwifrylJw9yFzOgy5ndRRKkfrJkyTRsW
+CLB024,Big Data Analytics Club,VICE_PRESIDENT,Sandeep Patel,sandeep.patelCLB024,sandeep.patelCLB024@college.edu,V$jMf5ue7d,$2b$12$5zM0qtGDNBM/fe11BTcAQ..TNi40MaG1cZqUs0W2ZbZUk/oM9v7.a
+CLB024,Big Data Analytics Club,FACULTY_COORDINATOR,Prof. Varun Dutta,varun.duttaCLB024.fac,varun.duttaCLB024.fac@college.edu,OgY9hqPS$2,$2b$12$fvkOn/8g12rb/doKKkLIruPofcNY1NrEnXHXvZ2FLxLabHzO4llPm
+CLB025,Automation & Drone Club,PRESIDENT,Nikhil Nair,nikhil.nairCLB025,nikhil.nairCLB025@college.edu,ef!BgffL71,$2b$12$Nt6fW62rto8dbN7JBhmcpOmb/D8c8e5cn6RTo4zueOUhgt99fzp7W
+CLB025,Automation & Drone Club,VICE_PRESIDENT,Aryan Mishra,aryan.mishraCLB025,aryan.mishraCLB025@college.edu,69NMtsl!wg,$2b$12$QZ4VFPfuJDFX43Zleh5bhe67BSUgf0dSh6tp2af36.53eLc/BfIcO
+CLB025,Automation & Drone Club,FACULTY_COORDINATOR,Dr. Suresh Desai,suresh.desaiCLB025.fac,suresh.desaiCLB025.fac@college.edu,Zl#B1oKR2J,$2b$12$4ki/VueahkdUaz7O.G.4Z.drHw1roO.FmaF7.E39.x/dUWWWVL2l.
+CLB026,3D Printing & Fabrication Club,PRESIDENT,Simran Bansal,simran.bansalCLB026,simran.bansalCLB026@college.edu,SjVv6bVO!f,$2b$12$cEik1R//xrVMh84dGCt/COqnzvFP3f5BRlFQmxmmy7BqDX23dQ19S
+CLB026,3D Printing & Fabrication Club,VICE_PRESIDENT,Dhruv Sharma,dhruv.sharmaCLB026,dhruv.sharmaCLB026@college.edu,kjdf4%9kXW,$2b$12$.Y.FjGfF1bbO4KplQ29BtOkWDpfcQTbOPOph2Ka.0LegWsTGO99j2
+CLB026,3D Printing & Fabrication Club,FACULTY_COORDINATOR,Prof. Anjali Menon,anjali.menonCLB026.fac,anjali.menonCLB026.fac@college.edu,w3sB%iNhhR,$2b$12$Lo6Wd8WcsKn5s1xVx65MTuLvord4D8KU8KnsYxs1TyKrwvEMnJitO
+CLB027,Software Engineering Club,PRESIDENT,Meera Bose,meera.boseCLB027,meera.boseCLB027@college.edu,7alIy$DioT,$2b$12$DVATeAGx5AZ8Avqjiaml/uif7xEW5Oh1bRT78d3HAM8kPMIRRC1/m
+CLB027,Software Engineering Club,VICE_PRESIDENT,Vishal Rao,vishal.raoCLB027,vishal.raoCLB027@college.edu,OzA$Ks9CTk,$2b$12$7cIdKZbM2fsDrH8kii8qdOeLdSKbhUW7hl.AQkNYxwg67kE2hs.GK
+CLB027,Software Engineering Club,FACULTY_COORDINATOR,Dr. Riya Agarwal,riya.agarwalCLB027.fac,riya.agarwalCLB027.fac@college.edu,fHzzCn1@LB,$2b$12$2B5WOeCH5iYBgPeZuBA.0uMnC7HKvCGCe4idICg3YqtUWJPmssii6
+CLB028,Computer Vision Club,PRESIDENT,Ritu Chawla,ritu.chawlaCLB028,ritu.chawlaCLB028@college.edu,Ig%2WjWelP,$2b$12$7fcXOEpEOzbwsUV590csVeI4SC91klfEO6oYNG6xRLXKRt81qfgBW
+CLB028,Computer Vision Club,VICE_PRESIDENT,Dhruv Menon,dhruv.menonCLB028,dhruv.menonCLB028@college.edu,tYCLr$1oOE,$2b$12$K6thoDH8nEI8k0OtDLt5Q.Tn/5inm2OOQ4VCOFGxHTlWctMU07//m
+CLB028,Computer Vision Club,FACULTY_COORDINATOR,Prof. Reyansh Menon,reyansh.menonCLB028.fac,reyansh.menonCLB028.fac@college.edu,yGJcLM1%DJ,$2b$12$cKL0UiZNfl3Yve7ew1GopOVRk16uWBAgIEXWcfTLQnnSdWsc6mBZy
+CLB029,Natural Language Processing Club,PRESIDENT,Reyansh Bansal,reyansh.bansalCLB029,reyansh.bansalCLB029@college.edu,%oNW67xxkH,$2b$12$zcEfxp9nK4.i9bSYp31JcuXzQqcTM0PG15F6vQVPep6f1Mth0aaNq
+CLB029,Natural Language Processing Club,VICE_PRESIDENT,Vikram Iyer,vikram.iyerCLB029,vikram.iyerCLB029@college.edu,s%qUkRCy12,$2b$12$UfPEvrNfBQ.4SRjF3FnMZu/O0A6c9Wj9nCqBvZBDzsiGJ1BcpRRGW
+CLB029,Natural Language Processing Club,FACULTY_COORDINATOR,Prof. Aditya Mukherjee,aditya.mukherjeeCLB029.fac,aditya.mukherjeeCLB029.fac@college.edu,JYE0#Pytv1,$2b$12$f4brU4uq.sVGiyN6ie8azuacVrg0s09xmVjFGZVypYc7JpufU7ySS
+CLB030,FinTech Club,PRESIDENT,Meera Malhotra,meera.malhotraCLB030,meera.malhotraCLB030@college.edu,G1I#e2gYEX,$2b$12$FQZUIvFts55jiXUz7LlnuOXLj.80uFISoM0Uc0gAigiHwCy/O.4aO
+CLB030,FinTech Club,VICE_PRESIDENT,Saanvi Bansal,saanvi.bansalCLB030,saanvi.bansalCLB030@college.edu,xF9wRCcUA@,$2b$12$zaS5NxnIOLNPDzoUAZLl7.EZPNuXx0Nvu61LP96754J3vaqy3C53a
+CLB030,FinTech Club,FACULTY_COORDINATOR,Prof. Aadhya Chatterjee,aadhya.chatterjeeCLB030.fac,aadhya.chatterjeeCLB030.fac@college.edu,7J@RDKzC8x,$2b$12$DGk676xjcGlP8jQT7KxkYur5wSe9IJ6u2IFignt1Dld4VNl4Z9y2e
+CLB031,Bioinformatics Club,PRESIDENT,Amit Singh,amit.singhCLB031,amit.singhCLB031@college.edu,rCjD1G1@j5,$2b$12$frKDFakpN9LoqJb4DSxsF.zxMIg/hBP3v3BQgcAxUe9wHRMOFsdfe
+CLB031,Bioinformatics Club,VICE_PRESIDENT,Anjali Dutta,anjali.duttaCLB031,anjali.duttaCLB031@college.edu,xby@oMu5fq,$2b$12$6H0.6q2SKsZdIWUKOKzSROvvZzOM7k3qV.tgzrZrF/szZK888HtHm
+CLB031,Bioinformatics Club,FACULTY_COORDINATOR,Dr. Vikram Bhatt,vikram.bhattCLB031.fac,vikram.bhattCLB031.fac@college.edu,NqfawbY57$,$2b$12$KiV4lBvBwuFACXR9gVtdtez7Tgv9Y8V4a0Byoj6R5HKCY0.cwoUBm
+CLB032,Green Tech & Sustainability Tech Club,PRESIDENT,Myra Khan,myra.khanCLB032,myra.khanCLB032@college.edu,TGp!t8jPKO,$2b$12$QWBHuSj0BaoCLy3GyJ02DOqWWfxBBPX4y5b3BKST4cVUhcgSb1tim
+CLB032,Green Tech & Sustainability Tech Club,VICE_PRESIDENT,Rohit Sinha,rohit.sinhaCLB032,rohit.sinhaCLB032@college.edu,lJbI1%GQGY,$2b$12$3zNuEEBhMEgo.rpH4yvNu.SOgnVK9ZYP4yujuKSgFYA0X5kzcS1Se
+CLB032,Green Tech & Sustainability Tech Club,FACULTY_COORDINATOR,Prof. Arjun Reddy,arjun.reddyCLB032.fac,arjun.reddyCLB032.fac@college.edu,zQ#gpOL1UX,$2b$12$E0mIdye9HBh1n14Fcl9tC.WF7.GtN1LcWIxZ0a2V6beslla.Q.8IW
+CLB033,Mobile Computing Club,PRESIDENT,Sunita Saxena,sunita.saxenaCLB033,sunita.saxenaCLB033@college.edu,74wmc!YsmC,$2b$12$OiRKd0vFAMysqNzLZMaVxOo8tfjH/H5kVI3snX1QvJTB/e3L5G3AK
+CLB033,Mobile Computing Club,VICE_PRESIDENT,Deepak Singh,deepak.singhCLB033,deepak.singhCLB033@college.edu,YdP3#3Xuw3,$2b$12$/I1sR9KQ5ovO4KIKI5EXROvVKKi7HxuQe6kFVwSn.m/jNnP9gQD4G
+CLB033,Mobile Computing Club,FACULTY_COORDINATOR,Prof. Swati Rao,swati.raoCLB033.fac,swati.raoCLB033.fac@college.edu,7F2ZH$MxkS,$2b$12$Gqq74F.HBdcWqvkuf7VNzODieJFy33U/wcIPGj.tCN6iHTjhzqhXq
+CLB034,AI for Social Good Club,PRESIDENT,Aryan Nair,aryan.nairCLB034,aryan.nairCLB034@college.edu,6Cw@cTUSwC,$2b$12$pLF82y52Vv1wL3WlpQrjBeFgbwVSAAFNrG7T1EiQIBGCimyJ3xxnG
+CLB034,AI for Social Good Club,VICE_PRESIDENT,Sai Agarwal,sai.agarwalCLB034,sai.agarwalCLB034@college.edu,X$9epAcePi,$2b$12$X6WUjuHAFG2b4khG/u7V2OUqVd8jxT.5G28wcnVUwimODAcoN0pTi
+CLB034,AI for Social Good Club,FACULTY_COORDINATOR,Dr. Meera Pandey,meera.pandeyCLB034.fac,meera.pandeyCLB034.fac@college.edu,Hu7zxiLl!K,$2b$12$Mo7mp4YAbK27TUHxtWadF.NAIUkzu3ASkBEBXMKNgHLNEVEtDfRQ.
+CLB035,Digital Forensics Club,PRESIDENT,Simran Das,simran.dasCLB035,simran.dasCLB035@college.edu,eG$mChit24,$2b$12$hbtV68WEGMSnK0ueCaapQ.I0mKjn8GFBoyP9uNldTE5yE4TxOcT7q
+CLB035,Digital Forensics Club,VICE_PRESIDENT,Krishna Desai,krishna.desaiCLB035,krishna.desaiCLB035@college.edu,STT27rR#k4,$2b$12$8K3CJ8.vgwBWbBEubyARleHY0XOy/rcGOAbevqRwyxjdZ.Eopf85u
+CLB035,Digital Forensics Club,FACULTY_COORDINATOR,Dr. Vikram Pandey,vikram.pandeyCLB035.fac,vikram.pandeyCLB035.fac@college.edu,9LNiJZ#D4r,$2b$12$q6rGv5KG1dWt7RdJ8CChleShQwMAKe8ipMgNXlLT/URiyW6N2FM8m
+CLB036,Cloud Security Club,PRESIDENT,Ishaan Agarwal,ishaan.agarwalCLB036,ishaan.agarwalCLB036@college.edu,lG%9XBi8eL,$2b$12$SP6FbzGmhzyCqpOO.FS/EOJ/HiZnvkjyFeChV3h7NUan4XTys5rP2
+CLB036,Cloud Security Club,VICE_PRESIDENT,Amit Patel,amit.patelCLB036,amit.patelCLB036@college.edu,r!LO9mJqq4,$2b$12$QD/CzmOv3B.wDwsgrBGMCOrlr5CESrQ3DjPN12WMRLcKKMt.iEgia
+CLB036,Cloud Security Club,FACULTY_COORDINATOR,Prof. Yash Bhatt,yash.bhattCLB036.fac,yash.bhattCLB036.fac@college.edu,XbK0c8qSP!,$2b$12$pz.lQ8m25CEQj92L1QeqAenj0BERxWfqRQ/8.NqcPpOq/m/noh38e
+CLB037,Data Structures & Algorithms Club,PRESIDENT,Priya Mukherjee,priya.mukherjeeCLB037,priya.mukherjeeCLB037@college.edu,DWAb$MnvE2,$2b$12$D5SaGObJcJh1rm.qK5l30O2l9cFG.BgycRNw9yTyd2OD/wuftwBqG
+CLB037,Data Structures & Algorithms Club,VICE_PRESIDENT,Swati Kaur,swati.kaurCLB037,swati.kaurCLB037@college.edu,C!Kd7jhgpr,$2b$12$mEKYvmUNLTcvGqOLPmNynuMK78bOtx0auvqgxC9iV5jpj3JLXXUTe
+CLB037,Data Structures & Algorithms Club,FACULTY_COORDINATOR,Dr. Yash Patel,yash.patelCLB037.fac,yash.patelCLB037.fac@college.edu,t$P748qbfF,$2b$12$vJuj6u0estVJXQ3nQViI4OqiKqqIH6XImC7Wjs2Jgd0KpM0Z9RZ/m
+CLB038,Product Management Tech Club,PRESIDENT,Riya Thakur,riya.thakurCLB038,riya.thakurCLB038@college.edu,zxnxcU2#DW,$2b$12$2qvsCcGrBwyqBeuDrdYzHeJ8xVqTLbNm5mD/3tjhZA5uUTLHSj1BK
+CLB038,Product Management Tech Club,VICE_PRESIDENT,Shreya Singh,shreya.singhCLB038,shreya.singhCLB038@college.edu,RY4%irhgzN,$2b$12$WzqBtoxbYnianjoCBvNFPO1wpTo2yTnvwcMadIGbHv0l4dqPjKyTy
+CLB038,Product Management Tech Club,FACULTY_COORDINATOR,Dr. Sneha Sharma,sneha.sharmaCLB038.fac,sneha.sharmaCLB038.fac@college.edu,BHD#bMZE2j,$2b$12$3v8juUKD7t6CbvsOudyZ8e5BcW0XwMaEoM4heUSR.ZDW9aNgmv7kG
+CLB039,Space Tech Club,PRESIDENT,Aditi Bansal,aditi.bansalCLB039,aditi.bansalCLB039@college.edu,#t0phLRvAJ,$2b$12$hfmD3W36aMB/HSG2UyG7F.AkwQYYKadZOyKt0bft.2ETop/A5EO3y
+CLB039,Space Tech Club,VICE_PRESIDENT,Pooja Yadav,pooja.yadavCLB039,pooja.yadavCLB039@college.edu,y1NpXUOS%2,$2b$12$HcEYwlbVxWv9enZPM6QXAuEtCvJ.DJy1RSIRjOBz8DTqa5/vGEG6K
+CLB039,Space Tech Club,FACULTY_COORDINATOR,Prof. Vikram Jain,vikram.jainCLB039.fac,vikram.jainCLB039.fac@college.edu,Xn$NAnS2KG,$2b$12$Rh.uC.zC8r0SLUB.EW2fhuuHBzE6.jW/2UQEGo8q8hPSbYMNV83B2
+CLB040,Autonomous Vehicles Club,PRESIDENT,Kavya Ghosh,kavya.ghoshCLB040,kavya.ghoshCLB040@college.edu,KEr9rm5#Np,$2b$12$I8DkctUyj0cVZyBwotfDHepjK4BUIfFP/bLcmGzeMiz/S0bfqbsDa
+CLB040,Autonomous Vehicles Club,VICE_PRESIDENT,Aryan Malhotra,aryan.malhotraCLB040,aryan.malhotraCLB040@college.edu,#hry5LI4KR,$2b$12$Gh/.oW80dOrVcOh8FHrVium7m4wBFE.ABYZeK7SoWnXdOoHI3yhkS
+CLB040,Autonomous Vehicles Club,FACULTY_COORDINATOR,Prof. Simran Chandra,simran.chandraCLB040.fac,simran.chandraCLB040.fac@college.edu,@7UrI0Ji7m,$2b$12$RUmDccCeJVVVx.Svly4L3eXVGhsbr3ZJ91R4IL0zHqNi4bddGIFLu
+CLB041,Wearable Tech Club,PRESIDENT,Suresh Bhatt,suresh.bhattCLB041,suresh.bhattCLB041@college.edu,K9RJwX!ai7,$2b$12$63yUM40D4Ze8dMLck1VKY.xFkFIlNVGk9BGFoDOrFMWSK5wX1gLWC
+CLB041,Wearable Tech Club,VICE_PRESIDENT,Kiara Chatterjee,kiara.chatterjeeCLB041,kiara.chatterjeeCLB041@college.edu,2oI%7bUV1U,$2b$12$lQAqPtgWBGb2Bk0MOo5SuuiqjGMiwOINKjQRFethoT6n9EnALFtnG
+CLB041,Wearable Tech Club,FACULTY_COORDINATOR,Dr. Reyansh Khan,reyansh.khanCLB041.fac,reyansh.khanCLB041.fac@college.edu,MKX0!vj7gt,$2b$12$HM0arSsi8.X8CgvijQRkzeqZAKmiexyBBxXPzx45MhwB8P9Vy9nDS
+CLB042,Simulation & Modelling Club,PRESIDENT,Kabir Kapoor,kabir.kapoorCLB042,kabir.kapoorCLB042@college.edu,5mKxl#ARNW,$2b$12$r7Hf6KaWFwfaxedhRIP/mukiKC6IxTq7r2HYmG2iVDzimTJ4CRqpa
+CLB042,Simulation & Modelling Club,VICE_PRESIDENT,Arun Saxena,arun.saxenaCLB042,arun.saxenaCLB042@college.edu,#rWhC90Kyp,$2b$12$HULyTMjeE87lbgElyFPVtO6gyiwyZF/eYEF/5T76rVFOXK39xKz2e
+CLB042,Simulation & Modelling Club,FACULTY_COORDINATOR,Dr. Vikram Malhotra,vikram.malhotraCLB042.fac,vikram.malhotraCLB042.fac@college.edu,7$OG452TjR,$2b$12$xYzXX4PYlFwpVqTaTgypleZJUhE0lpauzVa8zButjGwBhZBq8Izza
+CLB043,Tech Entrepreneurship Club,PRESIDENT,Rohan Saxena,rohan.saxenaCLB043,rohan.saxenaCLB043@college.edu,3@RP8pWWMy,$2b$12$C83n5EyPRkJSoxMFEMQbpuZJYKSfl16N2VQks9QwDE7h8WUqZurza
+CLB043,Tech Entrepreneurship Club,VICE_PRESIDENT,Sandeep Nayak,sandeep.nayakCLB043,sandeep.nayakCLB043@college.edu,8jB@K2Irku,$2b$12$I987ysFeoqTWrOp6QTbo0OYHsWwR2D5T9qfAs.dGreq7t5cq.0/ZK
+CLB043,Tech Entrepreneurship Club,FACULTY_COORDINATOR,Dr. Nikhil Das,nikhil.dasCLB043.fac,nikhil.dasCLB043.fac@college.edu,DdAbJ7@ZGK,$2b$12$jhn.31YMHXumfaGMkZYBE.OFQ715PkyQSaXSoT/zVVcxasSbffRUC
+CLB044,Linux Users Group,PRESIDENT,Aditya Mishra,aditya.mishraCLB044,aditya.mishraCLB044@college.edu,bl4PPX$UXi,$2b$12$cadDB6emVe2eLz6xDqpFCOXAMi/90k6CNaBuFQGLfj0PsovTK90te
+CLB044,Linux Users Group,VICE_PRESIDENT,Dhruv Patel,dhruv.patelCLB044,dhruv.patelCLB044@college.edu,Ul1Hiz@IoU,$2b$12$MW./kJp4naGnhEsjuzR7aeU0hsh/SW1CaAT9T5yG3zLQ2Z4Rfeafe
+CLB044,Linux Users Group,FACULTY_COORDINATOR,Dr. Alisha Patel,alisha.patelCLB044.fac,alisha.patelCLB044.fac@college.edu,#7r7U4jmHh,$2b$12$W0t1uTANlJpYkXiNkqk9tevVmeqC0mjIzB7dL.sLc8kdOEayN/O3e
+CLB045,Competitive Cybersecurity (CTF) Club,PRESIDENT,Varun Nayak,varun.nayakCLB045,varun.nayakCLB045@college.edu,MoX3iW3%nd,$2b$12$7Wk.7xzjq6anOSew8UG7KOu11J1rL7P5RMe11FuwwLOQF3rMZ3K..
+CLB045,Competitive Cybersecurity (CTF) Club,VICE_PRESIDENT,Manoj Mehta,manoj.mehtaCLB045,manoj.mehtaCLB045@college.edu,rjAdH%ot2J,$2b$12$MsRhbg3BnisYdcII.72b4OqnU/pizgFKS.yrcpu/GA9vXGmImq6Ai
+CLB045,Competitive Cybersecurity (CTF) Club,FACULTY_COORDINATOR,Prof. Sandeep Gupta,sandeep.guptaCLB045.fac,sandeep.guptaCLB045.fac@college.edu,AZWj5qt$yl,$2b$12$lmCkme6yaTuaLBK6A5Zr.OBlvj7Dk1j1qiyJybcR8IhggBA.8BMR.
+CLB046,Edge Computing Club,PRESIDENT,Isha Khan,isha.khanCLB046,isha.khanCLB046@college.edu,k1fUIx12G$,$2b$12$I1ifrKImj2wJHUIr1PnhWuDuxMNV42msbVbG2kHy6J1DnOxLjaEri
+CLB046,Edge Computing Club,VICE_PRESIDENT,Kavya Rao,kavya.raoCLB046,kavya.raoCLB046@college.edu,n9v36Ey%Zn,$2b$12$Wm/sQZiQ5/7Gzw9F1D56D.aViN7D6ybX3Buf0mwNRLJ4iPgXic..W
+CLB046,Edge Computing Club,FACULTY_COORDINATOR,Prof. Myra Desai,myra.desaiCLB046.fac,myra.desaiCLB046.fac@college.edu,yhMP#D8IXs,$2b$12$BShdTs4wcahd3Af.WgYDvuMLeR9hZzZtNKSXqMiQ74kqE7MaWcTem
+CLB047,GIS & Geospatial Tech Club,PRESIDENT,Rakesh Agarwal,rakesh.agarwalCLB047,rakesh.agarwalCLB047@college.edu,LBq@L7s3bJ,$2b$12$tRgSN4mq2WXuPyxA66mqKeZ.YUBFAWjiwJRaENiAWxpXl1WuqaLN2
+CLB047,GIS & Geospatial Tech Club,VICE_PRESIDENT,Simran Bose,simran.boseCLB047,simran.boseCLB047@college.edu,P#FWrU05P9,$2b$12$vqrz3.J.aYlPO6xOdVet4ueMZ.PwLmxdsEIq5v2zktxaYK.U4oGUq
+CLB047,GIS & Geospatial Tech Club,FACULTY_COORDINATOR,Dr. Aryan Khan,aryan.khanCLB047.fac,aryan.khanCLB047.fac@college.edu,c%08e1r20F,$2b$12$KZHC/sxu6ac62LtSAi2gye.5NrSPZ7ccVwMt3tdXip41oibK/fifW
+CLB048,Smart Agriculture Tech Club,PRESIDENT,Aarav Bose,aarav.boseCLB048,aarav.boseCLB048@college.edu,$vaJ9FQIUb,$2b$12$5Ypd6kX.i3FYYTa7EMmkbuLoqBkY3HMcsjD9aWGNuvGQEiYMTUO5K
+CLB048,Smart Agriculture Tech Club,VICE_PRESIDENT,Pooja Saxena,pooja.saxenaCLB048,pooja.saxenaCLB048@college.edu,mNf1Z!pHjH,$2b$12$LxTzJa8RSQGF2rPq6quzye9lsDR2X1gHZ/7tRTae9b6eoK0UsRKoG
+CLB048,Smart Agriculture Tech Club,FACULTY_COORDINATOR,Dr. Vihaan Sinha,vihaan.sinhaCLB048.fac,vihaan.sinhaCLB048.fac@college.edu,P320Rf#2hS,$2b$12$06x/ZX6Oq7HeivM0XMEOZ.9ZsyW5DEAroEYjZ2aLdXde2yBP5hEbe
+CLB049,Assistive Technology Club,PRESIDENT,Deepak Kapoor,deepak.kapoorCLB049,deepak.kapoorCLB049@college.edu,Sd!n85So34,$2b$12$RR7S9SBZd0lPDiR5JS0dke9nanOsJJc9d4QNXxR0Xd3zmLcaUXgAi
+CLB049,Assistive Technology Club,VICE_PRESIDENT,Sai Thakur,sai.thakurCLB049,sai.thakurCLB049@college.edu,A00@T7z9Wg,$2b$12$4j2Veux53FzBaBUcvb9j8OQ8uHwZvSJHy45fHdOgshzQ5Kn4KJLvC
+CLB049,Assistive Technology Club,FACULTY_COORDINATOR,Prof. Amit Bansal,amit.bansalCLB049.fac,amit.bansalCLB049.fac@college.edu,2MgBdwGVy!,$2b$12$QENS0TqEZL.H4YMbiCCnJuAEivYJd0vlzgJxytYYtfDz00A2X.I06
+CLB050,Digital Twin & Simulation Club,PRESIDENT,Rohit Joshi,rohit.joshiCLB050,rohit.joshiCLB050@college.edu,ymf6QRL@RX,$2b$12$YLVr/zGkGx2PiAjW.UgCsuaUZa.cQkrAJVx.ClWCF4GpucI4UTFre
+CLB050,Digital Twin & Simulation Club,VICE_PRESIDENT,Divya Pandey,divya.pandeyCLB050,divya.pandeyCLB050@college.edu,$a8zW2gxfu,$2b$12$zItdVUY7VyeLNZrjJsIW2uAWYq/qj6TPgitshvZ25l8ei2ITEU6Zq
+CLB050,Digital Twin & Simulation Club,FACULTY_COORDINATOR,Prof. Kiara Chawla,kiara.chawlaCLB050.fac,kiara.chawlaCLB050.fac@college.edu,Gbw8N%gAof,$2b$12$TWQi/Da0p989BZdyx575TOwShG46CWP1sfipQst0jz.76W2j.3kOq
+CLB051,Music Club,PRESIDENT,Vishal Iyer,vishal.iyerCLB051,vishal.iyerCLB051@college.edu,ijFrr@Ft6v,$2b$12$dUWjNjxQ5rm068IcdOfaV.T496RfLxhqHr7f23W0awKxMcTYj3Efa
+CLB051,Music Club,VICE_PRESIDENT,Arun Das,arun.dasCLB051,arun.dasCLB051@college.edu,tgh7%NimDI,$2b$12$7GX/whUXeJ4.ptYTNnzmuebq5tOU65bPIVI/sw2KHpIZWEySZTwam
+CLB051,Music Club,FACULTY_COORDINATOR,Prof. Tanvi Bhatt,tanvi.bhattCLB051.fac,tanvi.bhattCLB051.fac@college.edu,uNtMSm@9u8,$2b$12$z8WkL6r644hL2o5Rwof8beDMKNs1K3FyR3Jj6RQCsQWZ5XsUjBEF.
+CLB052,Dance Club,PRESIDENT,Aryan Ghosh,aryan.ghoshCLB052,aryan.ghoshCLB052@college.edu,RsX8G8JU@b,$2b$12$UEy7RtRXwWSL5d7VCbK74OO/zKPIC5xrqQffHkO1P6xTFwqjijS9O
+CLB052,Dance Club,VICE_PRESIDENT,Ira Kaur,ira.kaurCLB052,ira.kaurCLB052@college.edu,EB4QY@qTuj,$2b$12$nD2z179GZk0cWrfSkSte1egEltBWhDlz1m6tk5kpnOjO5fFh4ivgi
+CLB052,Dance Club,FACULTY_COORDINATOR,Dr. Krishna Jain,krishna.jainCLB052.fac,krishna.jainCLB052.fac@college.edu,6fbXRMg5O%,$2b$12$fysgjpDV.ewNWxG2uBwrc./c.8X9FCs1caDpejQjAsndiZUTWJAxK
+CLB053,Drama & Theatre Club,PRESIDENT,Reyansh Sharma,reyansh.sharmaCLB053,reyansh.sharmaCLB053@college.edu,XxsLD$Wz3R,$2b$12$PwfVbT2iwRij2WwwPeN0b.pyAxIfXPbcetw41ce/yOb8Lhkll/lfC
+CLB053,Drama & Theatre Club,VICE_PRESIDENT,Reyansh Desai,reyansh.desaiCLB053,reyansh.desaiCLB053@college.edu,txD2n#DHvY,$2b$12$KCrxgxoaDpxSG4xP2AQ9dOwuqnIKgXkGHHfVh7F0Db.1MfgdDi8/C
+CLB053,Drama & Theatre Club,FACULTY_COORDINATOR,Prof. Isha Kumar,isha.kumarCLB053.fac,isha.kumarCLB053.fac@college.edu,PBvRgz2Z!1,$2b$12$.yG6bVQ7sU.7noRH9fX2NuxEsq8rcOPzUeTZaIMxZTu61xtqMFKqS
+CLB054,Literary Society,PRESIDENT,Rohit Malhotra,rohit.malhotraCLB054,rohit.malhotraCLB054@college.edu,ayG$nTn9ro,$2b$12$B6C90VOBEzDhGi55zjp1devPyDJGQkNwKgcuuWpEIv3Uy/Y9YgY/a
+CLB054,Literary Society,VICE_PRESIDENT,Diya Mishra,diya.mishraCLB054,diya.mishraCLB054@college.edu,L#NV8pMzhy,$2b$12$GPgWa9k5nfsM1CCqGpxGre5vvNqToyKyNAWywewEloQNBhJ2mWT7a
+CLB054,Literary Society,FACULTY_COORDINATOR,Prof. Vivaan Sinha,vivaan.sinhaCLB054.fac,vivaan.sinhaCLB054.fac@college.edu,SKjdl#h3Gx,$2b$12$5BGzaO74PXYsBK3eya7i1uvo7buVm.bFmgd/oAqiFV6huGvDryjRW
+CLB055,Photography Club,PRESIDENT,Neha Kulkarni,neha.kulkarniCLB055,neha.kulkarniCLB055@college.edu,Tb5Fmi!09y,$2b$12$4HfWfl5XW44oiHX1WFLmPes1tvpMnxxtCEASmYIH9nJUj0RXu.6Ue
+CLB055,Photography Club,VICE_PRESIDENT,Ishaan Malhotra,ishaan.malhotraCLB055,ishaan.malhotraCLB055@college.edu,WP1Yosfc%b,$2b$12$kfWBUA9fnfypKH6F16D5we32x2Yqx1q61VUkovF5ZGuCj3CJ/i7ka
+CLB055,Photography Club,FACULTY_COORDINATOR,Dr. Sunita Pandey,sunita.pandeyCLB055.fac,sunita.pandeyCLB055.fac@college.edu,I0x4dSc%W0,$2b$12$6Uies4j9MdzfsLmBWyX6lejc5ZPb6/YJ.fYFGzV9fANsIQi/Yv1zW
+CLB056,Debate Society,PRESIDENT,Anika Chawla,anika.chawlaCLB056,anika.chawlaCLB056@college.edu,3TOBGzN#9k,$2b$12$MYuQRPDbaSxir/mt7.xB3ODvm.kZepAe7varRqaba1tdSlBElzNc.
+CLB056,Debate Society,VICE_PRESIDENT,Anjali Iyer,anjali.iyerCLB056,anjali.iyerCLB056@college.edu,8TsKT#s2rr,$2b$12$A6FAxfMB9K8BIZDo6EOklu2IpYp.bBzWpYezbn.483wJnUTNcUZ3e
+CLB056,Debate Society,FACULTY_COORDINATOR,Prof. Vishal Mukherjee,vishal.mukherjeeCLB056.fac,vishal.mukherjeeCLB056.fac@college.edu,W1e@WuT3p1,$2b$12$Jg811mK.wBf.h9mmaGPGJeYKaAd2eyu0.CUpW0yZQkTsBzeZeyvOy
+CLB057,Fine Arts Club,PRESIDENT,Arjun Iyer,arjun.iyerCLB057,arjun.iyerCLB057@college.edu,5OUf%aXp32,$2b$12$sUhmG2REKxVb16E78vbJeuPufbhzh4zv9.iAgOo2nsFwe/DXTVCze
+CLB057,Fine Arts Club,VICE_PRESIDENT,Rajesh Yadav,rajesh.yadavCLB057,rajesh.yadavCLB057@college.edu,i5vK#K2PJi,$2b$12$KgPO5.oVkYI/hIP498Y5BuLZdxM.OTMylOXRwoiBy0sUvpQKfDdCK
+CLB057,Fine Arts Club,FACULTY_COORDINATOR,Dr. Deepak Dutta,deepak.duttaCLB057.fac,deepak.duttaCLB057.fac@college.edu,$o6i4SOP0m,$2b$12$fHU.24m9b1krhoNX/Ww3juaXqC0HftnRw9k7UyqaRpzdeNSOcwb/e
+CLB058,Culinary Club,PRESIDENT,Suresh Kapoor,suresh.kapoorCLB058,suresh.kapoorCLB058@college.edu,dEi@H0eoWL,$2b$12$fzmnRqPTOThbwDD6v5ah/.b2STwsw6Pxcng8KzMIxJKPmziTsF7iO
+CLB058,Culinary Club,VICE_PRESIDENT,Rohit Pillai,rohit.pillaiCLB058,rohit.pillaiCLB058@college.edu,gZgPuc$3fU,$2b$12$YHpXqv6GtGdJHDcsPYjltuqvGpvb8lsFPRyE5HsLXd2DL/JM.J/xK
+CLB058,Culinary Club,FACULTY_COORDINATOR,Prof. Siddharth Iyer,siddharth.iyerCLB058.fac,siddharth.iyerCLB058.fac@college.edu,Vw2UujT$On,$2b$12$snGoWwk3MNaAY/ouOeB3EeOUSbejiunw.Lt.EEOVZwj9IKFWRUQ7K
+CLB059,Environmental Club,PRESIDENT,Dhruv Mishra,dhruv.mishraCLB059,dhruv.mishraCLB059@college.edu,SX9rMs8%UH,$2b$12$5UeqpNxsIgMMLBA0v5d4D.i1XWafLqhWhxcuducxbC3Ub8b24gjl2
+CLB059,Environmental Club,VICE_PRESIDENT,Aryan Rao,aryan.raoCLB059,aryan.raoCLB059@college.edu,pFy@Fh0JuO,$2b$12$bPt/f6MF.RnOtqKXNae/5ehroTTC.NrwrS7IkYT3ck3uoYBEQSBwS
+CLB059,Environmental Club,FACULTY_COORDINATOR,Prof. Ira Iyer,ira.iyerCLB059.fac,ira.iyerCLB059.fac@college.edu,XrL2bee$9L,$2b$12$GXdHX78.N5QcpSQ5VEckn.sJQjAXv8ZNSBDoBlOQmHE593ne6DMRm
+CLB060,Yoga & Wellness Club,PRESIDENT,Siddharth Kaur,siddharth.kaurCLB060,siddharth.kaurCLB060@college.edu,2%WOQ1zLug,$2b$12$.ju.VX9WrPdxXWb5G2/8fOAlCh9QpoSW0wVsVS99xVQ5xnYvr5/8O
+CLB060,Yoga & Wellness Club,VICE_PRESIDENT,Sai Chandra,sai.chandraCLB060,sai.chandraCLB060@college.edu,dV%QVQtDo9,$2b$12$p9Lfyjh84Jpfm1iR3ZJVO.N9XOZUMDVG6cczpZx/iJ6T3HwfpWu.W
+CLB060,Yoga & Wellness Club,FACULTY_COORDINATOR,Prof. Meera Iyer,meera.iyerCLB060.fac,meera.iyerCLB060.fac@college.edu,xXr34@ViQq,$2b$12$iWKKyOSDxDnIy22PoJDvIupPR/pmrD0m2o36p4YWjusBtc9YPOnR2
+CLB061,Film Making Club,PRESIDENT,Neha Saxena,neha.saxenaCLB061,neha.saxenaCLB061@college.edu,R2XgU5KF#l,$2b$12$TGkaB4ZtaePC8eKrBvlSjeH583qqXeQEJwkgt9y2L1DY0tQ9wvmiK
+CLB061,Film Making Club,VICE_PRESIDENT,Pooja Dutta,pooja.duttaCLB061,pooja.duttaCLB061@college.edu,TPMJ2VeZ!6,$2b$12$b62emdYMaP6u38ljlMFi3.QYjDEGadfk3lZQ5L82ObvEqcb4m0CR.
+CLB061,Film Making Club,FACULTY_COORDINATOR,Dr. Neha Jain,neha.jainCLB061.fac,neha.jainCLB061.fac@college.edu,@z9DZ0Hocq,$2b$12$D1DLB.ylHbtMHKsP4ehuKeF218b7kqatrMB5Ew38gjqOhXbtk1YJ6
+CLB062,Fashion Club,PRESIDENT,Aarav Dutta,aarav.duttaCLB062,aarav.duttaCLB062@college.edu,FXmoX5H5%U,$2b$12$rsAY6uKWDHcTlNx45eSwXeFrlG1kV5KvH1p2U6wmAp85TNAOVW71.
+CLB062,Fashion Club,VICE_PRESIDENT,Aadhya Kulkarni,aadhya.kulkarniCLB062,aadhya.kulkarniCLB062@college.edu,W0UQy2V#wa,$2b$12$E8/PXcmGYzkVXh59z90xKuKjTJa8cyzro06tN4hlML71UoktOiY2q
+CLB062,Fashion Club,FACULTY_COORDINATOR,Dr. Sandeep Sinha,sandeep.sinhaCLB062.fac,sandeep.sinhaCLB062.fac@college.edu,A!1H5W6i2o,$2b$12$HMR0.u0cyjImZH/weyjgUekzhw0itI.Yb8wgDpJ.LYokuEpYFntcm
+CLB063,Sports Club,PRESIDENT,Tanvi Mehta,tanvi.mehtaCLB063,tanvi.mehtaCLB063@college.edu,Ceu8rKoz6#,$2b$12$KbZgk1RX8.yAyX9Nt95o2uoLu3KbMitveUi2j9CvIsz6wtehenB02
+CLB063,Sports Club,VICE_PRESIDENT,Siddharth Rao,siddharth.raoCLB063,siddharth.raoCLB063@college.edu,Dn#N8XCtd9,$2b$12$1gzoft627alBBM3h3w6iOuJVgW1kBr9Dw3Jzjgh6BtBxrKlv7yU46
+CLB063,Sports Club,FACULTY_COORDINATOR,Prof. Riya Desai,riya.desaiCLB063.fac,riya.desaiCLB063.fac@college.edu,qGtcz#RdE3,$2b$12$I8GRbUmgObfL3QLwj.CyYurxxqqhypvWB59BqdI4/qyA7vQ368n2W
+CLB064,Cricket Club,PRESIDENT,Reyansh Rao,reyansh.raoCLB064,reyansh.raoCLB064@college.edu,f6O#P8EgRL,$2b$12$CHxBFWnhwGH4hSgOQ9Cw9uc4Ia7eAM.Wxw37nQDvgeolZR3G112lK
+CLB064,Cricket Club,VICE_PRESIDENT,Krishna Sharma,krishna.sharmaCLB064,krishna.sharmaCLB064@college.edu,178kD!ZkKd,$2b$12$CahJ30am9h0nI9ucSlzbxeI30Kt/cyIPShVuelfV1yf9DXDlD.TK2
+CLB064,Cricket Club,FACULTY_COORDINATOR,Dr. Sunita Chatterjee,sunita.chatterjeeCLB064.fac,sunita.chatterjeeCLB064.fac@college.edu,4ijFcNNN4$,$2b$12$npF2w6GTRw1Q0ohkzJgPvuuUBdOkJ1mDGS2q76SmrWPD/O4IYHL0u
+CLB065,Football Club,PRESIDENT,Rahul Rao,rahul.raoCLB065,rahul.raoCLB065@college.edu,FYEZa6#Iw6,$2b$12$q2WUnloVIFf3vuXa/wuW1uD0p7BVil.u6EwtzZzcMO/yKGY7rfnAW
+CLB065,Football Club,VICE_PRESIDENT,Nikhil Chopra,nikhil.chopraCLB065,nikhil.chopraCLB065@college.edu,ZALXHEwz4!,$2b$12$zjB2bgHDhKZH6KQRsdFvku3XngaUCCoWM/gBErMPC4ItIBSnXFh66
+CLB065,Football Club,FACULTY_COORDINATOR,Prof. Rohit Chandra,rohit.chandraCLB065.fac,rohit.chandraCLB065.fac@college.edu,l21h9Ywl7$,$2b$12$jGnAA/dgTUq4K4YwbYE3RekHPFHnIzsBByELqYb.CmyXP66vDqWma
+CLB066,Basketball Club,PRESIDENT,Sunita Thakur,sunita.thakurCLB066,sunita.thakurCLB066@college.edu,oaCHbbE3%v,$2b$12$PMgH55CHmVgteQiPbvq3e.WrSjB3hJq/kfu.3MD7DlXGbsiYJh2Y6
+CLB066,Basketball Club,VICE_PRESIDENT,Sneha Pillai,sneha.pillaiCLB066,sneha.pillaiCLB066@college.edu,2!Exe92s3H,$2b$12$ql4Ja5YEdnXuNsVagP7zqulMKveJlC6Nbu3yeI0zkA.EemW.KWgOC
+CLB066,Basketball Club,FACULTY_COORDINATOR,Prof. Neha Gupta,neha.guptaCLB066.fac,neha.guptaCLB066.fac@college.edu,Z79JulS#T4,$2b$12$8szt8Oiil17mSou43ZyMh.6o/aOQ1LGgaxHCcgNRW5XZtzoi04J.6
+CLB067,Chess Club,PRESIDENT,Arun Sharma,arun.sharmaCLB067,arun.sharmaCLB067@college.edu,6Z#9B9oNfO,$2b$12$4Tzld1AaX2VLC430bHN7m.sjn0O0WEnQHAbgdURHwD5Qnmcuml1/i
+CLB067,Chess Club,VICE_PRESIDENT,Deepak Jain,deepak.jainCLB067,deepak.jainCLB067@college.edu,#1SnpFqCau,$2b$12$Yx59B6DBrAEZKLqfbqWn8uDy05gdwmr/h8RbtmPlpYwFiv0ST5NXi
+CLB067,Chess Club,FACULTY_COORDINATOR,Prof. Geeta Jain,geeta.jainCLB067.fac,geeta.jainCLB067.fac@college.edu,24yFXIy$wn,$2b$12$r65GehUmG2voZuvY1LIkBuOPtpVOwjTsjRt8UhMzoeftgWHeOLu7.
+CLB068,Quiz Club,PRESIDENT,Aryan Desai,aryan.desaiCLB068,aryan.desaiCLB068@college.edu,N1M%8x5fFv,$2b$12$.mFdKA7Nw2PJek9qcoZRN.G9Yq4bz64s50XrJgoudaHDpAtxNRCd2
+CLB068,Quiz Club,VICE_PRESIDENT,Reyansh Patel,reyansh.patelCLB068,reyansh.patelCLB068@college.edu,@JSUDk3UA7,$2b$12$A7e6QuBktuIb3d0dYnHjcO2ojZZx89ZLhxK7flMC4YVSer5ohPria
+CLB068,Quiz Club,FACULTY_COORDINATOR,Dr. Ananya Ghosh,ananya.ghoshCLB068.fac,ananya.ghoshCLB068.fac@college.edu,fQ5BbsE!0O,$2b$12$Fu/s5b5HGAKMH17pBwzzlueSPhw5CPo092FIISyrmYVKpFaGauvo6
+CLB069,Entrepreneurship Cell,PRESIDENT,Sai Singh,sai.singhCLB069,sai.singhCLB069@college.edu,xPp4lP!4Iy,$2b$12$.KuqdY8YDDpcCdyzZj2CdOfbLaFowKsWCc98oaWgVgBZcm9EifwyW
+CLB069,Entrepreneurship Cell,VICE_PRESIDENT,Geeta Reddy,geeta.reddyCLB069,geeta.reddyCLB069@college.edu,!9fHijQSgW,$2b$12$D0TTaAZQ/wdG74lry7hYpu9GXs0I6lHb8VWAmAxRrUJPOJgJLRO9y
+CLB069,Entrepreneurship Cell,FACULTY_COORDINATOR,Dr. Divya Kaur,divya.kaurCLB069.fac,divya.kaurCLB069.fac@college.edu,ptE4v%z7fR,$2b$12$kFNoeoUBeOulsdqeQzcQ7uqLdUUKZ3MtZJFnZ1z6Zac/QomVPUhkC
+CLB070,Marketing & Business Club,PRESIDENT,Ishaan Gupta,ishaan.guptaCLB070,ishaan.guptaCLB070@college.edu,5iy!uTJzJf,$2b$12$NKIld5TdCLSVp.UBsqO4OODSz./.yJIA2adwCpyKrt2MgAlnM13z2
+CLB070,Marketing & Business Club,VICE_PRESIDENT,Manoj Mishra,manoj.mishraCLB070,manoj.mishraCLB070@college.edu,EWg%989L7e,$2b$12$PdfxF4FoSKbvaWpIV6GLCOfq8BJV5qxyY9Q8MlVApcZ25cJOQaGiS
+CLB070,Marketing & Business Club,FACULTY_COORDINATOR,Prof. Rina Menon,rina.menonCLB070.fac,rina.menonCLB070.fac@college.edu,zEcrp9%Ulj,$2b$12$mIDyGjKPsAv981idjPXT3ew/xwAdJD6paVzunLxBuHEI6MYnq8X6y
+CLB071,Finance & Investment Club,PRESIDENT,Simran Joshi,simran.joshiCLB071,simran.joshiCLB071@college.edu,7t!iJCVi3o,$2b$12$fP4qSmp6DDewGqJgIHCGhOuR3eEtG0Duhfs1dDtML5EsFWPz0GYRW
+CLB071,Finance & Investment Club,VICE_PRESIDENT,Ritu Dutta,ritu.duttaCLB071,ritu.duttaCLB071@college.edu,0NYG%dx3x7,$2b$12$Toq3vKlQNpzIc4KMSI7V7.th2uiCjDxmzpycNOAvtqUKHa1UfQHwG
+CLB071,Finance & Investment Club,FACULTY_COORDINATOR,Dr. Kabir Pillai,kabir.pillaiCLB071.fac,kabir.pillaiCLB071.fac@college.edu,gF3d6xDcp!,$2b$12$l6aRlmyiTE8jjEcZMXTgfuE8mT1E8rrVJW/XEG5XAXZ/XI3FZ8xDm
+CLB072,Public Speaking Club,PRESIDENT,Manoj Verma,manoj.vermaCLB072,manoj.vermaCLB072@college.edu,k9w5q1%Fwp,$2b$12$rln6ONEhegf9uFQJ6yuZA.yAbpz/i2oneoqZLe1jiwkctV7PzRUdK
+CLB072,Public Speaking Club,VICE_PRESIDENT,Myra Dutta,myra.duttaCLB072,myra.duttaCLB072@college.edu,93$XGgb4XV,$2b$12$Wcm0knJwLc6o1ph25mu7AOIgRNW9.v8KZE0MsRLKjN.sy0kJFQ5R.
+CLB072,Public Speaking Club,FACULTY_COORDINATOR,Prof. Shreya Pandey,shreya.pandeyCLB072.fac,shreya.pandeyCLB072.fac@college.edu,zTywD542#B,$2b$12$2gQ9ZawsCu51iDODMmxccut0tM09FtuBHCXFzE9nsclwisZnU3rzO
+CLB073,Journalism & Media Club,PRESIDENT,Aarav Yadav,aarav.yadavCLB073,aarav.yadavCLB073@college.edu,3urqPcP5#O,$2b$12$/FXER7CT.HrsVn5ZJRQovO5mcehHT4UQznlPe44Q5Y18kf2GSZxR6
+CLB073,Journalism & Media Club,VICE_PRESIDENT,Suresh Dutta,suresh.duttaCLB073,suresh.duttaCLB073@college.edu,ys0ze6Aq$V,$2b$12$him4t4su.qZvtRlhQnDw8.7zsv9aT386wtbonZeU8hgrDgpNB1O.m
+CLB073,Journalism & Media Club,FACULTY_COORDINATOR,Dr. Meera Nair,meera.nairCLB073.fac,meera.nairCLB073.fac@college.edu,gV%jQEs2il,$2b$12$wsQcs178K7LcDs/fLZTAtOWb6Lq/q8htpCiOqVKOq1CMcg3RRl81G
+CLB074,Social Service Club,PRESIDENT,Sandeep Pillai,sandeep.pillaiCLB074,sandeep.pillaiCLB074@college.edu,3O1$JdLLo8,$2b$12$TocQS9nsL..ie9qMtuSgH.QXcsdw31Ee1wrDCay8eCdbXxaWBAZ7O
+CLB074,Social Service Club,VICE_PRESIDENT,Nikhil Bansal,nikhil.bansalCLB074,nikhil.bansalCLB074@college.edu,@5mNb6Av2K,$2b$12$jTCT1v.nyo7t/R8dIYuMruck4JZQe08JcXfZF/QgoVUELJ/X8s06.
+CLB074,Social Service Club,FACULTY_COORDINATOR,Dr. Anika Kumar,anika.kumarCLB074.fac,anika.kumarCLB074.fac@college.edu,CaW!fUrnX5,$2b$12$gD2R3unqWmifIbNdTyCEsOZ7OtPHPIRHSzQSMzVZiiPfM4OtQ9w2m
+CLB075,Cultural Committee,PRESIDENT,Rajesh Mishra,rajesh.mishraCLB075,rajesh.mishraCLB075@college.edu,W1H55ux!mG,$2b$12$SvY85e1LAYs.yyrh.uM5g.QDQLv7/nmOvFnrCVQPCfltszawAPIZi
+CLB075,Cultural Committee,VICE_PRESIDENT,Priya Ghosh,priya.ghoshCLB075,priya.ghoshCLB075@college.edu,M089qt#eck,$2b$12$lw9tU9xmCDlMQivu..qyouhhpOch6bgqOITfz8Drd3z5EwT4xQzkC
+CLB075,Cultural Committee,FACULTY_COORDINATOR,Dr. Aditya Chandra,aditya.chandraCLB075.fac,aditya.chandraCLB075.fac@college.edu,bgo$oUn2iY,$2b$12$t5GLMRt40kw8C2hEiBs1ielwm89I5gj3XkvTByFJ1dQNAvQLvG5P6
+CLB076,Rotaract Club,PRESIDENT,Vishal Chandra,vishal.chandraCLB076,vishal.chandraCLB076@college.edu,qAaJUyC!0h,$2b$12$Si5oMEfj0MKOmgzCuXFRIeUwZJikHTX17K7wDYe71Ghrd2mmpNNMi
+CLB076,Rotaract Club,VICE_PRESIDENT,Nandini Mehta,nandini.mehtaCLB076,nandini.mehtaCLB076@college.edu,AiM%SV451q,$2b$12$yXcDBBxiRtV1huU6Za2ZZeXxbU0ZW5f3AekFTaPKJchMh.jXKC/cC
+CLB076,Rotaract Club,FACULTY_COORDINATOR,Dr. Suresh Nair,suresh.nairCLB076.fac,suresh.nairCLB076.fac@college.edu,AwYi8cT@sk,$2b$12$.wFcqWq5/6jJ1NXzM6oy9uxy18tlbJqGJ5FHtiyRUoW691mG0FjRG
+CLB077,NCC/NSS Club,PRESIDENT,Suresh Iyer,suresh.iyerCLB077,suresh.iyerCLB077@college.edu,s!q1PqDYo5,$2b$12$CHo4lg2G8r9mf6RTK6GNEOPAqdRChCgKeFCbI1vD3m/IYCJqmi0Qu
+CLB077,NCC/NSS Club,VICE_PRESIDENT,Simran Reddy,simran.reddyCLB077,simran.reddyCLB077@college.edu,xNc42!aW21,$2b$12$rOU/HFDqCMxHQ73xvXlE4e9WFzkziNJ4H/gP4.58M3KS8ZCcXRAlS
+CLB077,NCC/NSS Club,FACULTY_COORDINATOR,Prof. Rohan Iyer,rohan.iyerCLB077.fac,rohan.iyerCLB077.fac@college.edu,!z2rLkz1D9,$2b$12$cjYzcTJlnw4tbs9w0suboexL6L5N5wAbUZi7R/dH1obrDXbMYi3Ie
+CLB078,Book Club,PRESIDENT,Geeta Kapoor,geeta.kapoorCLB078,geeta.kapoorCLB078@college.edu,3oywX%VbN2,$2b$12$Vjp.ALur8/cIEMvjeySg5ewwRXYW9pL3gZeartd2Y5rkwVj2i1ZH6
+CLB078,Book Club,VICE_PRESIDENT,Simran Kumar,simran.kumarCLB078,simran.kumarCLB078@college.edu,U0XKUo%kKV,$2b$12$94I5RRk/s1fZ/HP0nUlK5Ou6OOYOkl9j9LMy7zFBUCIIgTnf7KgIe
+CLB078,Book Club,FACULTY_COORDINATOR,Prof. Swati Jain,swati.jainCLB078.fac,swati.jainCLB078.fac@college.edu,7aPrG!E92k,$2b$12$tZvkhiVzTlbZ/lY.67VDOev0Nc8T8R8D48PTnQrNIEQ4pKWKtNLcC
+CLB079,Poetry Club,PRESIDENT,Vihaan Yadav,vihaan.yadavCLB079,vihaan.yadavCLB079@college.edu,uC72f%CCFo,$2b$12$YGGkqBWriH2Br4dVoH4Lu.bnhXaaydEKHQN6sb2zQi7bOA07zjcI6
+CLB079,Poetry Club,VICE_PRESIDENT,Kiara Das,kiara.dasCLB079,kiara.dasCLB079@college.edu,n9O%zC4JtG,$2b$12$RfgPu7ue1Q0yRM2QFhisReeH6Gn572W9gY9aoHWeFl.gM2fzvkTie
+CLB079,Poetry Club,FACULTY_COORDINATOR,Prof. Rajesh Mukherjee,rajesh.mukherjeeCLB079.fac,rajesh.mukherjeeCLB079.fac@college.edu,vo$W5WQhag,$2b$12$YxWC7AtH4tb3lVFbflwHq.nD9hcZrHASb81ZRm56bpUy/obGEB73.
+CLB080,Painting & Sketching Club,PRESIDENT,Neha Rao,neha.raoCLB080,neha.raoCLB080@college.edu,$1mYnTG0gD,$2b$12$/6VlhgSHgCv4eT38QXY.heGw44bv6gJNpClgPJlmzBfHuhJpbWY8S
+CLB080,Painting & Sketching Club,VICE_PRESIDENT,Rina Khan,rina.khanCLB080,rina.khanCLB080@college.edu,@V8Fds9HaV,$2b$12$CpsSegvxsc4DM.9shkf.pev41eB9Y.bVdG0lx8ActWzWynw3BuAS6
+CLB080,Painting & Sketching Club,FACULTY_COORDINATOR,Dr. Anika Sinha,anika.sinhaCLB080.fac,anika.sinhaCLB080.fac@college.edu,m4DGu9y4%A,$2b$12$IDXL3cfOpa2ZX700JdOaA.YEGeYP.199PNifdAHKWYhDH/2iw5ZDq
+CLB081,Travel & Adventure Club,PRESIDENT,Nikhil Nayak,nikhil.nayakCLB081,nikhil.nayakCLB081@college.edu,@RwKTNms8n,$2b$12$VJcJ3K2VDrxRhHK69qSIsO4LTJftUV9AbC9c9AqTQ0jF457uS5zNi
+CLB081,Travel & Adventure Club,VICE_PRESIDENT,Deepak Yadav,deepak.yadavCLB081,deepak.yadavCLB081@college.edu,642sBa%SsZ,$2b$12$Gs6fBdsoyNbE7WY.qnZp1OWx.BIzn4SSxjaopf0G4SRraZC6t5dWa
+CLB081,Travel & Adventure Club,FACULTY_COORDINATOR,Dr. Sunita Das,sunita.dasCLB081.fac,sunita.dasCLB081.fac@college.edu,Sqjz1d2Y#R,$2b$12$7SInbrQvDGdYjX3djzFVseiccvWvWdi8t2ZYHlCHVejQURZlkBkAm
+CLB082,Wildlife & Nature Club,PRESIDENT,Myra Yadav,myra.yadavCLB082,myra.yadavCLB082@college.edu,mM5nNdVa%q,$2b$12$DdrC.6q3tAXzavKMqGKUjuFwXWweoPu2g3mg6ptgKrXPw1rvpDzkC
+CLB082,Wildlife & Nature Club,VICE_PRESIDENT,Divya Kulkarni,divya.kulkarniCLB082,divya.kulkarniCLB082@college.edu,9!GoVl2hJl,$2b$12$U6vhFI6XFYFTEPsILJtdNOyG0s62HdxOVjVx6fQRq3VQ53BvRVQvW
+CLB082,Wildlife & Nature Club,FACULTY_COORDINATOR,Dr. Alisha Ghosh,alisha.ghoshCLB082.fac,alisha.ghoshCLB082.fac@college.edu,@kA7jM7ucd,$2b$12$wEPGa8WBhhznklIAvAMsnuT8Iqa67Vr1TW7tKzT1Wm8FTv7NtIlJ.
+CLB083,History & Heritage Club,PRESIDENT,Kavya Chatterjee,kavya.chatterjeeCLB083,kavya.chatterjeeCLB083@college.edu,oFw%zn84nf,$2b$12$.ezl/F.GmX3J/P/0cAO6muPPP2kj6LOCxhhN906bFxvRSDqjslEDS
+CLB083,History & Heritage Club,VICE_PRESIDENT,Diya Bhatt,diya.bhattCLB083,diya.bhattCLB083@college.edu,Nvp5P6N5D$,$2b$12$Xy/PQ1LiJPmwSH2oX1TEVO3j6fOP/sWe/FF/l76h7HTf9eVrga0cK
+CLB083,History & Heritage Club,FACULTY_COORDINATOR,Dr. Divya Yadav,divya.yadavCLB083.fac,divya.yadavCLB083.fac@college.edu,cs5CZFAqG%,$2b$12$XuxCwwsA4.0Xi6mPI7gBGOYctI9BqM7jQ5eOw/i.q9NL/2ruQWYge
+CLB084,Psychology Club,PRESIDENT,Saanvi Bose,saanvi.boseCLB084,saanvi.boseCLB084@college.edu,Tf!cvecD2U,$2b$12$FhYsVKo9h.5nyRURdee3fe91wJZ5nzThVGTPHo8z1/bwgTZ5mgV22
+CLB084,Psychology Club,VICE_PRESIDENT,Anjali Mishra,anjali.mishraCLB084,anjali.mishraCLB084@college.edu,$uhy6RbIoM,$2b$12$uC9qObYo0zMm9crbiEM4CuriP5Kr4PxBJcUn78z0Qm1QCp/cgTnyu
+CLB084,Psychology Club,FACULTY_COORDINATOR,Dr. Sunita Mishra,sunita.mishraCLB084.fac,sunita.mishraCLB084.fac@college.edu,0TyEQzc$b4,$2b$12$e1cN.x4EJ8OJHevWaQ06u.Y4jKonSQ.uQTd9wTtSdfBEq640l9dvq
+CLB085,Philosophy Club,PRESIDENT,Meera Dutta,meera.duttaCLB085,meera.duttaCLB085@college.edu,t9AfsIn8$J,$2b$12$KYNJgEiiqz6sKU2HS80ArOvkpvypLlGtxOw.NUT0LWpSenu2XfbZu
+CLB085,Philosophy Club,VICE_PRESIDENT,Aarav Das,aarav.dasCLB085,aarav.dasCLB085@college.edu,d!lZTQ3iK2,$2b$12$iRgnRThNmGxacQ1IaCJGQuydB6zzvASgCip2/V.BWVkaVfioRczea
+CLB085,Philosophy Club,FACULTY_COORDINATOR,Prof. Krishna Gupta,krishna.guptaCLB085.fac,krishna.guptaCLB085.fac@college.edu,XpgQiP7#sw,$2b$12$W8A5Dh9sayWU9GfEluOEaeHWNlrqaqtCQyoMABJPV1eYp9FRr5PFm
+CLB086,Astronomy Club,PRESIDENT,Deepak Kumar,deepak.kumarCLB086,deepak.kumarCLB086@college.edu,NVP#0TfYpo,$2b$12$DbU0b3T63mgRG6oX27pbQuxJ2.1/YhnlhqPrmYq21BUiy479Bi3vK
+CLB086,Astronomy Club,VICE_PRESIDENT,Rohan Jain,rohan.jainCLB086,rohan.jainCLB086@college.edu,ylPfLgM$4J,$2b$12$Ty3qzT78WZN8/EF1ICX0auCAlLsDAtwG8YKgEK1DBwk0DTjhC8DGy
+CLB086,Astronomy Club,FACULTY_COORDINATOR,Dr. Swati Agarwal,swati.agarwalCLB086.fac,swati.agarwalCLB086.fac@college.edu,6nScs%I6Jq,$2b$12$tAu7GtRTPfZHQbWVf5Xce.byyVHBCWunL2tIg4FdN.3rMdhQl2Iiu
+CLB087,Legal Awareness Club,PRESIDENT,Karan Yadav,karan.yadavCLB087,karan.yadavCLB087@college.edu,9KK3@oE8Q2,$2b$12$UjxRHCpMEScZx4CWyDK0d.P12djATjl.KIg2Vcygamzg.r0HUfgPC
+CLB087,Legal Awareness Club,VICE_PRESIDENT,Aarav Mukherjee,aarav.mukherjeeCLB087,aarav.mukherjeeCLB087@college.edu,Hh@YE06yLx,$2b$12$aXjvtI.w4jP6LpTOue55E.CcLrBoymQnwajmnYwdNxrJMOHWIgc0C
+CLB087,Legal Awareness Club,FACULTY_COORDINATOR,Prof. Rakesh Yadav,rakesh.yadavCLB087.fac,rakesh.yadavCLB087.fac@college.edu,S9PyxP@yLr,$2b$12$3La7bdvKuq.JReG84g8Wm.wsmm8YPSPOyJGaODaG2OPPKb45XIFc2
+CLB088,Human Rights Club,PRESIDENT,Neha Singh,neha.singhCLB088,neha.singhCLB088@college.edu,rOGl!njfP3,$2b$12$ttptuDocDmSqb9cDCcJDcO.i6mDuDSAYd2DpBh.tuTAPsKUr661Dq
+CLB088,Human Rights Club,VICE_PRESIDENT,Preeti Nayak,preeti.nayakCLB088,preeti.nayakCLB088@college.edu,17PkLnvA$P,$2b$12$RxC8UaYOAzHj4/FIiliNTefzdfV7W8Fhmc/73pIgHQOo8kJIllwp2
+CLB088,Human Rights Club,FACULTY_COORDINATOR,Dr. Pooja Rao,pooja.raoCLB088.fac,pooja.raoCLB088.fac@college.edu,0l7H@e9qSz,$2b$12$OFHW3gWOnDhDIvy2gmNs0OVO9ULY3G.eXEYuOWj.ql6/uMKdQTvAi
+CLB089,Community Outreach Club,PRESIDENT,Kiara Khan,kiara.khanCLB089,kiara.khanCLB089@college.edu,eyo$LMyIf5,$2b$12$HalFuBPITS2JCUJSyMwpcuvb6AhUwWdHgOPf.SLo2HZ505VKSyJKC
+CLB089,Community Outreach Club,VICE_PRESIDENT,Shreya Menon,shreya.menonCLB089,shreya.menonCLB089@college.edu,%Y9FcG4IWp,$2b$12$ozmy50dMGuhpbNQ3mufeK.xG2G346ptdKTeZnVhokodcw/7pNE/8K
+CLB089,Community Outreach Club,FACULTY_COORDINATOR,Prof. Nandini Yadav,nandini.yadavCLB089.fac,nandini.yadavCLB089.fac@college.edu,5!nQ8ZSHBo,$2b$12$/4vXiAEv8/ek2zy3kImAVOqqx/B4wrku0kNglL1bAseyeqguykr96
+CLB090,Gender Equality Club,PRESIDENT,Anika Singh,anika.singhCLB090,anika.singhCLB090@college.edu,YVa4KT@Rna,$2b$12$Li02NJe0LFgcfJxkmzvxUOAzx7m1yYMDm3RYQwGbnbdkYKcdQXNJa
+CLB090,Gender Equality Club,VICE_PRESIDENT,Vishal Chatterjee,vishal.chatterjeeCLB090,vishal.chatterjeeCLB090@college.edu,6KDB%eI2qq,$2b$12$ceXcHXHAh6bLLovgt3YSbuHf7Vz0BgudKz4lPfl.bU0XHfp44ZWje
+CLB090,Gender Equality Club,FACULTY_COORDINATOR,Dr. Riya Nayak,riya.nayakCLB090.fac,riya.nayakCLB090.fac@college.edu,ztwRTKX#r7,$2b$12$Oly7D7dIiffgI2s7inJIruKBfcLdl7MQYBezJjt7fnAkzhdU0/9hK
+CLB091,Vocal Music Club,PRESIDENT,Divya Bansal,divya.bansalCLB091,divya.bansalCLB091@college.edu,ef2BqZ7cM$,$2b$12$WgKLOh3/sMh8bp4ouO4z0.Rkwu.oyhRq7XguVIvPtOSzIcwjMyh3.
+CLB091,Vocal Music Club,VICE_PRESIDENT,Swati Das,swati.dasCLB091,swati.dasCLB091@college.edu,aC0tF2W@Om,$2b$12$DXCpapLsgmHLAiOxTlaZjeXHYibmfwTHHm58uGR1u0BP8up9xBTOm
+CLB091,Vocal Music Club,FACULTY_COORDINATOR,Dr. Rohit Sharma,rohit.sharmaCLB091.fac,rohit.sharmaCLB091.fac@college.edu,rf5VbP@Xak,$2b$12$jKzCGOhLeJc5/dpvWRgZUOqk47tnLCe8/yjscsPG6yRCQcbM1Zbma
+CLB092,Instrumental Music Club,PRESIDENT,Simran Iyer,simran.iyerCLB092,simran.iyerCLB092@college.edu,$za3lH7tqK,$2b$12$CZp2M3e0l7oqzllwuk/yXOaJ/.lTH.YwcoJy5IjSOxvCLG6P8vk1.
+CLB092,Instrumental Music Club,VICE_PRESIDENT,Isha Kulkarni,isha.kulkarniCLB092,isha.kulkarniCLB092@college.edu,qZY0S4C%qK,$2b$12$JTTHgVRACMnmYt75xkMzu.AsXsqsD7aJEqGKhrU9r5u2hrSZqKfMi
+CLB092,Instrumental Music Club,FACULTY_COORDINATOR,Dr. Dhruv Joshi,dhruv.joshiCLB092.fac,dhruv.joshiCLB092.fac@college.edu,SdoPRy4YO!,$2b$12$D/VTE/gscP4VwgkESoFsY.U1e3GI6tYyzECDG4h/yF7HPK8bt5aia
+CLB093,Classical Dance Club,PRESIDENT,Myra Kulkarni,myra.kulkarniCLB093,myra.kulkarniCLB093@college.edu,58P5rKkVl@,$2b$12$RfpmqLrMJvDFSOnQbvZ0Guou4IBHxNVZAYeWmsH5IMp/H3gOqBdZm
+CLB093,Classical Dance Club,VICE_PRESIDENT,Manoj Bansal,manoj.bansalCLB093,manoj.bansalCLB093@college.edu,fXhj9#g6Gh,$2b$12$fB3awyqyLMrEbXvnbdNAr./kmV6d7159tYmOfx8MgnrReTe5qkI1C
+CLB093,Classical Dance Club,FACULTY_COORDINATOR,Dr. Isha Malhotra,isha.malhotraCLB093.fac,isha.malhotraCLB093.fac@college.edu,#of8dPzKWi,$2b$12$JQpNvlMfVrDmS3qIFvdNL.NpM9FSu7Znv.MNBGtQIzj9GvoHWjJkK
+CLB094,Street Play (Nukkad) Club,PRESIDENT,Yash Reddy,yash.reddyCLB094,yash.reddyCLB094@college.edu,xAug$Nv33L,$2b$12$sTpYXjX4XAnuRTWW2FG/YOhJR9Ky8hcDziLBlQrrMUhLWRGFW1NOO
+CLB094,Street Play (Nukkad) Club,VICE_PRESIDENT,Deepak Bhatt,deepak.bhattCLB094,deepak.bhattCLB094@college.edu,2$PWxnz3xS,$2b$12$.OUmN7O2ijhXmo3NOIIvt.ATJOMwGmwne08GO1pZsBTpE7Ei3hDL6
+CLB094,Street Play (Nukkad) Club,FACULTY_COORDINATOR,Prof. Aryan Sharma,aryan.sharmaCLB094.fac,aryan.sharmaCLB094.fac@college.edu,Z29my$hZj8,$2b$12$YIELLRoLCG9aLMPPRfOtEOtMGkKII/c9/.MkgIZSsh/JnH2SWTgoy
+CLB095,Adventure Sports Club,PRESIDENT,Divya Thakur,divya.thakurCLB095,divya.thakurCLB095@college.edu,@WfOgE00q1,$2b$12$2e1BwY7nj3julO94Yl0JfubKmloCRLsWmcQYuuVsk3mUcZqTWHfUW
+CLB095,Adventure Sports Club,VICE_PRESIDENT,Meera Desai,meera.desaiCLB095,meera.desaiCLB095@college.edu,NdK%PPIKm5,$2b$12$953fGqViYSOo75Bugp.CIOb4XKa3I45y0YmdTfE02jLo9WdUMGvlK
+CLB095,Adventure Sports Club,FACULTY_COORDINATOR,Dr. Rajesh Nair,rajesh.nairCLB095.fac,rajesh.nairCLB095.fac@college.edu,9D#mkCj39O,$2b$12$HvHFD/7PLdC7ZMwZc/VzDuupqeWB6WuTAu9Rrz4ATTx3KGybDeeK6
+CLB096,Table Tennis Club,PRESIDENT,Aryan Agarwal,aryan.agarwalCLB096,aryan.agarwalCLB096@college.edu,CAHolk9%5I,$2b$12$808r00CGL7A.fESRFifzKue6kmaM9VuiwwxANGfP/d3wUaE0Z5l5G
+CLB096,Table Tennis Club,VICE_PRESIDENT,Amit Kulkarni,amit.kulkarniCLB096,amit.kulkarniCLB096@college.edu,1bd$DzXJHd,$2b$12$SR.kB4FXQaDDCSnAdtI.p.U.SSbStRgnWcMsrI7Mwa0hdEgfgTAwm
+CLB096,Table Tennis Club,FACULTY_COORDINATOR,Dr. Shreya Kaur,shreya.kaurCLB096.fac,shreya.kaurCLB096.fac@college.edu,1xHO$4iikH,$2b$12$F2w4bDF4IBMl7hGp6ruOUuK/BUs2bVvswl/a377eSQpocV8gAuKwe
+CLB097,Badminton Club,PRESIDENT,Isha Pandey,isha.pandeyCLB097,isha.pandeyCLB097@college.edu,6Hu9tOO$IO,$2b$12$TD.dqCS5djHkT53hWqHCTOpOZ18iUcJTnJp9ng26GVIjHTsA1qFSe
+CLB097,Badminton Club,VICE_PRESIDENT,Ishaan Chandra,ishaan.chandraCLB097,ishaan.chandraCLB097@college.edu,4ie0!I2WaH,$2b$12$P/okr9uFZ6HrQWEe22i8luy5TNfUpzvduyfI6Cy3KHkLwZYexqrNa
+CLB097,Badminton Club,FACULTY_COORDINATOR,Prof. Aditi Nayak,aditi.nayakCLB097.fac,aditi.nayakCLB097.fac@college.edu,4YoJYn%mxa,$2b$12$m4I0RC7UjowxZzTwONVcy.Xt7d1UOYatFDwwucvrTojwigHyi4Tnq
+CLB098,Table Games Club,PRESIDENT,Siddharth Mukherjee,siddharth.mukherjeeCLB098,siddharth.mukherjeeCLB098@college.edu,6Zli@se2hi,$2b$12$N8W0b3E0LcrcjikmCaiRXO7wTR0G67uS2Vm5cNUBZt2H3opk0Ew3C
+CLB098,Table Games Club,VICE_PRESIDENT,Kavya Sinha,kavya.sinhaCLB098,kavya.sinhaCLB098@college.edu,8glTsbi!Er,$2b$12$hQwtm.Qokiwcdkb8KNSv4.s.B7pRJ2bmaO5xkP6Vp9w4pxCCyO/l.
+CLB098,Table Games Club,FACULTY_COORDINATOR,Dr. Riya Chandra,riya.chandraCLB098.fac,riya.chandraCLB098.fac@college.edu,jfcSv#YDN7,$2b$12$QpnG/ImB4.xzvoFz2v0rjuj1iy.6wcB9FmEzmHQEas7t0AYDnRf6y
+CLB099,Culinary Arts & Baking Club,PRESIDENT,Ritu Desai,ritu.desaiCLB099,ritu.desaiCLB099@college.edu,XcMV7mD@Vy,$2b$12$xevbI0GPTtECHMDfqY1syu9UYsJX2pfMVXfB1xTNtTFLZzCpsAYOG
+CLB099,Culinary Arts & Baking Club,VICE_PRESIDENT,Rina Ghosh,rina.ghoshCLB099,rina.ghoshCLB099@college.edu,Oqx8mEtr!X,$2b$12$RTt1jcpko1wVS3FRj4feBuxh3DPLsLdvSqi0xjeiP98XqNVMBrK1q
+CLB099,Culinary Arts & Baking Club,FACULTY_COORDINATOR,Dr. Krishna Mukherjee,krishna.mukherjeeCLB099.fac,krishna.mukherjeeCLB099.fac@college.edu,cL!ziZpY9a,$2b$12$TZrB3tgj0uT5rFEkOnEJf.1ZCp67kUUwXThhP9Slk/XKHXLNTG6Tq
+CLB100,Public Relations Club,PRESIDENT,Manoj Sinha,manoj.sinhaCLB100,manoj.sinhaCLB100@college.edu,dJo2PWZ$Yu,$2b$12$Gxv/EOLC6uD3EF9fvjIYpOBZgP1dRAPt69IV2W1hf.oqTEYzuNohC
+CLB100,Public Relations Club,VICE_PRESIDENT,Kabir Mehta,kabir.mehtaCLB100,kabir.mehtaCLB100@college.edu,bIJI$SFs7m,$2b$12$Zw/sSdJI5qnYHguOkugtrukw3akVZgM0AkgUkIC8qIropcio47rpe
+CLB100,Public Relations Club,FACULTY_COORDINATOR,Dr. Deepak Chandra,deepak.chandraCLB100.fac,deepak.chandraCLB100.fac@college.edu,Is$2Dq0qxC,$2b$12$dtfSKR13akroES9LyH2eue5DKlZbkbjdVm4wDMzXVssTv2LA0.Izi
