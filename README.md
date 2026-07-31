@@ -77,16 +77,16 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000)
 
-## Demo Accounts
+## Testing Accounts & Data
 
-All passwords: `reservex123`
+The hardcoded demo accounts have been removed to secure the database. Instead, you can find the actual test credentials and data inside the CSV files included in the repository:
 
-| Email | Role | Club |
-|-------|------|------|
-| president@vit.ac.in | President | Tech Club |
-| vp@vit.ac.in | Vice President | Tech Club |
-| fc@vit.ac.in | Faculty Coordinator | — |
-| dsw@vit.ac.in | DSW (Admin) | — |
+- `users - users.csv.csv`: Contains the test user accounts. Use the **email** and **plaintext_password** columns to log in as a President, Vice President, or Faculty Coordinator for various clubs.
+- `clubs - clubs.csv.csv`: Contains the list of all registered clubs.
+- `ReserveX_Venues - Venues.csv`: Contains the list of all venues.
+
+**Note for DSW Admin:**
+If you need to log in as the DSW to approve final requests, you can create a DSW user directly in your Supabase database or assign the `DSW` role to one of the test accounts.
 
 ## Booking Workflow
 
